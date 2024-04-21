@@ -51,7 +51,7 @@
                         if($status == 3) echo'<span class="badge border border-1 text-danger border-danger">Đã hủy</span>';
                         if($status == 4) echo'<span class="badge border border-1 text-primary border-primary">Đã hoàn thành</span>';
                         ?>
-                        <a href="<?=ACT?>lich-su-mua-hang/<?=$token?>" class="btn btn-sm border-1 btn-outline-success mt-2 mt-lg-0"><i class="fas fa-eye"></i></a>
+                        <a href="<?=URL?>lich-su-mua-hang/<?=$token?>" class="btn btn-sm border-1 btn-outline-success mt-2 mt-lg-0"><i class="fas fa-eye"></i></a>
                     </td>
                 </tr>
                 <?php }}?>
