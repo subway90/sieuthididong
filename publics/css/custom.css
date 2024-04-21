@@ -1,0 +1,31 @@
+.show-hover {
+    top: 50%;
+    display: none;
+    transition: calc(0.6s);
+}
+
+.hover-trigger:hover .show-hover {
+    display: block;
+    transition: calc(0.6s);
+}
+.hover-trigger:hover > img {
+    opacity: 0.5;
+    transition: calc(0.6s);
+}
+.title {
+    box-shadow:  5px 4px 2px 0px #084b2c
+}
+.text-green {
+    color: #232323;
+}
+.text-green:hover {
+    color: #138952;
+}
+.text-green-active {
+    color: #138952;
+}
+.hover-btn-galery-product:hover {
+    transition: calc(0.4s);
+    background-color: rgb(255, 255, 255);
+    opacity: 0.5;
+}

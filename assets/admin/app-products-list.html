@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-scompiler-id="0">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>CPN SHOP Admin - eCommerce Dashboard Template - Edited by CuongPN11</title>
+    <!-- icon -->
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <!-- fonts -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i" />
+    <!-- css -->
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.ltr.css" />
+    <link rel="stylesheet" href="vendor/highlight.js/styles/github.css" />
+    <link rel="stylesheet" href="vendor/simplebar/simplebar.min.css" />
+    <link rel="stylesheet" href="vendor/quill/quill.snow.css" />
+    <link rel="stylesheet" href="vendor/air-datepicker/css/datepicker.min.css" />
+    <link rel="stylesheet" href="vendor/select2/css/select2.min.css" />
+    <link rel="stylesheet" href="vendor/datatables/css/dataTables.bootstrap5.min.css" />
+    <link rel="stylesheet" href="vendor/nouislider/nouislider.min.css" />
+    <link rel="stylesheet" href="vendor/fullcalendar/main.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <!-- sa-app -->
+    <div class="sa-app sa-app--desktop-sidebar-shown sa-app--mobile-sidebar-hidden sa-app--toolbar-fixed">
+        <!-- sa-app__sidebar -->
+        <div class="sa-app__sidebar">
+            <div class="sa-sidebar">
+                <div class="sa-sidebar__header">
+                    <a class="sa-sidebar__logo" href="index.html">
+                        <!-- logo -->
+                        <div class="sa-sidebar-logo">
+                            <span class="h5 mb-0 text-uppercase text-primary bg-dark px-2">CPN</span>
+                            <span class="h5 mb-0 text-uppercase text-dark bg-white px-2 ml-n1">Shop</span>
+                        </div>
+                        <!-- logo / end -->
+                    </a>
+                </div>
+                <div class="sa-sidebar__body" data-simplebar="">
+                    <ul class="sa-nav sa-nav--sidebar" data-sa-collapse="">
+                        <li class="sa-nav__section">
+                            <ul class="sa-nav__menu sa-nav__menu--root">
+                                <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
+                                    <a href="index.html" class="sa-nav__link">
+                                        <span class="sa-nav__icon">
+                                            <i class="fas fa-tachometer-alt"></i>
+                                        </span>
+                                        <span class="sa-nav__title">Dashboard</span>
+                                    </a>
+                                </li>
+                                <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
+                                    <a href="app-products-list.html" class="sa-nav__link">
+                                        <span class="sa-nav__icon">
+                                            <i class="fas fa-box"></i>
+                                        </span>
+                                        <span class="sa-nav__title">Product</span>
+                                    </a>
+                                </li>
+                                <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
+                                    <a href="app-categories-list.html" class="sa-nav__link">
+                                        <span class="sa-nav__icon">
+                                            <i class="fas fa-boxes"></i>
+                                        </span>
+                                        <span class="sa-nav__title">Category</span>
+                                    </a>
+                                </li>
+                                <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
+                                    <a href="app-customers-list.html" class="sa-nav__link">
+                                        <span class="sa-nav__icon">
+                                            <i class="fas fa-user"></i>
+                                        </span>
+                                        <span class="sa-nav__title">Account</span>
+                                    </a>
+                                </li>
+                                <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
+                                    <a href="app-orders-list.html" class="sa-nav__link">
+                                        <span class="sa-nav__icon">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </span>
+                                        <span class="sa-nav__title">Order</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="sa-app__sidebar-shadow"></div>
+            <div class="sa-app__sidebar-backdrop" data-sa-close-sidebar=""></div>
+        </div>
+        <!-- sa-app__sidebar / end -->
+        <!-- sa-app__content -->
+        <div class="sa-app__content">
+            <!-- sa-app__toolbar -->
+            <div class="sa-toolbar sa-toolbar--search-hidden sa-app__toolbar">
+                <div class="sa-toolbar__body">
+                    <div class="sa-toolbar__item">
+                        <button class="sa-toolbar__button" type="button" aria-label="Menu" data-sa-toggle-sidebar="">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+                    <div class="sa-toolbar__item">
+                        Administrative Management Systems
+                    </div>
+                    <div class="mx-auto"></div>
+
+                    <div class="dropdown sa-toolbar__item">
+                        <button class="sa-toolbar-user" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                            data-bs-offset="0,1" aria-expanded="false">
+                            <span class="sa-toolbar-user__avatar sa-symbol sa-symbol--shape--rounded">
+                                <img src="images/customers/customer-4-64x64.jpg" width="64" height="64">
+                            </span>
+                            <span class="sa-toolbar-user__info">
+                                <span class="sa-toolbar-user__title">
+                                    Phạm Ngọc Cường
+                                </span>
+                                <span class="sa-toolbar-user__subtitle">
+                                    cuongpn11@fe.edu.vn
+                                </span>
+                            </span>
+                        </button>
+                        <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
+                            <li>
+                                <a class="dropdown-item" href="auth-sign-in.html">Sign Out</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sa-toolbar__shadow"></div>
+            </div>
+            <!-- sa-app__toolbar / end -->
+            <!-- sa-app__body -->
+            <div id="top" class="sa-app__body">
+                <div class="mx-xxl-3 px-4 px-sm-5">
+                    <div class="py-5">
+                        <div class="row g-4 align-items-center">
+                            <div class="col">
+                                <h1 class="h3 m-0">Products</h1>
+                            </div>
+                            <div class="col-auto d-flex">
+                                <a href="app-product.html" class="btn btn-primary">New product</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mx-xxl-3 px-4 px-sm-5 pb-6">
+                    <div class="sa-layout">
+                        <div class="sa-layout__backdrop" data-sa-layout-sidebar-close=""></div>
+                        <div class="sa-layout__content">
+                            <div class="card table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="w-min">
+                                                <input type="checkbox"
+                                                    class="form-check-input m-0 fs-exact-16 d-block" />
+                                            </th>
+                                            <th class="min-w-20x">Product</th>
+                                            <th>Category</th>
+                                            <th>Stock</th>
+                                            <th>Price</th>
+                                            <th class="w-min"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><input type="checkbox" class="form-check-input m-0 fs-exact-16 d-block"
+                                                    aria-label="..." /></td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <a href="app-product.html" class="me-4">
+                                                        <div
+                                                            class="sa-symbol sa-symbol--shape--rounded sa-symbol--size--lg">
+                                                            <img src="images/products/product-1-40x40.jpg" width="40"
+                                                                height="40" alt="" />
+                                                        </div>
+                                                    </a>
+                                                    <div>
+                                                        <a href="app-product.html" class="text-reset">Electric Planer
+                                                            Brandix KL370090 300 Watts</a>
+                                                        <div class="sa-meta mt-0">
+                                                            <ul class="sa-meta__list">
+                                                                <li class="sa-meta__item">ID:
+                                                                    <span title="Click to copy product ID"
+                                                                        class="st-copy">2043</span>
+                                                                </li>
+                                                                <li class="sa-meta__item">SKU:
+                                                                    <span title="Click to copy product SKU"
+                                                                        class="st-copy">KL370090</span>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <a href="app-category.html" class="text-reset">Planers</a>
+                                            </td>
+                                            <td>
+                                                <div class="badge badge-sa-success">25 In Stock</div>
+                                            </td>
+                                            <td>
+                                                <div class="sa-price">
+                                                    <span class="sa-price__symbol">$</span><span
+                                                        class="sa-price__integer">749</span><span
+                                                        class="sa-price__decimal">.00</span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-sa-muted btn-sm" type="button"
+                                                        id="product-context-menu-0" data-bs-toggle="dropdown"
+                                                        aria-expanded="false" aria-label="More">
+                                                        <i class="fas fa-ellipsis-v"></i>
+                                                    </button>
+                                                    <ul class="dropdown-menu dropdown-menu-end"
+                                                        aria-labelledby="product-context-menu-0">
+                                                        <li>
+                                                            <a class="dropdown-item" href="#">Edit</a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="dropdown-item" href="#">Duplicate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="dropdown-item" href="#">Add tag</a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="dropdown-item" href="#">Remove tag</a>
+                                                        </li>
+                                                        <li>
+                                                            <hr class="dropdown-divider" />
+                                                        </li>
+                                                        <li>
+                                                            <a class="dropdown-item text-danger" href="#">Delete</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" class="form-check-input m-0 fs-exact-16 d-block"
+                                                    aria-label="..." /></td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <a href="app-product.html" class="me-4">
+                                                        <div
+                                                            class="sa-symbol sa-symbol--shape--rounded sa-symbol--size--lg">
+                                                            <img src="images/products/product-2-40x40.jpg" width="40"
+                                                                height="40" alt="" />
+                                                        </div>
+                                                    </a>
+                                                    <div>
+                                                        <a href="app-product.html" class="text-reset">Undefined Tool
+                                                            IRadix DPS300SY 2700 Watts</a>
+                                                        <div class="sa-meta mt-0">
+                                                            <ul class="sa-meta__list">
+                                                                <li class="sa-meta__item">ID:
+                                                                    <span title="Click to copy product ID"
+                                                                        class="st-copy">1746</span>
+                                                                </li>
+                                                                <li class="sa-meta__item">SKU:
+                                                                    <span title="Click to copy product SKU"
+                                                                        class="st-copy">DPS300SY</span>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <a href="app-category.html" class="text-reset">Power Tools</a>
+                                            </td>
+                                            <td>
+                                                <div class="badge badge-sa-danger">Out of Stock</div>
+                                            </td>
+                                            <td>
+                                                <div class="sa-price">
+                                                    <span class="sa-price__symbol">$</span><span
+                                                        class="sa-price__integer">1,019</span><span
+                                                        class="sa-price__decimal">.00</span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-sa-muted btn-sm" type="button"
+                                                        id="product-context-menu-1" data-bs-toggle="dropdown"
+                                                        aria-expanded="false" aria-label="More">
+                                                        <i class="fas fa-ellipsis-v"></i>
+                                                    </button>
+                                                    <ul class="dropdown-menu dropdown-menu-end"
+                                                        aria-labelledby="product-context-menu-1">
+                                                        <li>
+                                                            <a class="dropdown-item" href="#">Edit</a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="dropdown-item" href="#">Duplicate</a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="dropdown-item" href="#">Add tag</a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="dropdown-item" href="#">Remove tag</a>
+                                                        </li>
+                                                        <li>
+                                                            <hr class="dropdown-divider" />
+                                                        </li>
+                                                        <li>
+                                                            <a class="dropdown-item text-danger" href="#">Delete</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- sa-app__body / end -->
+            <!-- sa-app__footer -->
+            <div class="sa-app__footer d-block d-md-flex">
+                <!-- copyright -->Stroyka Admin — eCommerce Dashboard Template © 2021<div class="m-auto"></div>
+                <div>Powered by HTML — Design by
+                    <a href="https://themeforest.net/user/kos9/portfolio">Kos</a>
+                </div>
+                <!-- copyright / end -->
+            </div>
+            <!-- sa-app__footer / end -->
+        </div>
+        <!-- sa-app__content / end -->
+        <!-- sa-app__toasts -->
+        <div class="sa-app__toasts toast-container bottom-0 end-0"></div>
+        <!-- sa-app__toasts / end -->
+    </div>
+    <!-- sa-app / end -->
+    <!-- scripts -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/feather-icons/feather.min.js"></script>
+    <script src="vendor/simplebar/simplebar.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/highlight.js/highlight.pack.js"></script>
+    <script src="vendor/quill/quill.min.js"></script>
+    <script src="vendor/air-datepicker/js/datepicker.min.js"></script>
+    <script src="vendor/air-datepicker/js/i18n/datepicker.en.js"></script>
+    <script src="vendor/select2/js/select2.min.js"></script>
+    <script src="vendor/fontawesome/js/all.min.js" data-auto-replace-svg="" async=""></script>
+    <script src="vendor/chart.js/chart.min.js"></script>
+    <script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/js/dataTables.bootstrap5.min.js"></script>
+    <script src="vendor/nouislider/nouislider.min.js"></script>
+    <script src="vendor/fullcalendar/main.min.js"></script>
+    <script src="js/stroyka.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/calendar.js"></script>
+    <script src="js/demo.js"></script>
+    <script src="js/demo-chart-js.js"></script>
+</body>
+
+
+</html>
