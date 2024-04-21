@@ -45,7 +45,7 @@ function updatePass($pass,$id){
 /**
  * Trả về đường dẫn ảnh phụ thuộc vào USER[type]
  */
-function urlPath(){
+function pathImage(){
     if($_SESSION['user']['type'] != 1){
         if(strstr($_SESSION['user']['image'],'http')) return '';
     }
@@ -83,9 +83,9 @@ function loginSocial($type){
         #tự động ĐĂNG NHẬP 
         autoLogin($username,'');
         addAlert('success','<i class="fas fa-check-circle"></i> Chào mừng bạn đến với <strong>muasach.net</strong> !');
-        header('Location: '.ACT.'trang-chu');
+        header('Location: '.URL.'trang-chu');
     }else {
         addAlert('danger','<i class="fas fa-times"></i> <strong>Lỗi nghiêm trọng : loginSocial() is not valid $type</strong> !');
-        header('Location: '.ACT.'trang-chu');
+        header('Location: '.URL.'trang-chu');
     }
 }

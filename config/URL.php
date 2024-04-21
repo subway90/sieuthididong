@@ -3,3 +3,5 @@
     define('ACT_ADMIN',DOMAIN.'/controller/admin/index.php?act=');
     define('URL',DOMAIN.'/');
     define('URL_ADMIN',DOMAIN.'/controller/admin/index.php');
+    define('URL_USER_AVATAR',DOMAIN.'/uploads/user/avatar/');
+

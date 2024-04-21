@@ -9,7 +9,7 @@ if(empty($_SESSION['user'])){
         #tự động ĐĂNG NHẬP 
         autoLogin($username,'');
         addAlert('success','<i class="fas fa-check-circle"></i> Chào mừng bạn đến với <strong>muasach.net</strong> !');
-        header('Location: '.ACT.'trang-chu');
+        header('Location: '.URL.'trang-chu');
     }else{
         if(LOGIN_GOOGLE) require_once '../../API/google/google_source.php';
     } 
@@ -22,7 +22,7 @@ if(empty($_SESSION['user'])){
         #tự động ĐĂNG NHẬP 
         autoLogin($username,'');
         addAlert('success','<i class="fas fa-check-circle"></i> Chào mừng bạn đến với <strong>muasach.net</strong> !');
-        header('Location: '.ACT.'trang-chu');
+        header('Location: '.URL.'trang-chu');
         exit;
     }else{
         if(LOGIN_FACEBOOK) require_once '../../API/facebook/facebook_source.php';
@@ -31,7 +31,7 @@ if(empty($_SESSION['user'])){
     # Báo lỗi login FACEBOOK (bad request)
     if(isset($_GET['failed_connect_fb'])) {
         addAlert('danger','<i class="fas fa-times-circle"></i> Đăng nhập không thành công.');
-        header('Location:'.ACT.'dang-nhap');
+        header('Location:'.URL.'dang-nhap');
         exit;
     }
 
@@ -77,9 +77,9 @@ if(empty($_SESSION['user'])){
                         exit;
                     }
                     else header("Location: ".URL."/controller/admin");
-                }else addAlert('danger','Tài khoản hoặc mật khẩu không chính xác.');
-            }else $arr_error[] = 'Vui lòng nhập mật khẩu';
-        }else $arr_error[] = 'Vui lòng nhập tài khoản';
+                }else addAlert('danger','<i class="fas fa-times-circle"></i> Tài khoản hoặc mật khẩu không chính xác.');
+            }else addAlert('danger','<i class="fas fa-exclamation-triangle"></i> Vui lòng nhập mật khẩu.');
+        }else addAlert('danger','<i class="fas fa-exclamation-triangle"></i> Vui lòng nhập thông tin tài khoản.');
     }
     require_once "../../view/user/header.php";
     require_once "../../view/user/login.php";
