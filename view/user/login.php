@@ -1,60 +1,55 @@
-    <!-- Contact Start -->
-    <div class="container-fluid py-5">
-        <div class="container">
-            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h1 class="text-primary mb-5">Đăng nhập tài khoản</h1>
-            </div>
-            <div class="row g-5">
-                <div class="col-lg-5 wow fadeIn text-center" data-wow-delay="0.5s">
-                    <img src="<?=URL?>/uploads/system/kablam-welcome.png" alt="LOGO WELCOM" class="w-50">
+<div class="container mt-lg-5">
+    <div class="row">
+        <div class="col-12 col-md-12 col-lg-5 p-0 bg-success-subtle text-center pt-4">
+            <img class="w-50" src="/publics/img/system/login-bg.png" alt="LOGIN">
+        </div>
+
+        <div class="col-12 col-md-12 col-lg-7 bg-light p-0 py-3">
+            <div class="row px-4">
+                <div class="col-12">
+                    <div class="text-success h4 text-center mb-4">Đăng nhập</div>
                 </div>
-                <div class="col-lg-7 wow fadeIn pt-lg-5" data-wow-delay="0.1s">
-                    <p class="mb-4">Bạn chưa có tài khoản <a href="<?=ACT?>dang-ky">&rarr; Đăng kí</a></p>
-                    <?=showError($arr_error)?>
-                    <div class="wow fadeIn" data-wow-delay="0.3s">
-                        <form action="<?=ACT?>dang-nhap<?=$subURL?>" method="post">
-                            <div class="row g-3">
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <input name="user" value="<?=$username?>" type="text"class="form-control" id="email" placeholder="Your Email">
-                                        <label for="user">Tài khoản đăng nhập</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <input name="password" value="" type="password" class="form-control" id="subject" placeholder="Subject">
-                                        <label for="subject">Mật khẩu</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-check">
-                                        <input <?=$remember?> class="form-check-input" name="rememberUser" type="checkbox" value="checked" id="rememberUser">
-                                        <label class="form-check-label" for="rememberUser">Ghi nhớ tài khoản</label>
-                                    </div>
-                                </div>
-                                <div class="col-12 d-flex justify-content-lg-start justify-content-between align-items-center">
-                                        <button class="btn btn-primary " type="submit">Đăng nhập</button>
-                                        <small class="mx-3 text-muted">hoặc với</small>
-                                        <span class="">
-                                            <!-- Google Login -->
-                                            <?php if(LOGIN_GOOGLE) { ?>
-                                            <a href="<?=$authUrl?>" class="btn border-1 btn-outline-danger">
-                                                <div class="d-flex align-items-center"><i class="fab fa-google me-2"></i><small>google</small></div>
-                                            </a>
-                                            <?php } if(LOGIN_FACEBOOK){ ?>
-                                            <!-- Facebook Login -->
-                                            <a href="<?=$loginUrl?>" class="btn border-1 btn-outline-blue">
-                                                <div class="d-flex align-items-center"><i class="fab fa-facebook me-2"></i><small>facebook</small></div>
-                                            </a>
-                                            <?php } ?>
-                                        </span>
-                                </div>
-                            </div>
-                        </form>
+                <form ng-submit="login()">
+                    <div class="col-12 text-center d-flex justify-content-center">
+                        <div class="form-floating mb-3 w-75">
+                            <input type="text" ng-model="username" class="form-control bg-success-subtle" id="floatingInput" placeholder="Nhập TK" required>
+                            <label for="floatingInput">Tài khoản đăng nhập</label>
+                        </div>
+                    </div>
+                    <div class="col-12 text-center d-flex justify-content-center">
+                        <div class="form-floating mb-3 w-75">
+                            <input type="password" ng-model="password" class="form-control bg-success-subtle" id="floatingInput" placeholder="MK" required>
+                            <label for="floatingInput">Mật khẩu</label>
+                        </div>
+                    </div>
+                    <div class="col-12 text-center d-flex justify-content-center">
+                        <button type="submit" class="btn btn-outline-success">
+                            Đăng nhập
+                        </button>
+                    </div>
+                </form>
+                <div class="col-12">
+                    <div class="py-3 small fw-semi text-secondary text-center">hoặc</div>
+                </div>
+                <div class="col-6">
+                    <a href="#" class="w-100 btn btn-outline-primary">
+                        <i class="fab fa-facebook"></i>
+                        tiếp tục với Facebook
+                    </a>
+                </div>
+                <div class="col-6">
+                    <a href="#" class="w-100 btn btn-outline-danger">
+                        <i class="fab fa-google"></i>
+                        tiếp tục với Google
+                    </a>
+                </div>
+                <div class="col-12">
+                    <div class="text-center py-3">
+                        <a class="text-decoration-none text-success" href="<?=URL?>dang-ky">Đăng ký tài khoản</a>
                     </div>
                 </div>
-            </div>
         </div>
+        </div>
+
     </div>
-    <!-- Contact End -->
-        
+</div>

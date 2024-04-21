@@ -5,16 +5,14 @@
     <div class="row">
         <div class="col-12 col-md-3 col-lg-3">
             <p class="h5 text-light mb-3 text-center text-lg-start">
-                <span>
-                    <img class="w-25 me-3" src="<?=URL?>publics/img/logo.png" alt="LOGO">
-                </span>
-                Vũ Trụ Mobile
+                <span><img class="w-25 me-3" src="<?=URL?><?=WEB_IMAGE?>" alt="<?=WEB_IMAGE?>"></span>
+                <span><?=WEB_TITLE?></span>
             </p>
             <div class="text-center text-lg-start">
-                <p class="text-light"><span class="h6">Địa chỉ: </span><span class="small">Tầng 1 Tòa SGHouses,102/5/4 TTN 01, P.TTN, Q.12, TP.HCM</span></p>
-                <p class="text-light"><span class="h6">Hotline: </span><span class="small">+84 939 456 789</span></p>
-                <p class="text-light"><span class="h6">Email: </span><span class="small">contact@domain.com</span></p>
-                <p class="text-light"><span class="h6">GPKD: </span><span class="small">TTCP/KD/40025013</span></p> 
+                <p class="text-light"><span class="h6">Địa chỉ: </span><span class="small"><?=WEB_ADDRS?></span></p>
+                <p class="text-light"><span class="h6">Hotline: </span><span class="small"><?=WEB_PHONE?></span></p>
+                <p class="text-light"><span class="h6">Email: </span><span class="small"><?=WEB_EMAIL?></span></p>
+                <p class="text-light"><span class="h6">GPKD: </span><span class="small"><?=WEB_SGPKD?></span></p> 
             </div>
         </div>
 

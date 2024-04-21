@@ -8,6 +8,17 @@ const NAME_DB = 'muasach';
 const USER_DB = 'root';
 const PASS_DB = '';
 
+# WEBSITE
+const WEB_TITLE = 'Vũ Trụ Mobile';
+const WEB_IMAGE = 'publics/img/logo.png';
+const WEB_PHONE = '0965 279 041';
+const WEB_DESCR = '';
+const WEB_ADDRS = 'Tầng 1 Tòa SGHouses,102/5/4 TTN 01, P.TTN, Q.12, TP.HCM';
+const WEB_EMAIL = 'info@vutrumobile.com';
+const WEB_SGPKD = 'TTCP/KD/40025013';
+const WEB_COPYS = 'SUBWAY90 - HGROUP - 2024';
+const WEB_COPYL = 'https://github.com/subway90';
+
 # PAGE ACTIVE
 const PAGE_LOADING = true;
 const PAGE_UPDATE = false;

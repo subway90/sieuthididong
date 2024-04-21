@@ -8,6 +8,13 @@
 # B6: git remote add origin [link your repo] (thêm origin từ trên server git)
 # B7: git push -u master (hoặc main tùy tên của local - lệnh này để push code từ stage area lên server - lúc này lên repo check là thấy code)
 
+#!!# Các bước repo dự án chung #!!#
+# B1: Mở Terminal VSCode tại folder (Lưu ý: nên mở tại vị trí folder lưu chung tệp, ví dụ htdocs)
+# B2: git clone [URL REPO] ([URL REPO] : đường dẫn của repo)
+# B3: git config --global user.name "Your Name"
+# B3: git config --global user.email "yourmail@domain.com"
+# B4: Xong, có thể thực hiện push, pull tùy thích
+
 #!!# CÁC LỆNH GIT HAY DÙNG #!!#
 
 # git add . (thêm các file chưa được commit -> dấu chấm là add tất cả file)
@@ -37,5 +44,3 @@
 # git merge [Name Branch] (nối code từ [Name Branch] HEAD vào MAIN - tức Branch chính)
 
 # KHÔNG CHỈNH SỬA - NOT EDIT HERE
-# SUBWAY TEST GIT CLONE
-#DÒNG NÀY ĐÃ ĐƯỢC SỬA

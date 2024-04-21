@@ -6,13 +6,12 @@
         </ol>
       </nav>
 </div>
-<div class="container p-0 mt-3">
+<div class="container mt-3">
     <div class="row">
-        <div class="col-8">
-            <div class="bg-light px-3 py-2 rounded-3">
-                <table class="table table-hover">
-                    <thead class="align-middle text-end">
-                        <th class="text-start"> ID </th>
+        <div class="col-12 col-md-12 col-lg-8 p-0">
+            <div class="table-responsive-sm">
+                <table class="table table-hover rounded-3 small">
+                    <thead class="align-middle text-center">
                         <th class="text-start">Sản phẩm</th>
                         <th>Giá</th>
                         <th>Số lượng</th>
@@ -20,31 +19,36 @@
                         <th>Xóa</th>
                     </thead>
                     <tbody class="align-middle text-end">
-                        <tr ng-repeat="pro in cart">
-                            <td class="text-start"> 1 </td>
-                            <td class="text-start"> <?='name of PRODUCT'?> </td>
-                            <td> <?='price of PRODUCT'?> </td>
-                            <td><input class="form-control w-50 float-end" type="number" ng-model="pro.quantity" name="quantity" value="1" min="1" max="999"></td>
-                            <td class="text-end"><?='price of PRODUCT'?></td>
-                            <td><button ng-click="deleteCart($index)" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button></td>
+                        <tr>
+                            <td class="text-start"> 
+                                <img width="50" src="<?=URL?>/upload/12-green.jpg" alt="">
+                                <?='name of PRODUCT'?> 
+                            </td>
+                            <td> <?=4440000?> đ</td>
+                            <td>
+                                <div class="btn-group d-flex align-items-center mx-auto w-25 justify-content-center">
+                                    <a href="#" class="btn btn-success btn-sm"><i class="fas fa-minus"></i></a>
+                                    <span class="mx-2">02</span>
+                                    <a href="#" class="btn btn-success btn-sm"><i class="fas fa-plus"></i></a>
+                                </div>
+                            </td>
+                            <td class="text-end"><?=4440000?> đ</td>
+                            <td><button class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button></td>
                         </tr>
                         <tr>
-                            <td colspan="6" class="text-center">Chưa có sản phẩm nào <a class="nav-link text-success" href="#!/san-pham">&rarr; Cửa hàng</a></td>
+                            <td colspan="6" class="text-center">Chưa có sản phẩm nào <a class="nav-link text-success" href="<?=URL?>san-pham">&rarr; Cửa hàng</a></td>
                         </tr>
-                    </table>
-                    <div ng-show="total()" class="text-end">
-                        <button ng-click="deleteAllCart()" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i> tất cả</button>
-                    </div>
+                </table>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-12 col-md-12 col-lg-4 p-0 ps-lg-3">
             <div class="bg-light px-4 rounded-3">
-                <div class="h5 w-100 py-3">Giỏ hàng</div>
-                <div ng-repeat="pro in cart" class="w-100 d-flex justify-content-between py-2">
+                <div class="h5 py-3 text-center text-lg-start">Giỏ hàng</div>
+                <div class="w-100 d-flex justify-content-between py-2">
                     <div class=""><?='name of PRODUCT'?></div>
                     <div class=""><?='total of PRODUCT'?> đ</div>
                 </div>
-                <div class="h5 w-100 mt-3">Tổng thanh toán</div>
+                <div class="h5 mt-3 text-center text-lg-start">Tổng thanh toán</div>
                 <div class="w-100 d-flex justify-content-between py-2">
                     <div class="">Sản phẩm</div>
                     <div class=""><?='total of PRODUCT'?> đ</div>
@@ -55,50 +59,102 @@
                 </div>
             </div>
             <div class="py-3">
-                <button type="submit" class="w-100 btn btn-success"  data-bs-toggle="modal" data-bs-target="#exampleModal">Thanh toán</button>
+                <button type="submit" class="w-100 btn btn-success"  data-bs-toggle="modal" data-bs-target="#Pay">Thanh toán</button>
             </div>
         </div>
     </div>
 </div>
   
   <!-- Modal -->
-  <div class="modal modal-lg fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable">
+  <div class="modal modal-lg fade" id="Pay" tabindex="-1" aria-labelledby="ModalPay" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Thanh toán hóa đơn</h1>
+          <h1 class="modal-title fs-5" id="ModalPay">Thanh toán hóa đơn</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form name="formInvoice" ng-submit="addInvoice()">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="form-floating mb-3">
-                            <input ng-model="fullname" type="text" class="form-control" id="fullName" placeholder="name@example.com">
-                            <label for="fullName">Họ và tên</label>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="form-floating mb-3">
-                            <input ng-model="phone" type="text" class="form-control" id="phone" placeholder="name@example.com">
-                            <label for="phone">Số điện thoại</label>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="form-floating mb-3">
-                            <input ng-model="address" type="text" class="form-control" id="address" placeholder="name@example.com">
-                            <label for="address">Địa chỉ giao hàng</label>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="form-floating mb-3">
-                            <input ng-model="scription" type="text" class="form-control" id="scription" placeholder="name@example.com">
-                            <label for="scription">Mô tả</label>
-                        </div>
-                    </div>
+            <div class="row">
+                <div class="col-12 col-md-12 col-lg-7">
+                    <div class="fs-6 fw-bold mb-2 text-center text-lg-start">Hóa đơn</div>
+                    <table class="table table table-success responsive table-hover align-middle text-end">
+                        <thead class="fw-bold">
+                            <tr>
+                                <td class="text-start">Tên sản phẩm</td>
+                                <td>Giá</td>
+                                <td>Số lượng</td>
+                                <td>Thành tiền</td>
+                            </tr>
+                        </thead>
+                        <tbody class="small">
+                            <tr>
+                                <td class="text-start">
+                                    <img width="50" src="<?=URL?>/upload/12-green.jpg" alt="">
+                                    SamSung A34
+                                </td>
+                                <td>4,444,000 đ</td>
+                                <td>01</td>
+                                <td>4,444,000 đ</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="4" class="text-end"><strong>TỔNG </strong>16,666,000 đ</td>
+                            </tr>
+                        </tfoot>
+                    </table>
                 </div>
-                <button class="btn btn-success">Tiếp tục</button>
-            </form>
+                <div class="col-12 col-md-12 col-lg-5">
+                    <div class="fs-6 mb-2 text-center text-lg-start"><span class="fw-bold">Thông tin giao hàng</span> <span>(<span class="text-danger">&#10033;</span> : thông tin bắt buộc điền)</span></div>
+                    <form name="formInvoice">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="fullName" placeholder="none">
+                                    <label for="fullName">Họ và tên <span class="text-danger">&#10033;</span></label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="phone" placeholder="none">
+                                    <label for="phone">Số điện thoại <span class="text-danger">&#10033;</span></label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="address" placeholder="none">
+                                    <label for="address">Địa chỉ giao hàng <span class="text-danger">&#10033;</span></label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating mb-3">
+                                    <select type="text" class="form-control" id="pay" placeholder="none">
+                                        <option value="1">Tiền mặt (Cash On Delivery - Trả tiền lúc nhận hàng)</option>
+                                        <option value="2">Thanh toán điện tử ( Ebanking - quét mã QR )</option>
+                                        <option value="3">Thanh toán thẻ ngân hàng ( VNPAY )</option>
+                                    </select>
+                                    <label for="pay">Phương thức thanh toán <span class="text-danger">&#10033;</span></label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="email" placeholder="none">
+                                    <label for="email">E-mail (nhận thông báo)</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="scription" placeholder="none">
+                                    <label for="scription">Mô tả (link FB, SĐT khác, ghi chú)</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 text-center text-lg-start">
+                            <button class="btn btn-success">Tiếp tục</button>
+                        </div>
+                    </form>
+                </div>
+                </div>
             </div>
       </div>
     </div>
