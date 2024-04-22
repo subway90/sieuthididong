@@ -29,7 +29,7 @@ if(isset($arrayURL[1]) && !empty($arrayURL[1])) {
             }
         }
         # LIST PRODUCT HINT
-        $listProductHint = getAllFieldByCustom('products','id,name,slug',' idBrand = '.$idBrand.' AND id !='.$id.' ORDER BY name desc LIMIT 6');
+        $listProductHint = getProduct('pm.idBrand = '.$idBrand.' AND pm.idProduct !='.$id.' ORDER BY c.priceSale  ASC LIMIT 6');
         # LIST COMMENT
         $listComment = getListCmt($id);
         # [THÊM BÌNH LUẬN]

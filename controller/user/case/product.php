@@ -76,6 +76,7 @@ if(isset($arrayURL[1]) && $arrayURL[1] == 'loc'){
     }else $filter .="1";
     $listProduct = getProduct($filter);
 }else $listProduct = getProduct('');
+
 # Select Default
 $showSelectBrand = '<option value="0">Tất cả</option>';
 $showSelectColor = '<option value="0">Tất cả</option>';
@@ -83,12 +84,13 @@ $showSelectStyle = '<option value="0">Tất cả</option>';
 $showSelectPrice = '<option value="0">Tất cả</option>';
 $showSelectSorts = '<option value="0">Không</option>';
 
+// [RENDER VIEW]
+
 # Select Brand
 for ($i=0; $i < count($listBrand); $i++) { 
   extract($listBrand[$i]);
   $showSelectBrand .='<option '.matchSelected($i,$checkedBrand).' value="'.$id.'">'.$name.'</option>';
 }
-
 # Select Style
 for ($i=0; $i < count($listStyle); $i++) { 
   extract($listStyle[$i]);
@@ -96,20 +98,16 @@ for ($i=0; $i < count($listStyle); $i++) {
 }
 # Select Color
 for ($i=0; $i < count(COLOR_FILTER); $i++) { 
-$showSelectColor .='
-<option '.matchSelected($i,$checkedColor).' value="'.COLOR_FILTER[$i].'">'.COLOR_FILTER[$i].'</option>';
+  $showSelectColor .='<option '.matchSelected($i,$checkedColor).' value="'.COLOR_FILTER[$i].'">'.COLOR_FILTER[$i].'</option>';
 }
 # Select Price
 for ($i=0; $i < count(PRICE_FILTER); $i++) { 
-$showSelectPrice .='
-<option '.matchSelected($i,$checkedPrice).' value="'.PRICE_FILTER[$i][0].'">'.PRICE_FILTER[$i][1].'</option>';
+  $showSelectPrice .='<option '.matchSelected($i,$checkedPrice).' value="'.PRICE_FILTER[$i][0].'">'.PRICE_FILTER[$i][1].'</option>';
 }
 # Select Sorts
 for ($i=0; $i < count(SORTS_FILTER); $i++) { 
-  $showSelectSorts .='
-  <option '.matchSelected($i,$checkedSorts).' value="'.SORTS_FILTER[$i][0].'">'.SORTS_FILTER[$i][1].'</option>';
-  }
+  $showSelectSorts .='<option '.matchSelected($i,$checkedSorts).' value="'.SORTS_FILTER[$i][0].'">'.SORTS_FILTER[$i][1].'</option>';
+}
   
-// [RENDER VIEW]
 require_once "../../view/user/header.php";
 require_once "../../view/user/product.php";

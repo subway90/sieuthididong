@@ -1,8 +1,8 @@
 <div class="container mt-3 bg-light rounded pt-3 pb-1">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item fw-bold"><a href="/" class="text-decoration-none text-dark">Trang chủ</a></li>
-            <li class="breadcrumb-item fw-bold"><a href="#!/san-pham" class="text-decoration-none text-dark">Điện
+            <li class="breadcrumb-item fw-bold"><a href="<?=URL?>" class="text-decoration-none text-dark">Trang chủ</a></li>
+            <li class="breadcrumb-item fw-bold"><a href="<?=URL?>san-pham" class="text-decoration-none text-dark">Điện
                     thoại</a></li>
             <li class="breadcrumb-item fw-bold"><a href="<?= URL ?>san-pham/loc/?Brand=<?= $selectBrand['id'] ?>"
                     class="text-decoration-none text-dark"><?= $selectBrand['name'] ?></a></li>
@@ -367,13 +367,13 @@
                 <div class="col-6 col-md-4 col-lg-2 pb-3 pb-md-4 pb-lg-5">
                     <div style="min-height: 100%;" class="card shadow">
                         <div class="position-relative hover-trigger">
-                            <img src="<?=URL_IMGER_PRODUCT?>" class="card-img img-product" alt="...">
+                            <img src="<?=URL_IMGER_PRODUCT.$image?>" class="card-img img-product" alt="<?=$image?>">
                             <span style="left: 84%; top: -4%; width: 45px; height: 45px"
                                 class="btn bg-danger text-light rounded-circle position-absolute small p-0 pt-2 fw-bold ">51%</span>
                             <span class="show-hover position-absolute end-0 bottom-0 w-100">
                                 <div class="d-flex justify-content-evenly">
                                     <button class="btn btn-success">
-                                        <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                        <i class="far fa-heart" aria-hidden="true"></i>
                                     </button>
                                     <button class="btn btn-success">
                                         <i class="fa fa-cart-plus" aria-hidden="true"></i>
@@ -388,9 +388,9 @@
                             <span class="badge bg-warning">KM</span>
                             <span class="badge bg-success">Trả góp 0%</span>
                         </div>
-                        <a class="text-decoration-none" href="/detail.html">
+                        <a class="text-decoration-none" href="<?=URL?>chi-tiet/<?=$slug?>">
                             <div class="card-body">
-                                <h5 class="card-title fs-6 fw-bold text-dark">iPhone 11 64GB</h5>
+                                <h5 class="card-title fs-6 fw-bold text-dark"> <?= $name ?> </h5>
                                 <p class="card-text">
                                     <span class="text-danger fw-bold me-1">9,990,000 đ</span>
                                     <span class="text-secondary small"><del><small>18,900,000</small></del></span>
