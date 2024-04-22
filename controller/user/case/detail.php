@@ -1,5 +1,6 @@
 <?php
 $message = "";
+$checkedModel = $checkedColor = -1;
 $listColor = [];
 $listImage = [];
 $arrayColor = [];
@@ -12,10 +13,10 @@ if(isset($arrayURL[1]) && !empty($arrayURL[1])) {
         # NAME BRAND
         $selectBrand = getOneFieldByCustom('product_brands','name,id','id ='.$idBrand);
         # MODEL PRODUCT
-        $listModel = getAllFieldByCustom('product_model','model, id','idProduct='.$id.' AND status = 1');
+        $listModel = getAllFieldByCustom('product_model','model, id idModel','idProduct='.$id.' AND status = 1');
         # COLOR PRODUCT
         for ($i=0; $i < count($listModel); $i++) { 
-            $listColor[$i] = getAllFieldByCustom('product_color','color,image,quantity,price,priceSale','idModel='.$listModel[$i]['id'].' AND status = 1');
+            $listColor[$i] = getAllFieldByCustom('product_color','id idColor,color,image,quantity,price,priceSale','idModel='.$listModel[$i]['idModel'].' AND status = 1');
         }
         # IMAGE LIST
         for ($i=0; $i < count($listColor); $i++) {
@@ -43,8 +44,31 @@ if(isset($arrayURL[1]) && !empty($arrayURL[1])) {
                 exit;
             }else addAlert("danger","<i class='fas fa-exclamation-triangle'></i> Vui lòng nhập nội dung bình luận");
         }
+        
+        # [MUA NGAY TỪ CHI TIẾT]
+        if(isset($_POST['addProduct'])){
+            if(isset($_POST['idModel'])){
+                $checkedModel = $_POST['idModel'];
+                if(isset($_POST['idColor'])){
+                $checkedColor = $_POST['idColor'];
+                    # Trường hợp CHƯA ĐĂNG NHẬP (GUEST)
+                    if(empty($_SESSION['user'])){
+                        $check = checkCart($_POST['idProduct']);
+                        if($check == -1) $_SESSION['cart'][] = ['idProduct' => $_POST['idProduct'],'idModel' => $_POST['idModel'],'idColor' => $_POST['idColor'],'quantity' => 1];
+                    }
+                    # Trường hợp ĐÃ ĐĂNG NHẬP (USER)
+                    else{ 
+                        $check = checkCartByID($_POST['idProduct']);
+                        if(empty($check)) addCart($_SESSION['user']['id'],$_POST['idProduct'],$_POST['idModel'],$_POST['idColor'],1);
+                        else updateQuantity($check,'quantity+1');
+                    }
+                    // di chuyển ROUTE 
+                    header('Location:'.URL.'gio-hang');                    
+                }else  addAlert('danger','Vui lòng chọn màu sản phẩm');
+            }else addAlert('danger','Vui lòng chọn loại sản phẩm');
+        }
         # [RENDER VIEW]
         require_once "../../view/user/header.php";
         require_once "../../view/user/detail.php";
-    }else{require_once "../../view/user/header.php";require_once "../../view/user/404.php";}
-}else require_once "../../view/user/404.php";
+    }else { require_once "../../view/user/header.php";require_once "../../view/user/404.php";}
+}else { require_once "../../view/user/header.php";require_once "../../view/user/404.php";}

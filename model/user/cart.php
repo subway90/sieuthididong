@@ -1,6 +1,6 @@
 <?php
-function addCart($idUser,$idProduct,$quantity){
-    $sql = "INSERT INTO cart(idUser,idProduct,quantity,dateCreate,status) values('$idUser','$idProduct','$quantity',current_timestamp(),1)";
+function addCart($idUser,$idProduct,$idModel,$idColor,$quantity){
+    $sql = "INSERT INTO cart(idUser,idProduct,idModel,idColor,quantity,dateCreate,status) values('$idUser','$idProduct','$idModel','$idColor','$quantity',current_timestamp(),1)";
     pdo_execute($sql);
 }
 function checkCart($input){
@@ -33,20 +33,19 @@ function showCart($type) {
     $totalCart = 0;
     $listCart = [];
     if(!empty($_SESSION['user'])) { //Trường hợp ĐÃ ĐĂNG NHẬP
-        $listIdProInCart = getAllFieldByCustom('cart','id idCart, idProduct, quantity','idUser = '.$_SESSION['user']['id']);
+        $listIdProInCart = getAllFieldByCustom('cart','id idCart, idProduct, idModel, idColor, quantity quantityCart','idUser = '.$_SESSION['user']['id']);
         if(!empty($listIdProInCart)) {
             for ($i=0; $i < count($listIdProInCart); $i++) { 
                 extract($listIdProInCart[$i]);
-                $getProduct = getOneFieldByCustom('products','name,image,price,priceSale,quantity quantityMax','id = '.$idProduct.' AND status = 1');
+                $getProduct = getProduct('c.id ='.$idColor)[0];
                 if(!empty($getProduct)) {
                     extract($getProduct);
                     # SỐ LƯỢNG
                     $countProInCart++;
                     # TỔNG TIỀN
-                    if(!empty($priceSale)) $totalCart+=$quantity*$priceSale;
-                    else $totalCart+=$quantity*$price;
+                    $totalCart+=$quantityCart*$priceSale;
                     # DATA
-                    $listCart[] = ['idCart' => $idCart,'quantity'=>$quantity,'idProduct' => $idProduct,'name'=>$name,'image'=>$image,'price'=>$price,'priceSale'=>$priceSale,'quantityMax'=>$quantityMax];
+                    $listCart[] = ['idCart' => $idCart,'quantity'=>$quantity,'idProduct'=>$idProduct,'idModel'=>$idModel,'idColor'=>$idColor,'name'=>$name,'image'=>$image,'price'=>$price,'priceSale'=>$priceSale,'quantityMax'=>$quantity];
                 }
             }
         }
@@ -54,17 +53,15 @@ function showCart($type) {
     else { //Trường hợp CHƯA ĐĂNG NHẬP
         if(!empty($_SESSION['cart'])) {
             for ($i=0; $i < count($_SESSION['cart']); $i++) { 
-                extract($_SESSION['cart'][$i]);
-                $getProduct = getOneFieldByCustom('products','name,image,price,priceSale,quantity quantityMax','id = '.$id.' AND status = 1');
+                $getProduct = getProduct('c.id ='.$_SESSION['cart'][$i]['idColor'])[0];
                 if(!empty($getProduct)) {
                     extract($getProduct);
                     # SỐ LƯỢNG
                     $countProInCart++;
                     #TỔNG TIỀN
-                    if(!empty($priceSale)) $totalCart+=$quantity*$priceSale;
-                    else $totalCart+=$quantity*$price;
+                    $totalCart+=$_SESSION['cart'][$i]['quantity']*$priceSale;
                     # DATA
-                    $listCart[] = ['idCart' => $i,'quantity'=>$quantity,'idProduct' => $id,'name'=>$name,'image'=>$image,'price'=>$price,'priceSale'=>$priceSale,'quantityMax'=>$quantityMax];
+                    $listCart[] = ['idCart' => $i,'quantity'=>$_SESSION['cart'][$i]['quantity'],'idProduct'=>$idProduct,'idModel'=>$idModel,'idColor'=>$idColor,'name'=>$name,'image'=>$image,'price'=>$price,'priceSale'=>$priceSale,'quantityMax'=>$quantity];
                 }
             }
         }

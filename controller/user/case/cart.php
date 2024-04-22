@@ -1,26 +1,25 @@
 <?php
 
 # [MUA NGAY]
-if(isset($_GET['addnow'])){
+if(isset($_GET['add'])){
     if(empty($_SESSION['user'])){ // nếu CHƯA ĐĂNG NHẬP (GUEST)
-        $check = checkCart($_GET['id']);
-        if($check == -1) $_SESSION['cart'][] = ['id' => $_GET['id'],'quantity' => $_GET['quantity']]; // nếu không trùng ID-> thêm SP vào CART
+        $check = checkCart($_GET['idProduct']);
+        if($check == -1) $_SESSION['cart'][] = ['idProduct' => $_GET['idProduct'],'idModel' => $_GET['idModel'],'idColor' => $_GET['idColor'],'quantity' => $_GET['quantity']]; // nếu không trùng ID-> thêm SP vào CART
         else  $_SESSION['cart'][$check]['quantity']++; // nếu trùng ID-> thêm số lượng (+1) vào ID đã trùng
     }else{ // nếu ĐÃ ĐĂNG NHẬP (USER)
-        $check = checkCartByID($_GET['id']);
-        if(empty($check)) addCart($_SESSION['user']['id'],$_GET['id'],$_GET['quantity']);
+        $check = checkCartByID($_GET['idProduct']);
+        if(empty($check)) addCart($_SESSION['user']['id'],$_GET['idProduct'],$_GET['idModel'],$_GET['idColor'],$_GET['quantity']);
         else updateQuantity($check,'quantity+1');
     }
     // di chuyển ROUTE 
-    if($_GET['addnow'] == 1) header('Location:'.ACT.'gio-hang');
+    if($_GET['add'] == 1) header('Location:'.URL.'gio-hang');
 }
-
 # [XÓA 1 SP TRONG CART]
 if(isset($_GET['delete']) && !empty($_GET['delete'])) {
     --$_GET['delete'];
     if(empty($_SESSION['user'])) array_splice($_SESSION['cart'],$_GET['delete'],1);
     else deleteCart($_GET['delete']);
-    header("Location:".ACT."gio-hang");
+    header("Location:".URL."gio-hang");
 }
 
 # [XÓA TẤT CẢ SP TRONG CART]
@@ -29,9 +28,9 @@ if(isset($_GET['close'])){
     else deleteAllCart($_SESSION['user']['id']); //nếu đã đăng nhập -> thực thi SQL Delete dữ liệu
     if($_GET['close']=='done'){
         addAlert('success','Đơn hàng đã được tạo thành công, vui lòng chờ xác nhận !');
-        header("Location:".ACT."lich-su-mua-hang/".$token);
+        header("Location:".URL."lich-su-mua-hang/".$token);
     }
-    else header("Location:".ACT."gio-hang");
+    else header("Location:".URL."gio-hang");
 }
 
 # [THÊM SỐ LƯỢNG SP]
@@ -40,7 +39,7 @@ if(isset($_POST['quantity']) && !empty($_POST['quantity'])){
         if(empty($_SESSION['user'])) $_SESSION['cart'][$_POST['idCart']]['quantity'] = $_POST['quantity'];
          //Nếu đã đăng nhập -> Sửa ở Database
         else updateQuantity($_POST['idCart'],$_POST['quantity']);
-        header("Location:".ACT."gio-hang");
+        header("Location:".URL."gio-hang");
 }
 
 
@@ -85,7 +84,7 @@ if(isset($_REQUEST['thanhtoan']) && $total !=0){
     }
     $mess = $_POST['mess'];
 
-    if($point_valid < 3) $activeModal = 'onload'; //Load lại PAY-MODAL ở CART
+    if($point_valid < 3) $URLiveModal = 'onload'; //Load lại PAY-MODAL ở CART
     else{
         #tạo mã TOKEN
         $token = createTokenChar(10);
@@ -99,7 +98,7 @@ if(isset($_REQUEST['thanhtoan']) && $total !=0){
             extract($listCart[$i]);
             addBillDetail($token,$idProduct,$priceSale,$quantity); 
         }
-        header("Location:".ACT."gio-hang&close=done");
+        header("Location:".URL."gio-hang&close=done");
     }
 }
 

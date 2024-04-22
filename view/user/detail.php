@@ -62,6 +62,8 @@
         </div>
 
         <div class="col-12 col-md-12 col-lg-5">
+        <form action="<?=URL?>chi-tiet/<?=$arrayURL[1]?>" method="post">
+        <input type="hidden" name="idProduct" value="<?=$id?>">
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-6 mt-lg-3 p-0">
                     <p class="text-center text-lg-start text-secondary fw-bold">(Giá đã bao gồm VAT)</p>
@@ -78,8 +80,10 @@
                     <div class="w-100 text-start fw-bolder">Lựa chọn loại</div>
                     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                         <?php for ($i = 0; $i < count($listModel); $i++) { extract($listModel[$i]); ?>
-                        <li class="nav-item" >
-                            <button class="nav-link <?php if($i==0) echo'active'?>" data-bs-toggle="pill" data-bs-target="#model-<?=$i?>"><?=$model?></button>
+                        <li class="nav-item me-1" >
+                            <input type="radio" name="idModel" value="<?=$idModel?>" id="model<?=$i?>" class="btn-check" <?php if($checkedModel == $idModel) echo'checked'?> data-bs-toggle="pill" data-bs-target="#model-<?=$i?>">
+                            <label class="btn btn-outline-success" for="model<?=$i?>"> <?= $model ?></label>
+                            
                         </li>
                         <?php } ?>
                     </ul>
@@ -90,10 +94,10 @@
                         <div class="tab-pane fade <?php if($i==0) echo'show active'?>" id="model-<?=$i?>">
                             <div class="row p-0 mt-2">
                                 <ul class="nav">
-                                    <?php for ($j = 0; $j < count($listColor[$i]); $j++) {
-                                        extract($listColor[$i][$j])?>
+                                    <?php for ($j = 0; $j < count($listColor[$i]); $j++) {extract($listColor[$i][$j]);
+                                        ?>
                                         <li class="ms-3">
-                                            <input type="radio" class="btn-check" name="Color" id="option<?=$i.$j?>" <?php boolColor($quantity)?>>
+                                            <input type="radio" class="btn-check" name="idColor" value="<?=$idColor?>" <?php if($checkedColor == $idColor) echo'checked'?> id="option<?=$i.$j?>" <?php boolColor($quantity)?>>
                                             <label class="btn btn-outline-success" for="option<?=$i.$j?>"> <?= $color ?> <div class="text-danger fw-bold small"> <?= number_format($priceSale) ?> đ</div> </label>
                                         </li>
                                     <?php } ?>
@@ -107,15 +111,10 @@
                 <div class="col-12 mt-3">
                     <div class="row">
                         <div class="col-10 px-1">
-                            <button class="w-100 btn btn-danger bg-gradient">
+                            <button name="addProduct" type="submit" class="w-100 btn btn-danger bg-gradient">
                                 MUA NGAY
                             </button>
                         </div>
-                        <!-- <div class="col-5 px-1">
-                            <button class="w-100 btn btn-success bg-gradient">
-                                <span class="">MUA TRẢ GÓP</span>
-                            </button>
-                        </div> -->
                         <div class="col-2 px-1">
                             <button class="w-100 btn btn-outline-warning">
                                 <i class="fa fa-cart-plus" aria-hidden="true"></i>
@@ -123,7 +122,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- [THÔNG TIN KM] -->
                 <div class="col-12 mt-3">
                     <p class="text-success">KHUYẾN MÃI</p>
@@ -150,9 +148,8 @@
                         </span>
                     </div>
                 </div>
-
-
             </div>
+        </form>
         </div>
 
         <div class="col-12 col-md-12 col-lg-3 mt-5 mt-md-4 mt-lg-3">
