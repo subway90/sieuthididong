@@ -112,5 +112,7 @@
 </footer>
 </html>
 <!-- Script Custom File -->
+<?php require_once '../../publics/js/config.php'?>
 <script src="<?= URL ?>publics/js/image.js"></script>
 <script src="<?= URL ?>publics/js/modal.js"></script>
+<script src="<?= URL ?>publics/js/countdown-time.js"></script>

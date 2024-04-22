@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="<?= URL ?>publics/css/bootstrap.min.css">
   <!-- Custom -->
   <link rel="stylesheet" href="<?= URL ?>publics/css/custom.css">
-  <script src="<?= URL ?>publics/js/countdown-time.js"></script>
   <!-- Icon - Title -->
   <link rel="shortcut icon" href="<?= URL ?>/publics/img/logo.png" type="image/x-icon">
   <title> <?php if (isset($title))
@@ -46,7 +45,7 @@
             <li class="nav-item dropdown" data-bs-theme="light">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
-                <img width="30" class="" src="<?=pathImage().$_SESSION['user']['image']?>" alt="<?=$_SESSION['user']['image']?>">
+                <img width="30" class="" src="<?=pathImage($_SESSION['user']['image'])?>" alt="<?=$_SESSION['user']['image']?>">
                 <?=$_SESSION['user']['fullName']?>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">

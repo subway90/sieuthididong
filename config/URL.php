@@ -4,4 +4,5 @@
     define('URL',DOMAIN.'/');
     define('URL_ADMIN',DOMAIN.'/controller/admin/index.php');
     define('URL_USER_AVATAR',DOMAIN.'/uploads/user/avatar/');
+    define('URL_IMGER_PRODUCT',DOMAIN.'/uploads/product/');
 

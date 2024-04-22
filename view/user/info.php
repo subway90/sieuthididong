@@ -10,7 +10,7 @@
     <div class="row bg-success-subtle p-5 my-5">
         <div class="col-12 col-lg-3 text-center">
             <div class="py-2">
-                <img id="image" class="w-100" src="<?= pathImage() . $_SESSION['user']['image'] ?>" alt="USER IMG">
+                <img id="image" class="w-100" src="<?= pathImage($_SESSION['user']['image']) ?>" alt="USER IMG">
             </div>
             <form action="" method="post" enctype="multipart/form-data">
                 <div class="input-group mb-3">

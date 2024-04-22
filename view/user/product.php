@@ -21,65 +21,64 @@
 </div>
 
 <div class="container bg-light rounded py-3">
+    <form action="<?=URL?>san-pham/loc/" method="get">
     <div class="row">
         <div class="col-12 col-md-12 col-lg-2">
-            <span class="text-success h6">
-                Lọc danh sách:
-            </span>
-        </div>
-        <div class="col-12 col-md-12 col-lg-2">
             <label for="brand">Thương hiệu:</label>
-            <select class="form-control" id="brand" ng-model="filter.brand" ng-change="filterProducts()">
-              <option value="all">Tất cả</option>
-              <option value="samsung">Samsung</option>
-              <option value="iphone">iPhone</option>
-              <option value="nokia">Nokia</option>
+            <select name="Brand" class="form-control" id="brand">
+                <?=$showSelectBrand?>
             </select>
         </div>
-        <div class="col-12 col-md-12 col-lg-2">
-            <label for="priceMin">Price Min:</label>
-            <input  class="form-control" type="number" id="priceMin" ng-model="filter.priceMin" ng-change="filterProducts()">
-        </div>
-        
-        <div class="col-12 col-md-12 col-lg-2">
-            <label for="priceMax">Price Max:</label>
-            <input class="form-control" type="number" id="priceMax" ng-model="filter.priceMax" ng-change="filterProducts()">
-        </div>
-        
         <div class="col-12 col-md-12 col-lg-2">
             <label for="color">Màu:</label>
-            <select class="form-control" id="color" ng-model="filter.color" ng-change="filterProducts()">
-              <option value="all">Tất cả</option>
-              <option value="black">Đen</option>
-              <option value="green">Xanh lá</option>
-              <option value="blue">Xanh da trời</option>
+            <select name="Color" class="form-control" id="color">
+                <?=$showSelectColor?>
             </select>
         </div>
-        
         <div class="col-12 col-md-12 col-lg-2">
-            <label for="sortBy">Sắp:</label>
-            <select class="form-control" id="sortBy" ng-model="filter.sortBy" ng-change="filterProducts()">
-              <option value="">Không</option>
-              <option value="priceLowToHigh">Thấp &rarr; Cao</option>
-              <option value="priceHighToLow">Cao &rarr; Thấp</option>
+            <label for="style">Phong cách:</label>
+            <select name="Style" class="form-control" id="style">
+                <?=$showSelectStyle?>
             </select>
+        </div>
+        <div class="col-12 col-md-12 col-lg-2">
+            <label for="price">Giá tiền:</label>
+            <select name="Price" class="form-control" id="price">
+                <?=$showSelectPrice?>
+            </select>
+        </div>
+        <div class="col-12 col-md-12 col-lg-2">
+            <label for="sort">Sắp xếp:</label>
+            <select name="Sorts" class="form-control" id="sort">
+                <?=$showSelectSorts?>
+            </select>
+        </div>
+        <div class="col-12 col-md-12 col-lg-2">
+            <label class="" for="Filter">Tùy chọn</label>
+            <div>
+            <button id="Filter" type="submit" class="btn btn-outline-success w-100"> <i class="fas fa-search"></i> Lọc tìm kiếm </button>
+            </div>
         </div>
     </div>
+    </form>
 </div>
 <div class="container mt-3">
     <div class="row">
         <!-- Product Start -->
+        <?php
+        for ($i = 0; $i < count($listProduct); $i++) {
+        ?>
         <div class="col-6 col-md-4 col-lg-2 pb-3 pb-md-4 pb-lg-5">
             <div style="min-height: 100%;" class="card shadow">
                 <div class="position-relative hover-trigger">
-                    <img src="publics/img/phone/samsung/a34-3.jpg" class="card-img img-product" alt="imageproduct">
+                    <img src="<?=URL?>publics/img/phone/samsung/a34-3.jpg" class="card-img img-product" alt="imageproduct">
                     <span style="left: 84%; top: -4%; width: 45px; height: 45px" class="btn bg-danger text-light rounded-circle position-absolute small p-0 pt-2 fw-bold ">51%</span>
                     <span class="show-hover position-absolute end-0 bottom-0 w-100">
                         <div class="d-flex justify-content-evenly">
                             <button class="btn btn-success">
                                 <i class="far fa-heart"></i>
                             </button>
-                            <button ng-click="addCart(product)" class="btn btn-success">
+                            <button class="btn btn-success">
                                 <i class="fa fa-cart-plus" aria-hidden="true"></i>
                             </button>
                             <button class="btn btn-success">
@@ -105,6 +104,8 @@
                 </a>
             </div>
         </div>
+        <?php }?>
+        <!-- Product End -->
         <!-- Page Start -->
         <div class="col-12">
             <div class="input-group d-flex justify-content-center">

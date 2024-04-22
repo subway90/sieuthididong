@@ -1,18 +1,36 @@
 <?php
-require_once "../../view/user/header.php";
-show_alert($_SESSION['alert']);
 $message = "";
-$arr_error = [];
-if(isset($arrayURL[1]) && !empty($arrayURL[1])) { //có REQUEST[1]
-    $san_pham = detailProductBySlug($arrayURL[1]); //SELECT database SP
-    if(!empty($san_pham)){ //nếu sản phẩm có
-        extract($san_pham);
-        if(!empty($priceSale)){
-            $priceDel = $price;     //giá gốc
-            $price = $priceSale;    //giá hiện tại
+$listColor = [];
+$listImage = [];
+$arrayColor = [];
+
+if(isset($arrayURL[1]) && !empty($arrayURL[1])) {
+    $oneProduct = getOneFieldByCustom('products','id,idBrand, name','slug = "'.moveCharSpecial($arrayURL[1]).'" AND status =1');
+    if(!empty($oneProduct)){
+        # INFO PRODUCT
+        extract($oneProduct);
+        # NAME BRAND
+        $selectBrand = getOneFieldByCustom('product_brands','name,id','id ='.$idBrand);
+        # MODEL PRODUCT
+        $listModel = getAllFieldByCustom('product_model','model, id','idProduct='.$id.' AND status = 1');
+        # COLOR PRODUCT
+        for ($i=0; $i < count($listModel); $i++) { 
+            $listColor[$i] = getAllFieldByCustom('product_color','color,image,quantity,price,priceSale','idModel='.$listModel[$i]['id'].' AND status = 1');
         }
-        $nameCate = getOneFieldByID('category','name',$idCategory,1);
-        $listProductHint = getListHint($id,$idCategory);
+        # IMAGE LIST
+        for ($i=0; $i < count($listColor); $i++) {
+            for ($j = 0; $j < count($listColor[$i]); $j++) { 
+                extract($listColor[$i][$j]);
+                if(in_array($color,$arrayColor)) continue;
+                else {
+                    $arrayColor[] = $color;
+                    $listImage[] = $image;
+                }
+            }
+        }
+        # LIST PRODUCT HINT
+        $listProductHint = getAllFieldByCustom('products','id,name,slug',' idBrand = '.$idBrand.' AND id !='.$id.' ORDER BY name desc LIMIT 6');
+        # LIST COMMENT
         $listComment = getListCmt($id);
         # [THÊM BÌNH LUẬN]
         if(isset($_POST['comment'])){
@@ -20,11 +38,13 @@ if(isset($arrayURL[1]) && !empty($arrayURL[1])) { //có REQUEST[1]
             if(!empty($message)){
                 addComment($_SESSION['user']['id'],$id,$message);
                 $message = "";
-                $_SESSION['alert'] ='ĐĂNG BÌNH LUẬN THÀNH CÔNG';
-                header("Location:".ACT."chi-tiet/".$arrayURL[1]);
-            }else $arr_error[] = "Vui lòng nhập nội dung bình luận";
+                addAlert("success","<i class='fas fa-check-circle'></i> Đăng bình luận thành công");
+                header("Location:".URL."chi-tiet/".$arrayURL[1]);
+                exit;
+            }else addAlert("danger","<i class='fas fa-exclamation-triangle'></i> Vui lòng nhập nội dung bình luận");
         }
         # [RENDER VIEW]
+        require_once "../../view/user/header.php";
         require_once "../../view/user/detail.php";
-    }else require_once "../../view/user/404.php";
+    }else{require_once "../../view/user/header.php";require_once "../../view/user/404.php";}
 }else require_once "../../view/user/404.php";

@@ -24,9 +24,11 @@ const PAGE_LOADING = true;
 const PAGE_UPDATE = false;
 const LOGIN_GOOGLE = true;
 const LOGIN_FACEBOOK = false;
+const FLASH_SALE = true;
 
 # SETTING TIME
 const TIME_CLOSE_ALERT = 3000;
+const TIME_FLASH_SALE  = '2024/04/24 00:00:00';
 
 # KEY API FACEBOOK
 const URL_CALL_BACK = 'https://subway90.vn/API/facebook/fb-callback.php';

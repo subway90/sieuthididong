@@ -8,18 +8,9 @@ function getProductNews($limit){
     return $list;
 }
 function detailProductBySlug($slug){
-    $sql = "SELECT sp_nxb.*,tg.name tentacgia
-    FROM 
-    (
-        SELECT sp.*, sp.idAuthor id_tg, sp.id id_sp, nxb.name nhaxuatban
-        FROM products sp
-        JOIN publishing nxb
-        ON sp.idPublishing = nxb.id
-    ) sp_nxb
-    JOIN author tg
-    ON sp_nxb.idAuthor = tg.id
-    WHERE sp_nxb.slug ='".$slug."'
-    AND sp_nxb.status = 1";
+    $sql = "SELECT * FROM products
+    WHERE slug ='".$slug."'
+    AND status = 1";
     $product = pdo_query_one($sql);
     return $product;
 }
@@ -44,11 +35,23 @@ function getListHint($id,$idCate){
     return $list;
 }
 function getListCmt($id){
-    $sql = "SELECT * FROM comments WHERE idProduct = ".$id." AND status = 1 ORDER BY dateCreate desc";
+    $sql = "
+    SELECT c.message, c.dateCreate, a.image, a.type, a.fullName
+    FROM comments c
+    JOIN accounts a
+    ON c.idUser = a.id
+    WHERE c.idProduct = ".$id." 
+    AND c.status = 1 
+    ORDER BY c.dateCreate desc";
     $list = pdo_query($sql);
     return $list;
 }
 function addComment($idUser,$idProduct,$message){
     $sql = "INSERT INTO comments(idUser,idProduct,message) values('$idUser','$idProduct','$message')";
     pdo_execute($sql);
+}
+
+function boolColor($input) {
+    if(!$input) return 'disabled';
+    else return '';
 }
