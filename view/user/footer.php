@@ -111,15 +111,6 @@
     </div>
 </footer>
 </html>
-<!-- [ADMIN] -->
-<div class="offcanvas offcanvas-start" tabindex="-1" id="admin" aria-labelledby="offcanvasExampleLabel">
-    <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Quản lí</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-        <a href="#" class="nav-link text-light fw-bold my-2 bg-success py-1 ps-3">&rarr; Quản lí sản phẩm</a>
-        <a href="#" class="nav-link text-light fw-bold my-2 bg-success py-1 ps-3">&rarr; Quản lí tài khoản</a>
-        <a href="#" class="nav-link text-light fw-bold my-2 bg-success py-1 ps-3">&rarr; Quản lí hóa đơn</a>
-    </div>
-</div>
+<!-- Script Custom File -->
+<script src="<?= URL ?>publics/js/image.js"></script>
+<script src="<?= URL ?>publics/js/modal.js"></script>

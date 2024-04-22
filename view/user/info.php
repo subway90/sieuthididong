@@ -1,14 +1,16 @@
-<div class="container wow fadeIn">
-    <nav class="mb-2" aria-label="breadcrumb">
-        <ol class="breadcrumb breadcrumb-sa-simple">
-            <li class="breadcrumb-item"><a href="<?= URL ?>">Trang chủ</a></li>
-            <li class="breadcrumb-item">Thông tin cá nhân</li>
+<div class="container mt-3 bg-light rounded pt-3 pb-1">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item fw-bold"><a href="<?=URL?>" class="text-decoration-none text-dark">Trang chủ</a></li>
+            <li class="breadcrumb-item active text-success fw-bolder" aria-current="page">Cập nhật thông tin</li>
         </ol>
     </nav>
-    <div class="row bg-primary deal p-5 my-5">
+</div>
+<div class="container">
+    <div class="row bg-success-subtle p-5 my-5">
         <div class="col-12 col-lg-3 text-center">
             <div class="py-2">
-                <img id="image" class="w-100" src="<?= urlPath() . $_SESSION['user']['image'] ?>" alt="USER IMG">
+                <img id="image" class="w-100" src="<?= pathImage() . $_SESSION['user']['image'] ?>" alt="USER IMG">
             </div>
             <form action="" method="post" enctype="multipart/form-data">
                 <div class="input-group mb-3">
@@ -28,23 +30,24 @@
             <!-- [SHOW LỖI] -->
             <div><?=showError($arr_error) ?></div>
             <form action="" method="post">
+                <div class="mb-2">(<span class="text-danger">&#10033;</span> : thông tin bắt buộc điền)</div>
                 <div class="form-floating mb-3">
                     <input name="fullName" type="text" class="form-control" id="name" value="<?= $fullName ?>"
                         placeholder="Hide">
-                    <label for="name">Họ và tên</label>
+                    <label for="name">Họ và tên <span class="text-danger">&#10033;</span></label>
                 </div>
                 <div class="form-floating mb-3">
                     <input name="email" type="text" class="form-control" id="e" value="<?= $email ?>" placeholder="Hide">
-                    <label for="e">Email</label>
+                    <label for="e">Email <span class="text-danger">&#10033;</span></label>
                 </div>
                 <div class="form-floating mb-3">
                     <input name="phone" type="text" class="form-control" id="s" value="<?= $phone ?>" placeholder="Hide">
-                    <label for="s">Số điện thoại</label>
+                    <label for="s">Số điện thoại <span class="text-danger">&#10033;</span></label>
                 </div>
                 <div class="form-floating mb-3">
                     <input name="address" type="text" class="form-control" id="d" value="<?= $address ?>"
                         placeholder="Hide">
-                    <label for="d">Địa chỉ</label>
+                    <label for="d">Địa chỉ <span class="text-danger">&#10033;</span></label>
                 </div>
                 <div class="text-center text-lg-start mt-4">
                     <button name="info" type="submit" class="position-relative btn btn-light">Cập nhật</button>

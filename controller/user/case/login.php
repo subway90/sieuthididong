@@ -8,7 +8,7 @@ if(empty($_SESSION['user'])){
         }
         #tự động ĐĂNG NHẬP 
         autoLogin($username,'');
-        addAlert('success','<i class="fas fa-check-circle"></i> Chào mừng bạn đến với <strong>muasach.net</strong> !');
+        addAlert('success','<i class="fas fa-check-circle"></i> Chào mừng bạn đến với <strong>'.WEB_TITLE.'</strong> !');
         header('Location: '.URL.'trang-chu');
     }else{
         if(LOGIN_GOOGLE) require_once '../../API/google/google_source.php';
@@ -21,7 +21,7 @@ if(empty($_SESSION['user'])){
         }
         #tự động ĐĂNG NHẬP 
         autoLogin($username,'');
-        addAlert('success','<i class="fas fa-check-circle"></i> Chào mừng bạn đến với <strong>muasach.net</strong> !');
+        addAlert('success','<i class="fas fa-check-circle"></i> Chào mừng bạn đến với <strong>'.WEB_TITLE.'</strong> !');
         header('Location: '.URL.'trang-chu');
         exit;
     }else{
@@ -72,7 +72,7 @@ if(empty($_SESSION['user'])){
                     }
                     #Authorization
                     if($_SESSION['user']['role'] != 1){
-                        addAlert('success','<i class="fas fa-check-circle"></i> Chào mừng bạn đến với <strong>muasach.net</strong> !');
+                        addAlert('success','<i class="fas fa-check-circle"></i> Chào mừng bạn đến với <strong>'.WEB_TITLE.'</strong> !');
                         header("Location:".URL);
                         exit;
                     }

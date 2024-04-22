@@ -36,7 +36,7 @@
                     <?php if($status==2) echo'<span class="btn btn-sm btn-outline-secondary border-1">Đã đánh giá</span>'?>
                 </td>
                 <td class="text-end">
-                    <a href="<?=ACT?>danh-gia/<?=$id?>/<?=$idUser?>" class="btn btn-sm btn-outline-<?=colorEyeActive($statusUser)?> border-1"><i class="fas fa-eye"></i></a>
+                    <a href="<?=URL?>danh-gia/<?=$id?>/<?=$idUser?>" class="btn btn-sm btn-outline-<?=colorEyeActive($statusUser)?> border-1"><i class="fas fa-eye"></i></a>
                 </td>
             </tr>
         <?php }}?>

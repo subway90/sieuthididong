@@ -4,7 +4,7 @@ const DOMAIN = "https://subway90.vn";
 
 # DATABASE
 const HOST_DB = 'localhost';
-const NAME_DB = 'muasach';
+const NAME_DB = 'vutrumobile';
 const USER_DB = 'root';
 const PASS_DB = '';
 

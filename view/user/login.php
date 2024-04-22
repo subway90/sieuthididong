@@ -24,8 +24,8 @@
                     </div>
                     <div class="col-12 text-start d-flex justify-content-center">
                         <div class="form-check form-switch w-50">
-                            <input <?=$remember?> class="form-check-input" name="rememberUser" role="switch" type="checkbox" value="checked" id="rememberUser">
-                            <label class="form-check-label" for="rememberUser">Ghi nhớ tài khoản</label>
+                            <input <?=$remember?> class="form-check-input border-success bg-success" name="rememberUser" role="switch" type="checkbox" value="checked" id="rememberUser">
+                            <label class="form-check-label text-success" for="rememberUser">Ghi nhớ tài khoản</label>
                         </div>
                         <div class="w-25 text-end">
                             <a class="nav-link text-danger" href="#"><i class="fas fa-question-circle"></i> Quên mật khẩu</a>
