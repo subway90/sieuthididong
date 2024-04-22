@@ -1,4 +1,22 @@
 <?php
+function getProduct($filter){
+    $sql = "
+    SELECT pm.idProduct, pm.idBrand, pm.idType, pm.idStyle, pm.slug, pm.name, pm.idModel, pm.model, c.*
+    FROM product_color c
+    JOIN (
+        SELECT p.name, p.idBrand, p.idType, p.idStyle, p.slug, p.id idProduct, m.id idModel, m.model
+        FROM products p
+        JOIN product_model m
+        ON m.idProduct = p.id
+        ) pm
+    ON pm.idModel = c.idModel
+    WHERE ";
+    if($filter) $sql .= $filter;
+    else $sql .=" 1 ORDER BY c.priceSale ASC";
+    $list = pdo_query($sql);
+    return $list;
+}
+
 /**
  * @param int $limit giới hạn sản phẩm
  */
@@ -54,4 +72,8 @@ function addComment($idUser,$idProduct,$message){
 function boolColor($input) {
     if(!$input) return 'disabled';
     else return '';
+}
+
+function saleProduct($price,$priceSale) {
+    return 100-ceil(($priceSale/$price)*100);
 }

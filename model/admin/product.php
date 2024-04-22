@@ -1,5 +1,5 @@
 <?php
-function getAllProduct(){
+function getAllProduct($filter){
     $sql = "SELECT sp_nxb.*,tg.name tentacgia
     FROM 
     (

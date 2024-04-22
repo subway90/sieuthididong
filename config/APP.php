@@ -30,6 +30,31 @@ const FLASH_SALE = true;
 const TIME_CLOSE_ALERT = 3000;
 const TIME_FLASH_SALE  = '2024/04/24 00:00:00';
 
+# SETTING ARRAY
+const COLOR_FILTER = ['đen','đỏ','tím','vàng','trắng','xanh nước biển','hồng','xanh lá','xám'];
+/**
+ * syntax [ value option , name option , start x 1000 , end x 1000 ]
+ */
+const PRICE_FILTER = 
+[
+    ['un1M','dưới 1 triệu VNĐ',0,1000],
+    ['1Mto2M','1 triệu VNĐ &rarr; 2 triệu VNĐ',1000,2000],
+    ['2Mto4M','2 triệu VNĐ &rarr; 4 triệu VNĐ',2000,4000],
+    ['4Mto10M','4 triệu VNĐ &rarr; 10 triệu VNĐ',4000,10000],
+    ['4Mto10M','4 triệu VNĐ &rarr; 10 triệu VNĐ',4000,10000],
+    ['up20M','trên 20 triệu VNĐ',20000,100000]
+];
+/**
+ * syntax [ value option , name option , SQL tag ]
+ */
+const SORTS_FILTER = 
+[
+    ['nameAZ','Tên sản phẩm A &rarr; Z','ORDER BY pm.name ASC'],
+    ['nameZA','Tên sản phẩm Z &rarr; A','ORDER BY pm.name DESC'],
+    ['priceAZ','Giá sản phẩm thấp &rarr; cao','ORDER BY pm.price ASC'],
+    ['priceZA','Giá sản phẩm cao &rarr; thấp','ORDER BY pm.price DESC'],
+];
+
 # KEY API FACEBOOK
 const URL_CALL_BACK = 'https://subway90.vn/API/facebook/fb-callback.php';
 const FB_SECRET_KEY = '1a229a5a0017b0532a4102398e3b881e';

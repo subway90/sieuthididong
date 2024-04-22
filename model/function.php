@@ -370,3 +370,16 @@ function showAlert(){
     }
     $_SESSION['alert_3'] = [];
 }
+
+/**
+ * Trả về chuỗi có kí tự in hoa
+ */
+function upcaseFirst($string) {
+    #Lười viết quá
+    return '';
+}
+
+function matchSelected($a,$b) {
+    if($a == $b) return 'selected';
+    else return '';
+}
