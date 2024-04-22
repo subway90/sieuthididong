@@ -11,61 +11,98 @@
         <div class="col-12 col-md-12 col-lg-8 p-0">
             <div class="table-responsive-sm">
                 <table class="table table-hover rounded-3 small">
-                    <thead class="align-middle text-center">
+                    <thead class="align-middle text-end">
                         <th class="text-start">Sản phẩm</th>
                         <th>Giá</th>
-                        <th>Số lượng</th>
+                        <th class="text-center">Số lượng</th>
                         <th>Thành tiền</th>
                         <th>Xóa</th>
                     </thead>
                     <tbody class="align-middle text-end">
-                        <tr>
-                            <td class="text-start"> 
-                                <img width="50" src="<?=URL?>/upload/12-green.jpg" alt="">
-                                <?='name of PRODUCT'?> 
-                            </td>
-                            <td> <?=4440000?> đ</td>
-                            <td>
-                                <div class="btn-group d-flex align-items-center mx-auto w-25 justify-content-center">
-                                    <a href="#" class="btn btn-success btn-sm"><i class="fas fa-minus"></i></a>
-                                    <span class="mx-2">02</span>
-                                    <a href="#" class="btn btn-success btn-sm"><i class="fas fa-plus"></i></a>
+                        <?php if($listCart){ for ($i=0; $i < count($listCart); $i++) { extract($listCart[$i]) ?>
+                        <tr class="align-middle">
+                            <td class="text-start d-flex align-items-center"> 
+                                <div><img width="50" src="<?=URL_IMGER_PRODUCT.$image?>" alt="<?=$image?>"></div>
+                                <div>
+                                    <?= $name ?> 
+                                    <div class="small text-muted">
+                                        <?=getOneFieldByCustom('product_model','model','id ='.$idModel)['model'].' - màu '.getOneFieldByCustom('product_color','color','id ='.$idColor)['color']?>
+                                    </div>
                                 </div>
                             </td>
-                            <td class="text-end"><?=4440000?> đ</td>
-                            <td><button class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button></td>
+                            <td> <?= number_format($priceSale) ?> đ</td>
+                            <td>
+                                <form method="post">
+                                <input type="hidden" name="idCart" value="<?=$idCart?>">
+                                <div class="btn-group d-flex align-items-center mx-auto w-25 justify-content-center">
+                                    <button name="quantity" value="<?=$quantity-1?>" class="btn btn-success btn-sm" <?php if($quantity==1) echo'disabled'?>><i class="fas fa-minus"></i></button>
+                                        <span class="mx-2"> <?= $quantity ?> </span>
+                                    <button name="quantity" value="<?=$quantity+1?>" class="btn btn-success btn-sm" <?php if($quantity==$quantityMax) echo'disabled'?>><i class="fas fa-plus"></i></button>
+                                </div>
+                                </form>
+                            </td>
+                            <td class="text-end"><?= number_format($quantity*$priceSale) ?> đ</td>
+                            <td><a href="<?=URL?>gio-hang&delete=<?=$idCart+1?>" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></a></td>
                         </tr>
+                        <?php }}else{?>
                         <tr>
                             <td colspan="6" class="text-center">Chưa có sản phẩm nào <a class="nav-link text-success" href="<?=URL?>san-pham">&rarr; Cửa hàng</a></td>
                         </tr>
+                        <?php }?>
                 </table>
             </div>
         </div>
         <div class="col-12 col-md-12 col-lg-4 p-0 ps-lg-3">
-            <div class="bg-light px-4 rounded-3">
-                <div class="h5 py-3 text-center text-lg-start">Giỏ hàng</div>
-                <div class="w-100 d-flex justify-content-between py-2">
-                    <div class=""><?='name of PRODUCT'?></div>
-                    <div class=""><?='total of PRODUCT'?> đ</div>
+            <form action="<?=URL?>gio-hang&voucher" method="get">
+                <label for="voucher">Mã giảm giá</label>
+                <div class="input-group mt-1">
+                    <input type="text" name="voucher" id="voucher" class="form-control text-success" placeholder="Nhập mã giảm giá tại đây...">
+                    <button type="submit" class="btn btn-success">Áp dụng</button>
                 </div>
-                <div class="h5 mt-3 text-center text-lg-start">Tổng thanh toán</div>
+            </form>
+            <div class="bg-light px-4 py-2 rounded-3 mt-3">
+                <div class="h5 py-3 text-center text-lg-start">Giỏ hàng</div>
+                <?php if($total) { for ($i=0; $i < count($listCart); $i++) { extract($listCart[$i])?>
+                <div class="w-100 d-flex justify-content-between py-2">
+                    <div class="">
+                        <?= $name ?>
+                        <div class="small text-muted">số lượng: <?= $quantity ?></div>
+                    </div>
+                    <div class=""><?= number_format($priceSale*$quantity) ?> đ</div>
+                </div>
+                <?php } ?>
+                <div class="h5 mt-3 text-center text-lg-start">Hóa đơn</div>
                 <div class="w-100 d-flex justify-content-between py-2">
                     <div class="">Sản phẩm</div>
-                    <div class=""><?='total of PRODUCT'?> đ</div>
+                    <div class=""><?= number_format($total) ?> đ</div>
                 </div>
                 <div class="w-100 d-flex justify-content-between py-2">
                     <div class="">Mã giảm giá</div>
-                    <div class="">(không)</div>
+                    <div class=""><?= 0 ?> đ</div>
                 </div>
+                <hr class="w-100 border border-success border-1 my-1">
+                <div class="w-100 d-flex justify-content-between py-2 fw-bold">
+                    <div class="">TỔNG THANH TOÁN</div>
+                    <div class="text-success"><?= number_format($total) ?> đ</div>
+                </div>
+                <?php }else {?>
+                <div class="w-100 d-flex justify-content-center py-2">
+                    Chưa có sản phẩm
+                </div>
+                <?php }?>
             </div>
+            <?php
+            if($total) {?>
             <div class="py-3">
-                <button type="submit" class="w-100 btn btn-success"  data-bs-toggle="modal" data-bs-target="#Pay">Thanh toán</button>
+                <button type="submit" class="w-100 btn btn-success" data-bs-toggle="modal" data-bs-target="#Pay">Thanh toán</button>
             </div>
+            <?php }?>
         </div>
     </div>
 </div>
-  
-  <!-- Modal -->
+
+<!-- Modal Thanh Toán -->
+<?php if($total) {?>
   <div class="modal modal-lg fade" id="Pay" tabindex="-1" aria-labelledby="ModalPay" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl">
       <div class="modal-content">
@@ -159,3 +196,4 @@
       </div>
     </div>
   </div>
+<?php }?>

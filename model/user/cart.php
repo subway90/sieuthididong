@@ -45,7 +45,7 @@ function showCart($type) {
                     # TỔNG TIỀN
                     $totalCart+=$quantityCart*$priceSale;
                     # DATA
-                    $listCart[] = ['idCart' => $idCart,'quantity'=>$quantity,'idProduct'=>$idProduct,'idModel'=>$idModel,'idColor'=>$idColor,'name'=>$name,'image'=>$image,'price'=>$price,'priceSale'=>$priceSale,'quantityMax'=>$quantity];
+                    $listCart[] = ['idCart' => $idCart,'quantity'=>$quantityCart,'idProduct'=>$idProduct,'idModel'=>$idModel,'idColor'=>$idColor,'name'=>$name,'image'=>$image,'price'=>$price,'priceSale'=>$priceSale,'quantityMax'=>$quantity];
                 }
             }
         }
