@@ -1,18 +1,22 @@
 <?php
-function getAllProduct($filter){
-    $sql = "SELECT sp_nxb.*,tg.name tentacgia
-    FROM 
-    (
-        SELECT sp.*, sp.idAuthor id_tg, sp.id id_sp, nxb.name nhaxuatban
-        FROM products sp
-        JOIN publishing nxb
-        ON sp.idPublishing = nxb.id
-    ) sp_nxb
-    JOIN author tg
-    ON sp_nxb.id_tg = tg.id";
+function getProduct($filter){
+    $sql = "
+    SELECT pm.idProduct, pm.idModel, pm.idBrand, pm.idType, pm.idStyle, pm.slug, pm.name, pm.idModel, pm.model, c.*
+    FROM product_color c
+    JOIN (
+        SELECT p.name, p.idBrand, p.idType, p.idStyle, p.slug, p.id idProduct, m.id idModel, m.model
+        FROM products p
+        JOIN product_model m
+        ON m.idProduct = p.id
+        ) pm
+    ON pm.idModel = c.idModel
+    WHERE ";
+    if($filter) $sql .= $filter;
+    else $sql .=" 1 ORDER BY c.priceSale ASC";
     $list = pdo_query($sql);
     return $list;
 }
+
 function addProduct($tensp,$slug,$ngayxuatban,$giasp,$giasale,$soluong,$motasp,$filename,$iddm,$idnxb,$idtg){
     $sql = "INSERT INTO products(name,slug,price,priceSale,quantity,datePublish,image,decribe,status,idCategory,idPublishing,idAuthor) values('$tensp','$slug','$giasp','$giasale','$soluong','$ngayxuatban','$filename','$motasp',1,'$iddm','$idnxb','$idtg')";
     pdo_execute($sql);
@@ -32,4 +36,9 @@ function checkSlug($slug,$id){
     $result = pdo_query_one($sql);
     if(!empty($result)) return false;
     else return true;
+}
+
+function bgNumber($quantity) {
+    if($quantity <= 0) return 'danger';
+    else return 'primary';
 }

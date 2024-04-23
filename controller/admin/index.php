@@ -47,10 +47,10 @@ if(empty($_SESSION['user']) || $_SESSION['user']['role'] != 1){
                     $title="Sửa sản phẩm";
                     require_once "case/product-edit.php";
                     break; 
-                // [DANH MỤC - DM]
-                case "category":
-                    $title="Quản lí danh mục";
-                    require_once "case/category.php";
+                // [SERIES SHOW]
+                case "series":
+                    $title="Quản lí series";
+                    require_once "case/series.php";
                     break;
                 // [THÊM DM]
                 case "category-add":

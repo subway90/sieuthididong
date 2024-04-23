@@ -8,12 +8,12 @@
                                     <nav class="mb-2" aria-label="breadcrumb">
                                         <ol class="breadcrumb breadcrumb-sa-simple">
                                             <li class="breadcrumb-item"><a href="<?=URL_ADMIN?>">Quản lí</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Quản lí danh mục</li>
+                                            <li class="breadcrumb-item active" aria-current="page">Quản lí Series</li>
                                         </ol>
                                     </nav>
-                                    <h1 class="h3 m-0">Quản lí danh mục</h1>
+                                    <h1 class="h3 m-0">Quản lí Series</h1>
                                 </div>
-                                <div class="col-auto d-flex"><a href="<?=ACT_ADMIN?>category-add" class="btn btn-info btn-gradient">Thêm danh mục</a></div>
+                                <div class="col-auto d-flex"><a href="<?=ACT_ADMIN?>category-add" class="btn btn-info btn-gradient">Thêm Series</a></div>
                             </div>
                         </div>
                         <div class="card">
@@ -25,7 +25,7 @@
                                 <thead>
                                     <tr>
                                         <th class="w-min">ID</th>
-                                        <th class="min-w-20x">Tên danh mục</th>
+                                        <th class="min-w-20x">Tên Series</th>
                                         <th class="min-w-10x">Trạng thái</th>
                                         <th class="min-w-10x">Ngày cập nhật</th>
                                         <th class="w-min" data-orderable="false"></th>
@@ -33,13 +33,14 @@
                                 </thead>
                                 <tbody>
                                 <?php
-                                $list = getAll('category',0);
-                                for ($i=0; $i < count($list); $i++) {
-                                    extract($list[$i]);
+                                for ($i=0; $i < count($listSeries); $i++) {
+                                    extract($listSeries[$i]);
                                 ?>
                                     <tr>
                                         <td><?=$id?></td>
-                                        <td class="text-nowrap"><?=$name?></td>
+                                        <td class="text-nowrap">
+                                            <?= $name ?>
+                                        </td>
                                         <td>
                                         <?php
                                         if($status==1) echo '<div class="badge badge-sa-success">Đang hiện</div>';
@@ -62,9 +63,9 @@
                                                     <li><hr class="dropdown-divider"/></li>
                                                     <?php
                                                     if($status == 1){ ?>
-                                                    <li><a class="dropdown-item text-danger" href="<?=ACT_ADMIN?>category&delete=2&id=<?=$id?>">Ẩn danh mục</a></li>
+                                                    <li><a class="dropdown-item text-danger" href="<?=ACT_ADMIN?>category&delete=2&id=<?=$id?>">Ẩn Series</a></li>
                                                     <?php }else{ ?>
-                                                    <li><a class="dropdown-item text-success" href="<?=ACT_ADMIN?>category&delete=1&id=<?=$id?>">Hiện danh mục</a></li>
+                                                    <li><a class="dropdown-item text-success" href="<?=ACT_ADMIN?>category&delete=1&id=<?=$id?>">Hiện Series</a></li>
                                                     <?php } ?>
                                                 </ul>
                                             </div>
