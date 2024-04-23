@@ -24,7 +24,7 @@
                             <td class="text-start d-flex align-items-center"> 
                                 <div><img width="50" src="<?=URL_IMGER_PRODUCT.$image?>" alt="<?=$image?>"></div>
                                 <div>
-                                    <?= $name ?> 
+                                    <span class="text-success fw-bold"><?= $name ?> </span>
                                     <div class="small text-muted">
                                         <?=getOneFieldByCustom('product_model','model','id ='.$idModel)['model'].' - màu '.getOneFieldByCustom('product_color','color','id ='.$idColor)['color']?>
                                     </div>
@@ -94,7 +94,7 @@
             <?php
             if($total) {?>
             <div class="py-3">
-                <button type="submit" class="w-100 btn btn-success" data-bs-toggle="modal" data-bs-target="#Pay">Thanh toán</button>
+                <button type="submit" class="w-100 btn btn-success" data-bs-toggle="modal" data-bs-target="#<?=$activeModal?>">Thanh toán</button>
             </div>
             <?php }?>
         </div>
@@ -103,7 +103,7 @@
 
 <!-- Modal Thanh Toán -->
 <?php if($total) {?>
-  <div class="modal modal-lg fade" id="Pay" tabindex="-1" aria-labelledby="ModalPay" aria-hidden="true">
+  <div class="modal modal-lg fade" id="<?=$activeModal?>" tabindex="-1" aria-labelledby="ModalPay" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl">
       <div class="modal-content">
         <div class="modal-header">
@@ -124,70 +124,75 @@
                             </tr>
                         </thead>
                         <tbody class="small">
+                        <?php for ($i=0; $i < count($listCart); $i++) { extract($listCart[$i]) ?>
                             <tr>
                                 <td class="text-start">
-                                    <img width="50" src="<?=URL?>/upload/12-green.jpg" alt="">
-                                    SamSung A34
+                                    <img width="50" src="<?=URL_IMGER_PRODUCT.$image?>" alt="<?=$image?>">
+                                    <?=$name?>
                                 </td>
-                                <td>4,444,000 đ</td>
+                                <td><?=number_format($priceSale)?> đ</td>
                                 <td>01</td>
-                                <td>4,444,000 đ</td>
+                                <td><?=number_format($priceSale*$quantity)?> đ</td>
                             </tr>
+                        <?php }?>
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="4" class="text-end"><strong>TỔNG </strong>16,666,000 đ</td>
+                                <td colspan="4" class="text-end"><strong>TỔNG </strong><?= number_format($total) ?> đ</td>
                             </tr>
                         </tfoot>
                     </table>
                 </div>
                 <div class="col-12 col-md-12 col-lg-5">
                     <div class="fs-6 mb-2 text-center text-lg-start"><span class="fw-bold">Thông tin giao hàng</span> <span>(<span class="text-danger">&#10033;</span> : thông tin bắt buộc điền)</span></div>
-                    <form name="formInvoice">
+                    <form method="post">
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="fullName" placeholder="none">
+                                    <input type="text" name="fullName" value="<?= $fullName ?>" class="form-control bg-success-subtle" id="fullName" placeholder="none">
                                     <label for="fullName">Họ và tên <span class="text-danger">&#10033;</span></label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="phone" placeholder="none">
+                                    <input type="text" name="phone" value="<?= $phone ?>" class="form-control bg-success-subtle" id="phone" placeholder="none">
                                     <label for="phone">Số điện thoại <span class="text-danger">&#10033;</span></label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="address" placeholder="none">
+                                    <input type="text" name="address" value="<?= $address ?>" class="form-control bg-success-subtle" id="address" placeholder="none">
                                     <label for="address">Địa chỉ giao hàng <span class="text-danger">&#10033;</span></label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating mb-3">
-                                    <select type="text" class="form-control" id="pay" placeholder="none">
-                                        <option value="1">Tiền mặt (Cash On Delivery - Trả tiền lúc nhận hàng)</option>
-                                        <option value="2">Thanh toán điện tử ( Ebanking - quét mã QR )</option>
-                                        <option value="3">Thanh toán thẻ ngân hàng ( VNPAY )</option>
+                                    <select name="pay" type="text" class="form-control bg-success-subtle" id="pay" placeholder="none">
+                                        <option <?php if($pay == 1) echo'selected' ?> value="1">Tiền mặt (Cash On Delivery - Trả tiền lúc nhận hàng)</option>
+                                        <option <?php if($pay == 2) echo'selected' ?> value="2">Thanh toán điện tử ( Ebanking - quét mã QR )</option>
+                                        <option <?php if($pay == 3) echo'selected' ?> value="3">Thanh toán thẻ ngân hàng ( VNPAY )</option>
                                     </select>
                                     <label for="pay">Phương thức thanh toán <span class="text-danger">&#10033;</span></label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="email" placeholder="none">
+                                    <input type="text" name="email" value="<?= $email ?>" class="form-control bg-success-subtle" id="email" placeholder="none">
                                     <label for="email">E-mail (nhận thông báo)</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="scription" placeholder="none">
+                                    <input type="text" name="mess" value="<?= $mess ?>" class="form-control bg-success-subtle" id="scription" placeholder="none">
                                     <label for="scription">Mô tả (link FB, SĐT khác, ghi chú)</label>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-12">
+                            <?= showError($arr_error) ?>
+                        </div>
                         <div class="col-12 text-center text-lg-start">
-                            <button class="btn btn-success">Tiếp tục</button>
+                            <button name="thanhtoan" type="submit" class="btn btn-success">Tiếp tục</button>
                         </div>
                     </form>
                 </div>

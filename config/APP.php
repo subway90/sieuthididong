@@ -22,8 +22,12 @@ const WEB_COPYL = 'https://github.com/subway90';
 # PAGE ACTIVE
 const PAGE_LOADING = true;
 const PAGE_UPDATE = false;
+
+# FUNCTION ACTIVE
 const LOGIN_GOOGLE = true;
 const LOGIN_FACEBOOK = false;
+
+# EVENT ACTIVE
 const FLASH_SALE = true;
 
 # SETTING TIME
@@ -40,9 +44,10 @@ const PRICE_FILTER =
     ['un1M','dưới 1 triệu VNĐ',0,1000],
     ['1Mto2M','1 triệu VNĐ &rarr; 2 triệu VNĐ',1000,2000],
     ['2Mto4M','2 triệu VNĐ &rarr; 4 triệu VNĐ',2000,4000],
-    ['4Mto10M','4 triệu VNĐ &rarr; 10 triệu VNĐ',4000,10000],
-    ['4Mto10M','4 triệu VNĐ &rarr; 10 triệu VNĐ',4000,10000],
-    ['up20M','trên 20 triệu VNĐ',20000,100000]
+    ['4Mto8M','4 triệu VNĐ &rarr; 8 triệu VNĐ',4000,8000],
+    ['8Mto15M','8 triệu VNĐ &rarr; 15 triệu VNĐ',8000,15000],
+    ['15Mto25M','15 triệu VNĐ &rarr; 25 triệu VNĐ',15000,25000],
+    ['up25M','trên 25 triệu VNĐ',25000,200000]
 ];
 /**
  * syntax [ value option , name option , SQL tag ]
@@ -51,8 +56,8 @@ const SORTS_FILTER =
 [
     ['nameAZ','Tên sản phẩm A &rarr; Z','ORDER BY pm.name ASC'],
     ['nameZA','Tên sản phẩm Z &rarr; A','ORDER BY pm.name DESC'],
-    ['priceAZ','Giá sản phẩm thấp &rarr; cao','ORDER BY pm.price ASC'],
-    ['priceZA','Giá sản phẩm cao &rarr; thấp','ORDER BY pm.price DESC'],
+    ['priceAZ','Giá sản phẩm thấp &rarr; cao','ORDER BY c.price ASC'],
+    ['priceZA','Giá sản phẩm cao &rarr; thấp','ORDER BY c.price DESC'],
 ];
 
 # KEY API FACEBOOK

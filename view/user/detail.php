@@ -156,8 +156,9 @@
             <p class="text-center text-uppercase">thông số kỹ thuật</p>
             <table class="table table-hover table-bordered small">
                 <thead>
-                    <th class="bg-success bg-opacity-75 text-light text-center" scope="col" colspan="2">iPhone 15 Pro
-                        Max</th>
+                    <th class="bg-success bg-opacity-75 text-light text-center" scope="col" colspan="2">
+                        <?= $name ?>
+                    </th>
                 </thead>
                 <tbody>
                     <tr>
@@ -435,12 +436,14 @@
                                 </span>
                             </span>
                             <span>
-                                <?php if($_SESSION['user']['id'] == $id || $_SESSION['user']['role'] == 1) { ?>
+                                <?php 
+                                if($_SESSION['user']) {
+                                if($_SESSION['user']['id'] == $id || $_SESSION['user']['role'] == 1) { ?>
                                 <button class="btn btn-sm btn-outline-warning p-0 px-1 fw-sm">sửa</button>
                                 <button class="btn btn-sm btn-outline-danger p-0 px-1 fw-sm">xóa</button>
                                 <?php }if($_SESSION['user']['role'] == 1) {?>
                                 <button class="btn btn-sm btn-outline-success p-0 px-1 fw-sm">trả lời</button>
-                                <?php } ?>
+                                <?php } }?>
                             </span>
                         </div>
                         <p class="small"> <?= $message ?> </p>

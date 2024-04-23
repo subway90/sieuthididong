@@ -1,10 +1,12 @@
-<div class="container my-5 wow fadeIn">
-    <nav class="mb-2" aria-label="breadcrumb">
-        <ol class="breadcrumb breadcrumb-sa-simple">
-            <li class="breadcrumb-item"><a href="<?= URL ?>">Trang chủ</a></li>
-            <li class="breadcrumb-item">Lịch sử mua hàng</li>
+<div class="container mt-3 bg-light rounded pt-3 pb-1">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item fw-bold"><a href="<?=URL?>" class="text-decoration-none text-dark">Trang chủ</a></li>
+            <li class="breadcrumb-item active text-success fw-bolder" aria-current="page">Lịch sử mua hàng</li>
         </ol>
     </nav>
+</div>
+<div class="container my-5 wow fadeIn">
     <div class="table-responsive">
         <table class="table table-lg">
             <thead>
@@ -15,7 +17,6 @@
                     <th class="text-center">Giao hàng</th>
                     <th class="text-center">Ngày tạo</th>
                     <th class="text-end">Trạng thái / Xem</th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody class="align-middle">

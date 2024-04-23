@@ -26,11 +26,11 @@ if(isset($_GET['delete']) && !empty($_GET['delete'])) {
 if(isset($_GET['close'])){
     if(empty($_SESSION['user'])) unset($_SESSION['cart']); //nếu chưa đăng nhập -> hủy SESSION CART
     else deleteAllCart($_SESSION['user']['id']); //nếu đã đăng nhập -> thực thi SQL Delete dữ liệu
-    if($_GET['close']=='done'){
+    if($_GET['close']){
         addAlert('success','Đơn hàng đã được tạo thành công, vui lòng chờ xác nhận !');
-        header("Location:".URL."lich-su-mua-hang/".$token);
-    }
-    else header("Location:".URL."gio-hang");
+        header("Location:".URL."lich-su-mua-hang/".$_GET['close']);
+        exit;
+    }else header("Location:".URL."gio-hang");
 }
 
 # [THÊM SỐ LƯỢNG SP]
@@ -83,8 +83,7 @@ if(isset($_REQUEST['thanhtoan']) && $total !=0){
         }
     }
     $mess = $_POST['mess'];
-
-    if($point_valid < 3) $URLiveModal = 'onload'; //Load lại PAY-MODAL ở CART
+    if($point_valid < 3) $activeModal = 'onload'; //Load lại PAY-MODAL ở CART
     else{
         #tạo mã TOKEN
         $token = createTokenChar(10);
@@ -98,7 +97,7 @@ if(isset($_REQUEST['thanhtoan']) && $total !=0){
             extract($listCart[$i]);
             addBillDetail($token,$idProduct,$priceSale,$quantity); 
         }
-        header("Location:".URL."gio-hang&close=done");
+        header("Location:".URL."gio-hang&close=".$token);
     }
 }
 
