@@ -15,6 +15,8 @@ if(!isset($_SESSION['alert'])) $_SESSION['alert'] = [];
 # [VARIABLE]
 $arr_error = [];
 $point_valid = 0;
+$edit = false;
+$subURL = '';
 
 # [Authorization]
 if(empty($_SESSION['user']) || $_SESSION['user']['role'] != 1){

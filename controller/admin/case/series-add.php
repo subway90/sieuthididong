@@ -1,11 +1,10 @@
 <?php
 # VARIBLE
-$edit = false;
-$subURL = $showInputType = $showInputStyle = $showInputBrand = "";
+$showInputType = $showInputStyle = $showInputBrand = "";
 
 # EDIT
 if(isset($_GET['edit']) && ($_GET['edit'])) {
-    $subURL = 'edit='.$_GET['edit'];
+    $subURL .= '&edit='.$_GET['edit'];
     $seriesEdit = getOneFieldByCustom('products','name,decribe,idBrand,idStyle,idType,status','id ='.$_GET['edit']);
     if($seriesEdit) extract($seriesEdit);
     else show404('admin');

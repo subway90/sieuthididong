@@ -1,5 +1,5 @@
 <div id="top" class="sa-app__body">
-<form action="<?=ACT_ADMIN?>publishing-add&add" method="post" enctype="multipart/form-data">
+<form action="<?=ACT_ADMIN?>model-add<?=$subURL?>" method="post" enctype="multipart/form-data">
     <div class="mx-sm-2 px-2 px-sm-3 px-xxl-4 pb-6">
         <div class="container container--max--xl">
             <div class="py-5">
@@ -25,6 +25,12 @@
                             <div class="card-body p-5 row">
                                 <div class="col-12 mb-5">
                                     <h2 class="mb-0 fs-exact-18">Nhập thông tin Model</h2>
+                                </div>
+                                <div class="col-12 form-floating mb-2 p-0 px-3">
+                                    <select name="idProduct" class="form-select rounded rounded-5" id="idSeries" aria-label="ttg">
+                                        <?= $showInputSeries ?>
+                                    </select>
+                                    <label for="idSeries">Series</label>
                                 </div>
                                 <div class="col-6 form-floating mb-2 p-0 px-3">
                                     <input name="model" value="<?=$model?>" type="text" class="form-control rounded rounded-5" id="name" placeholder="name@example.com">
