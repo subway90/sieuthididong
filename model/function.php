@@ -384,3 +384,12 @@ function matchSelected($a,$b) {
     if($a == $b) return 'selected';
     else return '';
 }
+
+function show404($type) {
+    if($type == 'admin') {
+        require_once "../../view/admin/header.php";
+        require_once "../../view/admin/404.php";
+        require_once "../../view/admin/footer.php";
+        exit;
+    }
+}

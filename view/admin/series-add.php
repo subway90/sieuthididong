@@ -1,5 +1,5 @@
 <div id="top" class="sa-app__body">
-    <form action="<?= ACT_ADMIN ?>series-add&add" method="post" enctype="multipart/form-data">
+    <form action="<?= ACT_ADMIN ?>series-add&<?=$subURL?>" method="post" enctype="multipart/form-data">
         <div class="mx-sm-2 px-2 px-sm-3 px-xxl-4 pb-6">
             <div class="container container--max--xl">
                 <div class="py-5">
@@ -15,7 +15,7 @@
                         </div>
                         <div class="col-auto d-flex"><a href="<?= ACT_ADMIN ?>series"
                                 class="btn btn-secondary me-3">Hủy</a>
-                            <button class="btn btn-success" type="submit">Lưu</button>
+                            <button name="submit" class="btn btn-success" type="submit">Lưu</button>
                         </div>
                     </div>
                 </div>

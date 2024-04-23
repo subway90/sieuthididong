@@ -1,22 +1,46 @@
 <?php
-$showInputType = $showInputStyle = $showInputBrand = $name = $decribe = "";
-$idBrand = $idStyle = $idType = $status = 1;
+# VARIBLE
+$edit = false;
+$subURL = $showInputType = $showInputStyle = $showInputBrand = "";
 
-# ADD NEW
-if(isset($_GET['add'])) {
-    $name = $_POST['name'];
+# EDIT
+if(isset($_GET['edit']) && ($_GET['edit'])) {
+    $subURL = 'edit='.$_GET['edit'];
+    $seriesEdit = getOneFieldByCustom('products','name,decribe,idBrand,idStyle,idType,status','id ='.$_GET['edit']);
+    if($seriesEdit) extract($seriesEdit);
+    else show404('admin');
+# ADD 
+}else {
+    $name = $decribe = "";
+    $idBrand = $idStyle = $idType = $status = 1;
+}
+# VALIDATION
+if(isset($_POST['submit'])) {
+    if(isset($_GET['edit']) && $_GET['edit']) {
+        if(getOneFieldByCustom('products','id','id ='.$_GET['edit'])) $edit = true;
+        else show404('admin');
+    }
+    $name    = $_POST['name'];
     $status  = $_POST['status'];
     $decribe = $_POST['decribe'];
     $idType  = $_POST['idType'];
     $idBrand = $_POST['idBrand'];
     $idStyle = $_POST['idStyle'];
     if($name) {
+        if($edit === true) $conditionCheckSlug = ' id !='.$_GET['edit'];
+        else $conditionCheckSlug = '1';
         $slug = createSlug($name);
-        $check = checkSeries($slug);
-        if($check) {
+        $check = getOneFieldByCustom('products','slug','slug = "'.$slug.'" AND '.$conditionCheckSlug);
+        if(!$check) {
             if($decribe) {
-                addSeries($slug,$name,$decribe,$idBrand,$idType,$idStyle,$status);
-                addAlert('success','Thêm Series mới thành công !');
+                if($edit === true) {
+                    updateSeries($slug,$name,$decribe,$idBrand,$idType,$idStyle,$status,$_GET['edit']);
+                    addAlert('primary','Chỉnh sửa thành công !');
+                }
+                else {
+                    addSeries($slug,$name,$decribe,$idBrand,$idType,$idStyle,$status);
+                    addAlert('success','Thêm Series mới thành công !');
+                }
                 header('Location: '.ACT_ADMIN.'series');
                 exit;
             }else addAlert('danger','Vui lòng nhập mô tả.');

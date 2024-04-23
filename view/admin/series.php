@@ -26,7 +26,10 @@
                                     <tr>
                                         <th class="w-min">ID</th>
                                         <th class="min-w-20x">Tên Series</th>
-                                        <th class="min-w-10x">Trạng thái</th>
+                                        <th class="min-w-5x">Type</th>
+                                        <th class="min-w-5x">Brand</th>
+                                        <th class="min-w-5x">Style</th>
+                                        <th class="min-w-5x">Trạng thái</th>
                                         <th class="min-w-10x">Ngày cập nhật</th>
                                         <th class="w-min" data-orderable="false"></th>
                                     </tr>
@@ -38,9 +41,16 @@
                                 ?>
                                     <tr>
                                         <td><?=$id?></td>
-                                        <td class="text-nowrap">
-                                            <?= $name ?>
+                                        <td class="text-nowrap"> 
+                                            <?= $name ?> 
+                                            <div>
+                                                <span class="fw-bold"> Slug: </span> 
+                                                <a href="<?=URL?>/chi-tiet/<?=$slug?>" class="small text-muted"><?= $slug ?></a>
+                                            </div> 
                                         </td>
+                                        <td> <?= getOneFieldByCustom('product_type','name','id ='.$idType)['name'] ?> </td>
+                                        <td> <?= getOneFieldByCustom('product_brands','name','id ='.$idBrand)['name'] ?> </td>
+                                        <td> <?= getOneFieldByCustom('product_style','name','id ='.$idStyle)['name'] ?> </td>
                                         <td>
                                         <?php
                                         if($status==1) echo '<div class="badge badge-sa-success">Đang hiện</div>';
@@ -59,13 +69,13 @@
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-end"
                                                     aria-labelledby="customer-context-menu-0">
-                                                    <li><a class="dropdown-item text-warning" href="<?=ACT_ADMIN?>category-edit&id=<?=$id?>">Chỉnh sửa</a></li>
+                                                    <li><a class="dropdown-item text-warning" href="<?=ACT_ADMIN?>series-add&edit=<?=$id?>">Chỉnh sửa</a></li>
                                                     <li><hr class="dropdown-divider"/></li>
                                                     <?php
                                                     if($status == 1){ ?>
-                                                    <li><a class="dropdown-item text-danger" href="<?=ACT_ADMIN?>category&delete=2&id=<?=$id?>">Ẩn Series</a></li>
+                                                    <li><a class="dropdown-item text-danger" href="<?=ACT_ADMIN?>series&delete=2&id=<?=$id?>">Ẩn Series</a></li>
                                                     <?php }else{ ?>
-                                                    <li><a class="dropdown-item text-success" href="<?=ACT_ADMIN?>category&delete=1&id=<?=$id?>">Hiện Series</a></li>
+                                                    <li><a class="dropdown-item text-success" href="<?=ACT_ADMIN?>series&delete=1&id=<?=$id?>">Hiện Series</a></li>
                                                     <?php } ?>
                                                 </ul>
                                             </div>

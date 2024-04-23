@@ -36,6 +36,16 @@ if(empty($_SESSION['user']) || $_SESSION['user']['role'] != 1){
         $act=$_GET['act'];
             switch ($act) {
 
+                // [SERIES SHOW - HIDE]
+                case "series":
+                    $title="Quản lí series";
+                    require_once "case/series.php";
+                    break;
+                // [SERIES ADD - EDIT]
+                case "series-add":
+                    $title="Thêm danh mục";
+                    require_once "case/series-add.php";
+                    break;
                 // [SẢN PHẨM - SP]
                 case "product":
                     $title="Danh sách sản phẩm";
@@ -50,21 +60,6 @@ if(empty($_SESSION['user']) || $_SESSION['user']['role'] != 1){
                 case "product-edit":
                     $title="Sửa sản phẩm";
                     require_once "case/product-edit.php";
-                    break; 
-                // [SERIES SHOW]
-                case "series":
-                    $title="Quản lí series";
-                    require_once "case/series.php";
-                    break;
-                // [THÊM DM]
-                case "series-add":
-                    $title="Thêm danh mục";
-                    require_once "case/series-add.php";
-                    break;
-                // [SỬA SP]
-                case "series-edit":
-                    $title="Sửa danh mục";
-                    require_once "case/series-edit.php";
                     break; 
                 // [NHÀ XUẤT BẢN - NXB]
                 case "publishing":
