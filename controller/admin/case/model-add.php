@@ -8,4 +8,4 @@ if(isset($_REQUEST['add'])) {
     else $point_valid++;
     if($point_valid==1) addPublishing($name,$trangthai);
 }
-require_once "../../view/admin/publishing-add.php";
+require_once "../../view/admin/model-add.php";

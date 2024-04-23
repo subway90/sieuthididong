@@ -8,12 +8,11 @@
                                     <nav class="mb-2" aria-label="breadcrumb">
                                         <ol class="breadcrumb breadcrumb-sa-simple">
                                             <li class="breadcrumb-item"><a href="<?=URL_ADMIN?>">Quản lí</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Quản lí Nhà xuất bản</li>
+                                            <li class="breadcrumb-item active" aria-current="page">Quản lí Model</li>
                                         </ol>
                                     </nav>
-                                    <h1 class="h3 m-0">Quản lí nhà xuất bản</h1>
                                 </div>
-                                <div class="col-auto d-flex"><a href="<?=ACT_ADMIN?>publishing-add" class="btn btn-info btn-gradient">Thêm nhà xuất bản</a></div>
+                                <div class="col-auto d-flex"><a href="<?=ACT_ADMIN?>model-add" class="btn btn-info btn-gradient">Thêm Model</a></div>
                             </div>
                         </div>
                         <div class="card">
@@ -25,7 +24,7 @@
                                 <thead>
                                     <tr>
                                         <th class="w-min">ID</th>
-                                        <th class="min-w-20x">Tên nhà xuất bản</th>
+                                        <th class="min-w-20x">Tên Model</th>
                                         <th class="min-w-10x">Trạng thái</th>
                                         <th class="min-w-10x">Ngày thêm</th>
                                         <th class="w-min" data-orderable="false"></th>
@@ -33,17 +32,19 @@
                                 </thead>
                                 <tbody>
                                 <?php
-                                $list = getAll('publishing',0);
-                                for ($i=0; $i < count($list); $i++) {
-                                    extract($list[$i]);
+                                for ($i=0; $i < count($listModel); $i++) {
+                                    extract($listModel[$i]);
                                 ?>
                                     <tr>
                                         <td><?=$id?></td>
-                                        <td class="text-nowrap"><?=$name?></td>
+                                        <td class="text-nowrap">
+                                            <?=$model?>
+                                            <div class="text-muted small"><span class="fw-bold">Series:</span> <?= getOneFieldByCustom('products','name','id ='.$idProduct)['name'] ?> </div>
+                                        </td>
                                         <td>
                                         <?php
                                         if($status==1) echo '<div class="badge badge-sa-success">Đang hiện</div>';
-                                        else echo '<div class="badge badge-sa-info">Đang ẩn</div>';
+                                                  else echo '<div class="badge badge-sa-info">Đang ẩn</div>';
                                         ?>
                                         </td>
                                         <td>
@@ -58,13 +59,13 @@
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-end"
                                                     aria-labelledby="customer-context-menu-0">
-                                                    <li><a class="dropdown-item" href="<?=ACT_ADMIN?>publishing-edit&id=<?=$id?>">Chỉnh sửa</a></li>
+                                                    <li><a class="dropdown-item" href="<?=ACT_ADMIN?>model-add&edit=<?=$id?>">Chỉnh sửa</a></li>
                                                     <li><hr class="dropdown-divider"/></li>
                                                     <?php
                                                     if($status == 1){ ?>
-                                                    <li><a class="dropdown-item text-danger" href="<?=ACT_ADMIN?>publishing&delete=2&id=<?=$id?>">Ẩn NXB</a></li>
+                                                    <li><a class="dropdown-item text-danger" href="<?=ACT_ADMIN?>model&delete=2&id=<?=$id?>">Ẩn Model</a></li>
                                                     <?php }else{ ?>
-                                                    <li><a class="dropdown-item text-success" href="<?=ACT_ADMIN?>publishing&delete=1&id=<?=$id?>">Hiện NXB</a></li>
+                                                    <li><a class="dropdown-item text-success" href="<?=ACT_ADMIN?>model&delete=1&id=<?=$id?>">Hiện Model</a></li>
                                                     <?php } ?>
                                                 </ul>
                                             </div>

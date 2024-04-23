@@ -27,7 +27,7 @@ if(empty($_SESSION['user']) || $_SESSION['user']['role'] != 1){
     require_once "../../model/admin/series.php";
     require_once "../../model/pdo.php";
     require_once "../../model/admin/product.php";
-    require_once "../../model/admin/publishing.php";
+    require_once "../../model/admin/model.php";
     require_once "../../model/admin/author.php";
     require_once "../../model/admin/bill.php";
 
@@ -46,6 +46,17 @@ if(empty($_SESSION['user']) || $_SESSION['user']['role'] != 1){
                     $title="Thêm danh mục";
                     require_once "case/series-add.php";
                     break;
+                // [MODEL SHOW - HIDE]
+                case "model":
+                    $title="Quản lí NXB";
+                    require_once "case/model.php";
+                    break;
+                // [MODEL ADD - EDIT]
+                case "model-add":
+                    $title="Thêm NXB";
+                    require_once "case/model-add.php";
+                    break;
+
                 // [SẢN PHẨM - SP]
                 case "product":
                     $title="Danh sách sản phẩm";
@@ -61,16 +72,6 @@ if(empty($_SESSION['user']) || $_SESSION['user']['role'] != 1){
                     $title="Sửa sản phẩm";
                     require_once "case/product-edit.php";
                     break; 
-                // [NHÀ XUẤT BẢN - NXB]
-                case "publishing":
-                    $title="Quản lí NXB";
-                    require_once "case/publishing.php";
-                    break;
-                // [THÊM NXB]
-                case "publishing-add":
-                    $title="Thêm NXB";
-                    require_once "case/publishing-add.php";
-                    break;
                 // [SỬA NXB]
                 case "publishing-edit":
                     $title="Sửa NXB";

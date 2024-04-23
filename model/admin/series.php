@@ -9,15 +9,6 @@ function updateSeries($slug,$name,$decribe,$idBrand,$idType,$idStyle,$status,$id
     pdo_execute($sql);
 }
 
-function getAllCateByJoinIdCate($table,$idCate,$status){
-    if($status==1) $status = "status = 1";
-    if($status==2) $status = "status = 2";
-    if($status==0) $status = "1";
-    $sql = "SELECT *
-    FROM ".$table." WHERE idCate =".$idCate." AND ".$status;
-    $result = pdo_query($sql);
-    return $result;
-}
 function editCate($id,$name,$status){
     $sql = "UPDATE category SET name = '".$name."',status =".$status." WHERE id = ".$id;
     pdo_query($sql);
@@ -26,7 +17,3 @@ function editCate($id,$name,$status){
 
 }
 
-function checkSeries($slug) {
-    if(pdo_query_one("SELECT id FROM products WHERE slug = '".$slug."'")) return false;
-    else return true;
-}
