@@ -1,5 +1,6 @@
 <?php
-
+# [AUTO CLICK THANH TOÁN]
+if(isset($_GET['continue']) && $total) $activeModal = 'onload';
 # [MUA NGAY]
 if(isset($_GET['add'])){
     if(empty($_SESSION['user'])){ // nếu CHƯA ĐĂNG NHẬP (GUEST)

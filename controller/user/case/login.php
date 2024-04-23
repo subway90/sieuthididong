@@ -58,11 +58,12 @@ if(empty($_SESSION['user'])){
                         if(!empty($_SESSION['cart'])) {
                             for ($i=0; $i < count($_SESSION['cart']); $i++) { 
                                 extract($_SESSION['cart'][$i]);
-                                $check = checkCartByID($id);
-                                if(empty($check)) addCart($_SESSION['user']['id'],$id,$quantity);
-                                else updateQuantity($check,'quantity+1');
+                                $check = checkCartByID($idColor);
+                                if(empty($check)) addCart($_SESSION['user']['id'],$idProduct,$idModel,$idColor,$quantity);
                             }
                             unset($_SESSION['cart']);
+                            header('Location:'.URL.'gio-hang&continue');
+                            exit;
                         }
                     }
                     # Cookie users

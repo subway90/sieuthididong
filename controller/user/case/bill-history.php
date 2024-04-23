@@ -18,15 +18,27 @@ if(isset($arrayURL[1]) && !empty($arrayURL[1])){
         if($arrayDetail) {
             for ($i=0; $i < count($arrayDetail); $i++) $listDetailBill += getProduct('c.id = '.$arrayDetail[$i]['idColor']);
         }
-        # SHOW TRẠNG THÁI   
+        # SHOW TRẠNG THÁI HÓA ĐƠN
         $showNotifyStatusBill = notifyBill($status);
+        # SHOW TRẠNG THÁI THANH TOÁN
+        
+        if ($statusPay == 1) $showNotifyStatusPay = '<span class="text-danger">Chưa thanh toán</span>';
+        if ($statusPay == 2) $showNotifyStatusPay = '<span class="text-success">Đã thanh toán</span>';
+
+        # SHOW TRẠNG THÁI GIAO HÀNG
+        if ($statusDelivery == 1) $showNotifyStatusDelivery = '<span class="text-secondary">Chưa giao hàng</span>';
+        if ($statusDelivery == 2) $showNotifyStatusDelivery = '<span class="text-warning">Đang giao hàng</span>';
+        if ($statusDelivery == 3) $showNotifyStatusDelivery = '<span class="text-success">Đã giao hàng</span>';
+        # SHOW PHƯƠNG THỨC THANH TOÁN
+        if ($typePay == 1) $showTypePay = '<span class="text-success">Thanh toán tiền mặt (COD)</span>';
+        if ($typePay == 2) $showTypePay = '<span class="text-info">Thanh toán ebanking</span>';
         # RENDER VIEW
         require_once "../../view/user/bill-detail.php";
     }else require_once "../../view/user/404.php";
 }else{
     //DANH SÁCH BILL
     if(!empty($_SESSION['user'])) {
-        $listBill = getAllFieldByCustom('bill','*','token = "'.$arrayURL[1].'" AND idUser = '.$_SESSION['user']['id']);
+        $listBill = getAllFieldByCustom('bill','*','idUser = '.$_SESSION['user']['id']);
         require_once "../../view/user/bill-history.php";
     }else{
         $previewBill = true;

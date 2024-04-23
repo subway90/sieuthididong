@@ -1,55 +1,72 @@
 <?php
-include "../../view/user/header.php";
-
-$user = ""; $pass = "";$verifypass=""; $hovaten = ""; $email = ""; $sodienthoai = ""; $diachi = ""; $point_valid_register=0;$checkVeryfyPass = false;$susscess = false;
-$arr_error[] = array();
+$subURL = '';
+if(isset($_GET['addCart'])) $subURL = 'addCart';
+$user = $pass = $verifypass = $fullName =  $email =  $phone =  $address = "";$checkVeryfyPass = false;
 if($_SERVER['REQUEST_METHOD'] == "POST"){
     $user = $_POST['user'];
-        if(!empty($user)){
-            $check = checkUserExist($user);
-            if($check == true) $point_valid_register++;
-            else $arr_error[] = 'Tài khoản này đã tồn tại.';
-        }else $arr_error[] = 'Chưa nhập tài khoản đăng nhập.';
-
     $pass = $_POST['pass'];
-        if(!empty($pass)){
-            $checkPass = checkPass($pass);
-            if($checkPass==true) $point_valid_register++;
-            else $arr_error[] = $checkPass; 
-        }else $arr_error[] = 'Chưa nhập mật khẩu.';
-
-    $hovaten = $_POST['hovaten'];
-        if(!empty($hovaten)) $point_valid_register++;
-        else $arr_error[] = 'Chưa nhập họ và tên.';
-
+    $fullName = $_POST['fullName'];
     $email = $_POST['email'];
-        if(!empty($email)){
-            $check = checkEmail($email);
-            if($check == true)  $point_valid_register++;
-            else $arr_error[] = 'Email không hợp lệ.';
-        }else $arr_error[] = 'Chưa nhập email.';
-
-    $sodienthoai = $_POST['sodienthoai'];
-        if(!empty($sodienthoai)){
-            $check = checkPhone($sodienthoai);
-            if($check == true) $point_valid_register++;
-            else  $arr_error[] = 'SĐT không hợp lệ.';
-        }else $arr_error[] = 'Chưa nhập số điện thoại.';
-
-    $diachi = $_POST['diachi'];
-        if(!empty($diachi)) $point_valid_register++;
-        else $arr_error[] = 'Chưa nhập địa chỉ.';
-
+    $phone = $_POST['phone'];
+    $address = $_POST['address'];
     $verifypass = $_POST['verifypass'];
-        if($checkVeryfyPass == true){
-            if(!empty($verifypass)){
-                if($verifypass === $pass)$point_valid_register++;
-                else $arr_error[] = 'Mật khẩu xác thực không đúng.';
-            }else $arr_error[] = 'Chưa nhập xác thực mật khẩu.';
-        }else $verifypass = "";
-    if($point_valid_register==7){
-        addAccount(1,$user,md5($pass),$hovaten,$email,$sodienthoai,$diachi,'user_default.jpg');
+    if(!empty($user)){
+        if(strlen($user) >= 4){
+            $check = checkUserExist($user);
+            if($check === true) {
+                if(!empty($pass)) {
+                    $checkPass = checkPass($pass);
+                    if($checkPass === true) {
+                        if(!empty($fullName)) {
+                            if(!empty($email)){
+                                $check = checkEmail($email);
+                                if($check === true) {
+                                    if(!empty($phone)){
+                                        $check = checkPhone($phone);
+                                        if($check === true) {
+                                            if(!empty($address)) {
+                                                if(!empty($verifypass)){
+                                                    if($verifypass === $pass) {
+                                                        # thêm tài khoản
+                                                        addAccount(1,$user,md5($pass),$fullName,$email,$phone,$address,'user_default.jpg');
+                                                        # tự động đăng nhập
+                                                        autoLogin($user,md5($pass));
+                                                        # lưu cookie
+                                                        setcookie('username',str_replace(['"',"'"],'',$_SESSION['user']['user']),time()+86400*365);
+                                                        setcookie('password',md5($_SESSION['user']['pass']),time()+86400*365);
+                                                        # chuyển giỏ hàng từ session
+                                                        if(isset($_GET['addCart'])) {
+                                                            for ($i=0; $i < count($_SESSION['cart']); $i++) { 
+                                                                extract($_SESSION['cart'][$i]);
+                                                                addCart($_SESSION['user']['id'],$idProduct,$idModel,$idColor,$quantity);
+                                                            }
+                                                            unset($_SESSION['cart']);
+                                                            header('Location:'.URL.'gio-hang&continue');
+                                                            exit;
+                                                        # quay về trang chủ
+                                                        }else {
+                                                            addAlert('success','Đăng kí tài khoản thành công !');
+                                                            header('Location: '.URL);
+                                                            exit;
+                                                        }
+                                                    }
+                                                    else addAlert('danger','Mật khẩu xác thực không đúng.');
+                                                }else addAlert('danger','Chưa nhập xác thực mật khẩu.');
+                                            }else addAlert('danger','Chưa nhập địa chỉ.');
+                                        }else  addAlert('danger','Số điện thoại không hợp lệ.');
+                                    }else addAlert('danger','Chưa nhập số điện thoại.');
+                                }else addAlert('danger','Email không hợp lệ.');
+                            }else addAlert('danger','Chưa nhập email.');
+                        }else addAlert('danger','Chưa nhập họ và tên.');
+                    }else addAlert('danger',$checkPass); 
+                }else addAlert('danger','Chưa nhập mật khẩu.');
+            }else addAlert('danger','Tài khoản này đã tồn tại.');
+        }else addAlert('danger','Tài khoản phải từ 4 kí tự trở lên.');
+    }else addAlert('danger','Tài khoản này đã tồn tại.');
+    if($point_valid==7){
+        addAccount(1,$user,md5($pass),$fullName,$email,$phone,$address,'user_default.jpg');
         $susscess = true;
     }
 }
-include "../../view/user/register.php";
+require_once "../../view/user/header.php";
+require_once "../../view/user/register.php";

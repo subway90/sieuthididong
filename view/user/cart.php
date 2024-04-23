@@ -112,6 +112,16 @@
         </div>
         <div class="modal-body">
             <div class="row">
+                <?php if(!$_SESSION['user']) {?>
+                <div class="col-12">
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        Bạn chưa đăng nhập ! Hãy đăng nhập để <strong>lưu lịch sử mua hàng</strong> và <strong>tích điểm</strong> 
+                        <a class="text-decoration-none text-success fw-bold" href="<?=URL?>dang-nhap&addCart">&rarr; Đăng nhập</a> hoặc  
+                        <a class="text-decoration-none text-success fw-bold" href="<?=URL?>dang-ky&addCart">&rarr; Đăng ký</a>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+                <?php }?>
                 <div class="col-12 col-md-12 col-lg-7">
                     <div class="fs-6 fw-bold mb-2 text-center text-lg-start">Hóa đơn</div>
                     <table class="table table table-success responsive table-hover align-middle text-end">

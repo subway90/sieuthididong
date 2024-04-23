@@ -57,8 +57,9 @@ function pathImage($nameFile){
  * @param string $input Mật khẩu cần kiểm tra
  */
 function checkPass($input) {
+    $arr_verify = ['!','@','#','$','%','^','&','*','(',')','-','+','=','.',0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
     $arr_input = mb_str_split(strtolower($input)); //tạo chuỗi thành mảng và đổi chữ in hoa -> thường
-    if(count(array_diff($arr_input,['!','@','#','$','%','^','&','*','(',')','-','+','=','.',0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'])) == 0){
+    if(count(array_diff($arr_input,$arr_verify)) == 0){
         if(strlen($input) >= 8){ //hàm strlen: đếm kí tự trong chuỗi
             $word_0 = substr($input,0,1); //hàm substr: cắt chuỗi tại vị trí 0 và độ dài là 1 (cắt 1 kí tự)
             if($word_0 === strtoupper($word_0)){

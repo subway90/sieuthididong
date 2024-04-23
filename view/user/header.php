@@ -21,7 +21,6 @@
   </head>
 <?= showAlert() ?>
 <?php show_alert_2() ?>
-
 <body class="bg-secondary bg-opacity-10">
   <nav class="sticky-top navbar navbar-expand-lg navbar-light bg-success" data-bs-theme="dark">
     <div class="container p-0">
