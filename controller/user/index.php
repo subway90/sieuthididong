@@ -63,7 +63,6 @@ if(isset($_GET['act'])){
                 require_once 'case/home.php';
                 break;
             case "chi-tiet":
-                $title='Chi tiết sản phẩm';
                 require_once 'case/detail.php';
                 break;
             case "dang-nhap":

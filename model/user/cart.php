@@ -3,14 +3,14 @@ function addCart($idUser,$idProduct,$idModel,$idColor,$quantity){
     $sql = "INSERT INTO cart(idUser,idProduct,idModel,idColor,quantity,dateCreate,status) values('$idUser','$idProduct','$idModel','$idColor','$quantity',current_timestamp(),1)";
     pdo_execute($sql);
 }
-function checkCart($input){
+function checkCart($idColor){
     for($i = 0 ; $i < sizeof($_SESSION['cart']) ; $i++){
-        if($_SESSION['cart'][$i]['id'] == $input) return $i; //nếu ID input trùng ID đã có trong CART -> trả về vị trí của SP trùng đó trong CART
+        if($_SESSION['cart'][$i]['idColor'] == $idColor) return $i; //nếu ID input trùng ID đã có trong CART -> trả về vị trí của SP trùng đó trong CART
     }return -1;
 }
-function checkCartByID($input){
-    $input = str_replace([' ','"',"'","-","."],"",$input);
-    $sql = "SELECT id FROM cart WHERE idProduct = ".$input." AND idUser = ".$_SESSION['user']['id'];
+function checkCartByID($idColor){
+    $idColor = str_replace([' ','"',"'","-","."],"",$idColor);
+    $sql = "SELECT id FROM cart WHERE idColor = ".$idColor." AND idUser = ".$_SESSION['user']['id'];
     $result = pdo_query_one($sql);
     return $result['id'];
 }
@@ -32,7 +32,8 @@ function showCart($type) {
     $countProInCart = 0;
     $totalCart = 0;
     $listCart = [];
-    if(!empty($_SESSION['user'])) { //Trường hợp ĐÃ ĐĂNG NHẬP
+    # Trường hợp ĐÃ ĐĂNG NHẬP
+    if(!empty($_SESSION['user'])) { 
         $listIdProInCart = getAllFieldByCustom('cart','id idCart, idProduct, idModel, idColor, quantity quantityCart','idUser = '.$_SESSION['user']['id']);
         if(!empty($listIdProInCart)) {
             for ($i=0; $i < count($listIdProInCart); $i++) { 
@@ -50,7 +51,8 @@ function showCart($type) {
             }
         }
     }
-    else { //Trường hợp CHƯA ĐĂNG NHẬP
+    #Trường hợp CHƯA ĐĂNG NHẬP
+    else { 
         if(!empty($_SESSION['cart'])) {
             for ($i=0; $i < count($_SESSION['cart']); $i++) { 
                 $getProduct = getProduct('c.id ='.$_SESSION['cart'][$i]['idColor'])[0];
@@ -61,7 +63,7 @@ function showCart($type) {
                     #TỔNG TIỀN
                     $totalCart+=$_SESSION['cart'][$i]['quantity']*$priceSale;
                     # DATA
-                    $listCart[] = ['idCart' => $i,'quantity'=>$_SESSION['cart'][$i]['quantity'],'idProduct'=>$idProduct,'idModel'=>$idModel,'idColor'=>$idColor,'name'=>$name,'image'=>$image,'price'=>$price,'priceSale'=>$priceSale,'quantityMax'=>$quantity];
+                    $listCart[] = ['idCart' => $i,'quantity'=>$_SESSION['cart'][$i]['quantity'],'idProduct'=>$idProduct,'idModel'=>$_SESSION['cart'][$i]['idModel'],'idColor'=>$_SESSION['cart'][$i]['idColor'],'name'=>$name,'image'=>$image,'price'=>$price,'priceSale'=>$priceSale,'quantityMax'=>$quantity];
                 }
             }
         }

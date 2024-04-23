@@ -1,7 +1,7 @@
 <div class="container mt-3 bg-light rounded pt-3 pb-1">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item fw-bold"><a href="/index.html" class="text-decoration-none text-dark">Trang chủ</a></li>
+          <li class="breadcrumb-item fw-bold"><a href="<?=URL?>" class="text-decoration-none text-dark">Trang chủ</a></li>
           <li class="breadcrumb-item active text-success fw-bolder" aria-current="page">Giỏ hàng</li>
         </ol>
       </nav>
