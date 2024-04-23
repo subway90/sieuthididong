@@ -13,7 +13,7 @@
                                     </nav>
                                     <h1 class="h3 m-0">Quản lí Series</h1>
                                 </div>
-                                <div class="col-auto d-flex"><a href="<?=ACT_ADMIN?>category-add" class="btn btn-info btn-gradient">Thêm Series</a></div>
+                                <div class="col-auto d-flex"><a href="<?=ACT_ADMIN?>series-add" class="btn btn-info btn-gradient">Thêm Series</a></div>
                             </div>
                         </div>
                         <div class="card">

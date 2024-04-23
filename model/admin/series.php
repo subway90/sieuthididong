@@ -1,9 +1,7 @@
 <?php
-function addCategory($ten_danhmuc,$trangthai){
-    $sql = "INSERT INTO category(name,status,dateCreate) values('$ten_danhmuc',$trangthai,current_timestamp())";
+function addSeries($slug,$name,$decribe,$idBrand,$idType,$idStyle,$status){
+    $sql = "INSERT INTO products(slug,name,decribe,status,idBrand,idType,idStyle) values('$slug','$name','$decribe','$status','$idBrand','$idType','$idStyle')";
     pdo_execute($sql);
-    addAlert('success','<i class="fas fa-check-circle"></i> Tạo danh mục thành công !');
-    header("Location:".ACT_ADMIN."category");
 }
 function getAllCateByJoinIdCate($table,$idCate,$status){
     if($status==1) $status = "status = 1";
@@ -20,4 +18,9 @@ function editCate($id,$name,$status){
     addAlert('success','<i class="fas fa-check-circle"></i> TSửa danh mục thành công !');
     header("Location:".ACT_ADMIN."category-edit&id=".$id);
 
+}
+
+function checkSeries($slug) {
+    if(pdo_query_one("SELECT id FROM products WHERE slug = '".$slug."'")) return false;
+    else return true;
 }

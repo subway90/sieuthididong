@@ -337,7 +337,7 @@ function addAlert($type,$message) {
 /**
  * Hàm dùng để SHOW Alert 3
  */
-function showAlert(){
+function showAlert($style){
     if(!empty($_SESSION['alert_3'])) {
     echo '
     <style>
@@ -354,7 +354,7 @@ function showAlert(){
         }
       }      
     </style>
-    <div style="z-index: 3" class="position-fixed end-0 me-1 mt-5 pt-5">
+    <div style="z-index: 3;'.$style.'" class="position-fixed end-0 me-1 mt-5 pt-5">
         <div class="w-100 alert alert-'.$_SESSION['alert_3'][0].' border-0 alert-dismissible fade show m-0 rounded-0" role="alert">
             <span class="">'.$_SESSION['alert_3'][1].'</span>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -370,6 +370,7 @@ function showAlert(){
     }
     $_SESSION['alert_3'] = [];
 }
+
 
 /**
  * Trả về chuỗi có kí tự in hoa

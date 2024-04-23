@@ -185,4 +185,4 @@
             </div>
 
 <!-- function show alert -->
-<?=showAlert()?>
+<?=showAlert('top: 30px')?>

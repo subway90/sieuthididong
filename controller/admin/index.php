@@ -12,6 +12,10 @@ show_alert();
 # [SESSION]
 if(!isset($_SESSION['alert'])) $_SESSION['alert'] = [];
 
+# [VARIABLE]
+$arr_error = [];
+$point_valid = 0;
+
 # [Authorization]
 if(empty($_SESSION['user']) || $_SESSION['user']['role'] != 1){
     require_once "../../view/header.php";
@@ -20,9 +24,9 @@ if(empty($_SESSION['user']) || $_SESSION['user']['role'] != 1){
     exit;
 }else{
     # [FILE MODEL]
+    require_once "../../model/admin/series.php";
     require_once "../../model/pdo.php";
     require_once "../../model/admin/product.php";
-    require_once "../../model/admin/category.php";
     require_once "../../model/admin/publishing.php";
     require_once "../../model/admin/author.php";
     require_once "../../model/admin/bill.php";
@@ -53,14 +57,14 @@ if(empty($_SESSION['user']) || $_SESSION['user']['role'] != 1){
                     require_once "case/series.php";
                     break;
                 // [THÊM DM]
-                case "category-add":
+                case "series-add":
                     $title="Thêm danh mục";
-                    require_once "case/category-add.php";
+                    require_once "case/series-add.php";
                     break;
                 // [SỬA SP]
-                case "category-edit":
+                case "series-edit":
                     $title="Sửa danh mục";
-                    require_once "case/category-edit.php";
+                    require_once "case/series-edit.php";
                     break; 
                 // [NHÀ XUẤT BẢN - NXB]
                 case "publishing":
