@@ -17,14 +17,14 @@ function getProductAdmin($filter){
     return $list;
 }
 
-function addProduct($idModel,$color,$image,$quantity,$price,$priceSale,$status){
-    $sql = "INSERT INTO product_color(idModel,color,image,quantity,price,priceSale,status) values('$idModel','$color','$image','$quantity','$price','$priceSale','$status')";
+function addProduct($idModel,$color,$image,$quantity,$price,$priceSale,$decribe,$status){
+    $sql = "INSERT INTO product_color(idModel,color,image,quantity,price,priceSale,decribe,status) values('$idModel','$color','$image','$quantity','$price','$priceSale','$decribe','$status')";
     pdo_execute($sql);
 };
 
-function editProduct($name,$slug,$datePublish,$price,$priceSale,$quantity,$decribe,$image,$idCategory,$idPublishing,$idAuthor,$id){
-    $sql = "UPDATE products
-    SET name = '".$name."',slug = '".$slug."',datePublish = '".$datePublish."',price = ".$price.",priceSale = ".$priceSale.",quantity = ".$quantity.",decribe = '".$decribe."',image = '".$image."',idCategory = ".$idCategory.",idPublishing = ".$idPublishing.",idAuthor = ".$idAuthor.", dateCreate = current_timestamp() WHERE id=".$id;
+function updateProduct($id,$idModel,$color,$image,$quantity,$price,$priceSale,$decribe,$status){
+    $sql = "UPDATE product_color
+    SET idModel = ".$idModel.",color = '".$color."',image = '".$image."',quantity = ".$quantity.",price = ".$price.",priceSale = ".$priceSale.",decribe = '".$decribe."',status = ".$status.", dateCreate = current_timestamp() WHERE id=".$id;
     pdo_execute($sql);
 }
 function checkSlug($slug,$id){

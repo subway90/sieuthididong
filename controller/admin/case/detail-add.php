@@ -1,8 +1,23 @@
 <?php
 $target_dir = "../../uploads/product/";
-$hinhcu = $color = $decribe = "";
-$inputIdModel = $inputIdSeries  = $price = $priceSale = $quantity = 0;
 $image = $errorImage = $errorModel = false;
+
+if(isset($_GET['edit']) && $_GET['edit']) {
+    $subURL = '&edit='.$_GET['edit'];
+    $detailEdit = getProductAdmin('c.id ='.$_GET['edit'])[0];
+    if($detailEdit) $edit = true;
+    else show404('admin');
+    extract($detailEdit);
+    $inputIdModel = $idModel;
+    $inputIdSeries = $idProduct;
+    $hinhcu = $image;
+    $title = 'Sửa sản phẩm '.$name.' - '.$model.' - '.$color;
+}else {
+    $hinhcu = $color = $decribe = "";
+    $inputIdModel = $inputIdSeries  = $price = $priceSale = $quantity = 0;
+    $title = 'Thêm sản phẩm mới';
+}
+
 # SUBMIT
 if(isset($_POST['submit'])) {
     # có POST ảnh cũ
@@ -50,10 +65,15 @@ if(isset($_POST['submit'])) {
                                     if($image) {
                                         if(!$errorImage) {
                                             if(!$errorModel){
-                                                        addProduct($inputIdModel,$color,$hinhcu,$quantity,$price,$priceSale,$status);
-                                                        addAlert('success',ICON_CHECK.'Thêm mới thành công');
-                                                        header('Location:'.ACT_ADMIN.'detail');
-                                                        exit;
+                                                if($edit) {
+                                                    updateProduct($_GET['edit'],$inputIdModel,$color,$hinhcu,$quantity,$price,$priceSale,$decribe,$status);
+                                                    addAlert('primary',ICON_CHECK.'Chỉnh sửa thành công !');
+                                                }else{
+                                                    addProduct($inputIdModel,$color,$hinhcu,$quantity,$price,$priceSale,$decribe,$status);
+                                                    addAlert('success',ICON_CHECK.'Thêm mới thành công !');
+                                                }
+                                                header('Location:'.ACT_ADMIN.'detail');
+                                                exit;
                                             }else addAlert('danger',ICON_CLOSE.'Chưa chọn series và phiên bản.');
                                         }else addAlert('danger',ICON_CLOSE.$checkImage);
                                     }else addAlert('danger',ICON_CLOSE.'Chưa có <strong>ảnh sản phẩm</strong>.');

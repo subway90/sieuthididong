@@ -4,12 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="format-detection" content="telephone=no" />
-    <title>MS | <?php if(isset($title) && !empty($title)) echo($title); else echo'404 NOT FOUND'?></title>
+    <title>MS | <?php if(isset($title) && $title) echo $title; else echo 'NO TITLE' ?> </title>
     <!-- icon -->
-    <link rel="icon" type="image/png" href="<?=URL?>/uploads/system/logo-muasach-1000x1000.png" />
+    <link rel="icon" type="image/png" href="<?=URL?>/uploads/logo.png" />
     <!-- fonts -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i" />
     <!-- css -->
     <link rel="stylesheet" href="<?=URL?>/publics/admin/vendor/bootstrap/css/bootstrap.ltr.css" />
     <link rel="stylesheet" href="<?=URL?>/publics/admin/vendor/highlight.js/styles/github.css" />

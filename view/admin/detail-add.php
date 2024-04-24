@@ -43,7 +43,7 @@
                                             <div class="col-12 form-floating mb-2 pb-3 px-3">
                                                 <select name="status" class="form-select rounded rounded-5" id="status" aria-label="ttg">
                                                     <option <?=matchSelected($status,1)?> value="1">Hiện</option>
-                                                    <option <?=matchSelected($status,2)?> value="1">Ẩn</option>
+                                                    <option <?=matchSelected($status,2)?> value="2">Ẩn</option>
                                                 </select>
                                                 <label for="status">Trạng thái</label>
                                             </div>

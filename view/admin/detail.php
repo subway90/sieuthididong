@@ -78,7 +78,7 @@
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end"
                                         aria-labelledby="customer-context-menu-0">
-                                        <li><a class="dropdown-item" href="<?=ACT_ADMIN?>detail-edit&id=<?=$id?>">Chỉnh sửa</a></li>
+                                        <li><a class="dropdown-item" href="<?=ACT_ADMIN?>detail-add&edit=<?=$id?>">Chỉnh sửa</a></li>
                                         <li><hr class="dropdown-divider"/></li>
                                         <?php
                                         if($status == 1){ ?>
