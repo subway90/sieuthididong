@@ -8,12 +8,11 @@
                                     <nav class="mb-2" aria-label="breadcrumb">
                                         <ol class="breadcrumb breadcrumb-sa-simple">
                                             <li class="breadcrumb-item"><a href="<?=URL_ADMIN?>">Quản lí</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Quản lí tác giả</li>
+                                            <li class="breadcrumb-item active" aria-current="page">Quản lí Style</li>
                                         </ol>
                                     </nav>
-                                    <h1 class="h3 m-0">Quản lí tác giả</h1>
                                 </div>
-                                <div class="col-auto d-flex"><a href="<?=ACT_ADMIN?>author-add" class="btn btn-info btn-gradient">Thêm tác giả</a></div>
+                                <div class="col-auto d-flex"><a href="<?=ACT_ADMIN?>style-add" class="btn btn-info btn-gradient">Thêm Style</a></div>
                             </div>
                         </div>
                         <div class="card">
@@ -25,7 +24,7 @@
                                 <thead>
                                     <tr>
                                         <th class="w-min">ID</th>
-                                        <th class="min-w-20x">Tên tác giả</th>
+                                        <th class="min-w-20x">Tên Style</th>
                                         <th class="min-w-10x">Trạng thái</th>
                                         <th class="min-w-10x">Ngày thêm</th>
                                         <th class="w-min" data-orderable="false"></th>
@@ -33,21 +32,20 @@
                                 </thead>
                                 <tbody>
                                 <?php
-                                $list = getAll('author',0);
-                                for ($i=0; $i < count($list); $i++) {
-                                    extract($list[$i]);
+                                for ($i=0; $i < count($listStyle); $i++) {
+                                    extract($listStyle[$i]);
                                 ?>
                                     <tr>
-                                        <td><?=$id?></td>
-                                        <td class="text-nowrap"><?=$name?></td>
+                                        <td> <?= $id ?> </td>
+                                        <td class="text-nowrap"> <?= $name ?> </td>
                                         <td>
                                         <?php
                                         if($status==1) echo '<div class="badge badge-sa-success">Đang hiện</div>';
-                                        else echo '<div class="badge badge-sa-info">Đang ẩn</div>';
+                                                  else echo '<div class="badge badge-sa-info">Đang ẩn</div>';
                                         ?>
                                         </td>
                                         <td>
-                                            <div class="badge badge-sa-primary"><?=$dateCreate?></div>
+                                            <div class="badge badge-sa-primary"> <?= $dateCreate ?> </div>
                                         </td>
                                         <td>
                                             <div class="dropdown">
@@ -58,13 +56,13 @@
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-end"
                                                     aria-labelledby="customer-context-menu-0">
-                                                    <li><a class="dropdown-item" href="<?=ACT_ADMIN?>author-edit&id=<?=$id?>">Chỉnh sửa</a></li>
+                                                    <li><a class="dropdown-item" href="<?=ACT_ADMIN?>style-add&edit=<?=$id?>">Chỉnh sửa</a></li>
                                                     <li><hr class="dropdown-divider"/></li>
                                                     <?php
                                                     if($status == 1){ ?>
-                                                    <li><a class="dropdown-item text-danger" href="<?=ACT_ADMIN?>author&delete=2&id=<?=$id?>">Ẩn tác giả</a></li>
+                                                    <li><a class="dropdown-item text-danger" href="<?=ACT_ADMIN?>style&delete=2&id=<?=$id?>">Ẩn Style</a></li>
                                                     <?php }else{ ?>
-                                                    <li><a class="dropdown-item text-success" href="<?=ACT_ADMIN?>author&delete=1&id=<?=$id?>">Hiện tác giả</a></li>
+                                                    <li><a class="dropdown-item text-success" href="<?=ACT_ADMIN?>style&delete=1&id=<?=$id?>">Hiện Style</a></li>
                                                     <?php } ?>
                                                 </ul>
                                             </div>

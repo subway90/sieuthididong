@@ -27,7 +27,7 @@ else{
     require_once "../../model/admin/series.php";
     require_once "../../model/admin/detail.php";
     require_once "../../model/admin/model.php";
-    require_once "../../model/admin/author.php";
+    require_once "../../model/admin/style.php";
     require_once "../../model/admin/bill.php";
 
     //controller
@@ -59,7 +59,16 @@ else{
                 case "detail-add":
                     require_once "case/detail-add.php";
                     break;
-                // [HÓA ĐƠN]
+                // [style SHOW - HIDE]
+                case "style":
+                    require_once "case/style.php";
+                    break;
+                // [style ADD - EDIT]
+                case "style-add":
+                    require_once "case/style-add.php";
+                    break;
+
+                // [INVOICE]
                 case "bill":
                     require_once "case/bill.php";
                     break;
