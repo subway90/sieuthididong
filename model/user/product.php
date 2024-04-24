@@ -10,7 +10,7 @@ function getProduct($filter){
         ON m.idProduct = p.id
         ) pm
     ON pm.idModel = c.idModel
-    WHERE ";
+    WHERE c.status = 1 AND ";
     if($filter) $sql .= $filter;
     else $sql .=" 1 ORDER BY c.priceSale ASC";
     $list = pdo_query($sql);

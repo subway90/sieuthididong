@@ -7,18 +7,21 @@ $listImage = [];
 $arrayColor = [];
 
 if(isset($arrayURL[1]) && !empty($arrayURL[1])) {
-    $oneProduct = getOneFieldByCustom('products','id,idBrand, name','slug = "'.moveCharSpecial($arrayURL[1]).'" AND status =1');
+    # INFO SERIES
+    $oneProduct = getOneFieldByCustom('products','id,idBrand, name','slug = "'.moveCharSpecial($arrayURL[1]).'" AND status = 1');
     if(!empty($oneProduct)){
-        # INFO PRODUCT
         extract($oneProduct);
         # NAME BRAND
         $selectBrand = getOneFieldByCustom('product_brands','name,id','id ='.$idBrand);
         # MODEL PRODUCT
         $listModel = getAllFieldByCustom('product_model','model, id idModel','idProduct='.$id.' AND status = 1');
+        if(!$listModel) show404('user');
         # COLOR PRODUCT
         for ($i=0; $i < count($listModel); $i++) { 
-            $listColor[$i] = getAllFieldByCustom('product_color','id idColor,color,image,quantity,price,priceSale','idModel='.$listModel[$i]['idModel'].' AND status = 1');
+            $selectColor = getAllFieldByCustom('product_color','id idColor,color,image,quantity,price,priceSale','idModel='.$listModel[$i]['idModel'].' AND status = 1');
+            if($selectColor) $listColor[] = $selectColor;
         }
+        if(!$listColor) show404('user');
         # IMAGE LIST
         for ($i=0; $i < count($listColor); $i++) {
             for ($j = 0; $j < count($listColor[$i]); $j++) { 

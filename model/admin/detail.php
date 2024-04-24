@@ -1,5 +1,5 @@
 <?php
-function getProduct($filter){
+function getProductAdmin($filter){
     $sql = "
     SELECT pm.idProduct, pm.idModel, pm.idBrand, pm.idType, pm.idStyle, pm.slug, pm.name, pm.idModel, pm.model, c.*
     FROM product_color c

@@ -12,6 +12,6 @@ if(isset($_GET['delete']) && !empty($_GET['delete']) && isset($_GET['id']) && !e
 if(isset($_REQUEST['success'])) addAlert('success','<i class="fas fa-check-circle"></i> Đăng sản phẩm thành công !');
 
 # RENDER VIEW
-$listProduct = getProduct('');
+$listProduct = getProductAdmin('');
 require_once "../../view/admin/header.php";
 require_once "../../view/admin/detail.php";

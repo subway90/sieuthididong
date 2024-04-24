@@ -397,6 +397,9 @@ function show404($type) {
         exit;
     }
     if($type == 'user') {
-        header('Location: '.URL.'404');
+        require_once "../../view/user/header.php";
+        require_once "../../view/user/404.php";
+        require_once "../../view/user/footer.php";
+        exit;
     }
 }

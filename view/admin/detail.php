@@ -47,7 +47,7 @@
                                             <img src="<?=URL_IMGER_PRODUCT.$image?>" class="" alt="<?=$image?>" />
                                         </div>
                                     </a>
-                                    <div><a href="<?=URL?>/chi-tiet/<?=$slug?>" class="text-reset"><?=$name?></a>
+                                    <div><a href="<?=URL?>chi-tiet/<?=$slug?>" class="text-reset"><?=$name?></a>
                                         <div class="text-muted mt-n1"><?= $color ?></div>
                                     </div>
                                 </div>

@@ -4,6 +4,7 @@ $listBrand = getAllFieldByCustom('product_brands','id,name','status = 1');
 $listStyle = getAllFieldByCustom('product_style','id,name','status = 1');
 # BIẾN
 $checkedBrand = $checkedStyle = $checkedColor = $checkedPrice = $checkedSorts = -1;
+$filter = "";
 # THÊM SP VÀO GIỎ HÀNG
 if(isset($_GET['add'])){
   if(empty($_SESSION['user'])){ // nếu CHƯA ĐĂNG NHẬP (GUEST)
@@ -12,7 +13,7 @@ if(isset($_GET['add'])){
       else  $_SESSION['cart'][$check]['quantity']++; // nếu trùng ID-> thêm số lượng (+1) vào ID đã trùng
   }else{ // nếu ĐÃ ĐĂNG NHẬP (USER)
       $check = checkCartByID($_GET['id']);
-      if(empty($check)) addCart($_SESSION['user']['id'],$_GET['id'],$_GET['quantity']);
+      if(empty($check)) addCart($_SESSION['user']['id'],$_GET['idProduct'],$_GET['idModel'],$_GET['idColor'],$_GET['quantity']);
       else updateQuantity($check,'quantity+1');
   }
   addAlert('success','<i class="fas fa-check-circle"></i> Thêm sản phẩm thành công !');
@@ -21,7 +22,6 @@ if(isset($_GET['add'])){
 
 # LỌC TÌM KIẾM
 if(isset($arrayURL[1]) && $arrayURL[1] == 'loc'){
-    $filter = "";
     # Thương hiệu
     if(isset($_GET['Brand']) && $_GET['Brand']){
       for ($i=0; $i < count($listBrand); $i++) { 
