@@ -1,5 +1,4 @@
 <?php
-require_once '../../view/admin/header.php';
 $list = getAll('bill',0);
 # [THAY ĐỔI TRẠNG THÁI ĐƠN HÀNG]
 if(isset($_GET['edit']) && !empty($_GET['edit']) && isset($_GET['token']) && !empty($_GET['token'])){
@@ -25,4 +24,7 @@ if(isset($_GET['edit']) && !empty($_GET['edit']) && isset($_GET['token']) && !em
     addAlert('success','<i class="fas fa-check-circle"></i> Thay đổi trạng thái thành công !');
     header('Location:'.ACT_ADMIN.'bill');
 }
+# RENDER VIEW
+$title = 'Hóa đơn';
+require_once '../../view/admin/header.php';
 require_once '../../view/admin/bill.php';

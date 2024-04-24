@@ -11,7 +11,6 @@
                                 <li class="breadcrumb-item active" aria-current="page">Quản lí hóa đơn</li>
                             </ol>
                         </nav>
-                        <h1 class="h3 m-0">Quản lí hóa đơn</h1>
                     </div>
                     <div class="col-auto d-flex"><a href="#" class="btn btn-info btn-gradient">In hóa đơn</a></div>
                 </div>

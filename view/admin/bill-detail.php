@@ -11,8 +11,7 @@
                                             <li class="breadcrumb-item active" aria-current="page">Hóa đơn chi tiết</li>
                                         </ol>
                                     </nav>
-                                    <h1 class="h3 m-0">Chi tiết hóa đơn</h1>
-                                    <span class="badge badge-sa-info me-2">Token: <?=$token?></span>
+                                    
                                 </div>
                                 <div class="col-auto d-flex">
                                 <a href="<?=ACT_ADMIN?>bill" class="btn btn-secondary">Quay về</a>
@@ -22,27 +21,22 @@
                         <div class="sa-page-meta mb-5">
                             <div class="sa-page-meta__body">
                                 <div class="sa-page-meta__list">
-                                    <div class="sa-page-meta__item">Tổng : <?=number_format($total)?> vnđ</div>
-                                    <div class="sa-page-meta__item">Time : <?=$dateCreate?></div>
+                                    <div class="sa-page-meta__item">Tổng : <?= number_format($total) ?> vnđ</div>
+                                    <div class="sa-page-meta__item">Time : <?= formatTime($dateCreate,'hh:mm:ss DD/MM/YYYY') ?></div>
                                     <div class="sa-page-meta__item d-flex align-items-center fs-6">
-                                        <?php
-                                        if($status==1) echo '<div class="badge badge-sa-warning">Đơn còn sử dụng</div>';
-                                        if($status==2) echo '<div class="badge badge-sa-success">Đơn đã xong</div>';
-                                        if($status==3) echo '<div class="badge badge-sa-dark">Đơn đã hủy đơn</div>';
-                                        ?>
+                                        <div class="badge badge-sa-info">Token: <?=$token?></div>
                                     </div>
                                     <div class="sa-page-meta__item d-flex align-items-center fs-6">
-                                        <?php
-                                        if($statusPay==1) echo '<div class="badge badge-sa-danger">Chưa thanh toán</div>';
-                                        if($statusPay==2) echo '<div class="badge badge-sa-primary">Đã thanh toán</div>';
-                                        ?>
+                                        <?= $showStatus ?>
                                     </div>
                                     <div class="sa-page-meta__item d-flex align-items-center fs-6">
-                                        <?php
-                                        if($statusDelivery==1) echo '<div class="badge badge-sa-secondary">Chưa giao hàng</div>';
-                                        if($statusDelivery==2) echo '<div class="badge badge-sa-warning">Đang giao hàng</div>';
-                                        if($statusDelivery==3) echo '<div class="badge badge-sa-success">Đã giao hàng</div>';
-                                        ?>
+                                        <?= $showTypePay ?>
+                                    </div>
+                                    <div class="sa-page-meta__item d-flex align-items-center fs-6">
+                                        <?= $showStatusPay ?>
+                                    </div>
+                                    <div class="sa-page-meta__item d-flex align-items-center fs-6">
+                                        <?= $showStatusDelivery ?>
                                     </div>
                                 </div>
                             </div>
@@ -79,27 +73,26 @@
                                                     </tr>
                                                     <!-- [INVOICE] -->
                                                     <?php
-                                                    for ($i=0; $i < count($listInvoice); $i++) {
-                                                        extract($listInvoice[$i]);
-                                                        $product = getOneFieldByID('products','image,name',$idProduct,0);
-                                                        extract($product);
+                                                    for ($i=0; $i < count($listBillDetail); $i++) { 
+                                                        extract($listBillDetail[$i]);
+                                                        extract(getProductAdmin('c.id ='.$idColor)[0]);
                                                     ?>
                                                     <tr>
                                                         <td class="min-w-20x">
                                                             <div class="d-flex align-items-center">
-                                                                <img src="<?=URL?>/uploads/product/<?=$image?>" class="me-4" width="40" height="40" alt="product"/>
+                                                                <img src="<?=URL_IMGER_PRODUCT.$image?>" class="me-4" width="40" height="40" alt="product"/>
                                                                 <a href="app-product.html" class="text-reset"></span><?=$name?></a>
                                                             </div>
                                                         </td>
                                                         <td class="text-end">
                                                             <div class="sa-price">
-                                                                <span class="sa-price__symbol"><?=number_format($price)?> đ</span>
+                                                                <span class="sa-price__symbol"><?=number_format($priceSale)?> đ</span>
                                                             </div>
                                                         </td>
-                                                        <td class="text-end"><?=$quantity?></td>
+                                                        <td class="text-end"><?=$quantityBill?></td>
                                                         <td class="text-end">
                                                             <div class="sa-price">
-                                                                <span class="sa-price__symbol"><?=number_format($quantity*$price)?> đ</span>
+                                                                <span class="sa-price__symbol"><?=number_format($quantityBill*$priceSale)?> đ</span>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -129,20 +122,14 @@
                                                     <tr>
                                                         <td>Trạng thái</td>
                                                         <td class="text-end">
-                                                            <?php
-                                                            if($statusPay==1) echo '<div class="badge badge-sa-danger">Chưa thanh toán</div>';
-                                                            if($statusPay==2) echo '<div class="badge badge-sa-success">Đã thanh toán</div>';
-                                                            ?>
+                                                            <?= $showStatusPay ?>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>Phương thức</td>
                                                         <td class="text-end">
                                                                 <div class="sa-price">
-                                                                    <?php
-                                                                    if($typePay==1) echo '<div class="badge badge-sa-success">Tiền mặt (COD)</div>';
-                                                                    if($typePay==2) echo '<div class="badge badge-sa-ìnof">Ebanking</div>';
-                                                                    ?>
+                                                                    <?= $showTypePay ?>
                                                                 </div>
                                                             </td>
                                                         </td>
@@ -181,11 +168,7 @@
                                                             Trạng thái
                                                         </td>
                                                         <td class="text-end">
-                                                            <?php
-                                                            if($statusDelivery==1) echo '<div class="badge badge-sa-secondary">Chưa giao hàng</div>';
-                                                            if($statusDelivery==2) echo '<div class="badge badge-sa-warning">Đang giao hàng</div>';
-                                                            if($statusDelivery==3) echo '<div class="badge badge-sa-success">Đã giao hàng</div>';
-                                                            ?>
+                                                            <?= $showStatusDelivery ?>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -206,7 +189,7 @@
                                 <div class="sa-entity-layout__sidebar">
                                     <!-- [USER IN ACCOUNT] -->
                                     <?php
-                                    if($typeBill !=0){
+                                    if($idUser){
                                         $getUser = getOneFieldByID('accounts','fullName,email,phone,address,id,image',$idUser,0);
                                     ?>
                                     <div class="card mb-5">
@@ -219,7 +202,7 @@
                                                 <img src="<?=URL?>/uploads/user/avatar/<?=$getUser['image']?>" width="40" height="40" alt="image user" />
                                             </div>
                                             <div class="ms-3 ps-2">
-                                                <div class="fs-exact-14 fw-medium"><?=$getUser['fullName']?></div>
+                                                <div class="fs-exact-14  fw-medium"><?=$getUser['fullName']?></div>
                                                 <div class="fs-exact-13 text-muted"><?=$getUser['email']?></div>
                                                 <div class="fs-exact-13 text-muted"><?=$getUser['phone']?></div>
                                                 <div class="fs-exact-13 text-muted"><?=$getUser['address']?></div>
@@ -252,7 +235,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- [USER] -->
+                                    <!-- [MESSAGE] -->
                                     <div class="card mt-5">
                                         <div
                                             class="card-body d-flex align-items-center justify-content-between pb-0 pt-4">
