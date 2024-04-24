@@ -63,7 +63,7 @@ else{
                 // [DETAIL ADD - EDIT]
                 case "detail-add":
                     $title="Thêm sản phẩm";
-                    require_once "case/product-add.php";
+                    require_once "case/detail-add.php";
                     break;
                 // [SỬA SP]
                 case "product-edit":

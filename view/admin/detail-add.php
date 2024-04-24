@@ -1,5 +1,5 @@
 <div id="top" class="sa-app__body">
-<form action="<?=ACT_ADMIN?>product-add&add" method="post" enctype="multipart/form-data">
+<form action="<?=ACT_ADMIN?>detail-add<?=$subURL?>" method="post" enctype="multipart/form-data">
     <div class="mx-sm-2 px-2 px-sm-3 px-xxl-4 pb-6">
                     <div class="container container--max--xl">
                         <div class="py-5">
@@ -9,24 +9,13 @@
                                         <ol class="breadcrumb breadcrumb-sa-simple">
                                             <li class="breadcrumb-item"><a href="<?=URL_ADMIN?>">Quản lí</a></li>
                                             <li class="breadcrumb-item"><a
-                                                    href="<?=ACT_ADMIN?>product">Quản lí sản phẩm</a></li>
+                                                    href="<?=ACT_ADMIN?>detail">Quản lí sản phẩm</a></li>
                                             <li class="breadcrumb-item active" aria-current="page">Thêm sản phẩm</li>
                                         </ol>
                                     </nav>
-                                    <h1 class="h3 m-0">Thêm sản phẩm</h1>
                                 </div>
-                                <div class="col-auto d-flex"><a href="<?=ACT_ADMIN?>product" class="btn btn-secondary me-3">Hủy</a>
-                                <button class="btn btn-success" type="submit" >Lưu</button></div>
-                            </div>
-                            <div class="mt-5">
-                               <?php
-                               for ($i=1; $i < count($arr_error); $i++) { 
-                                ?>
-                                <div class="text-danger">
-                                    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-                                    <?php print_r($arr_error[$i])?>
-                                </div>
-                                <?php } ?>
+                                <div class="col-auto d-flex"><a href="<?=ACT_ADMIN?>detail" class="btn btn-secondary me-3">Hủy</a>
+                                <button name="submit" class="btn btn-success" type="submit" >Lưu</button></div>
                             </div>
                         </div>
                         <div class="sa-entity-layout"
@@ -36,46 +25,29 @@
                                     <div class="card">
                                         <div class="card-body p-5 row">
                                             <div class="col-12 mb-5">
-                                                <h2 class="mb-0 fs-exact-18">Nhập thông tin sản phẩm</h2>
+                                                <h2 class="mb-0 fs-exact-18">Nhập thông tin chi tiết</h2>
                                             </div>
-                                            <div class="col-6 form-floating mb-2 p-0 px-3">
-                                                <input name="tensp" value="<?=$tensp?>" type="text" class="form-control rounded rounded-5" id="floatingInput" placeholder="name@example.com">
-                                                <label for="floatingInput">Tên sách</label>
-                                            </div>
-                                            <div class="col-6 form-floating mb-2 p-0 px-3">
-                                                <select name="idtg" class="form-select rounded rounded-5" id="tacgia" aria-label="ttg">
-                                                    <?php
-                                                    $select = getAll('author',1);
-                                                    for ($i=0; $i < count($select); $i++) {
-                                                    extract($select[$i])
-                                                    ?>
-                                                    <option <?php if($idtg == $id) echo'selected' ?>  value="<?=$id?>"><?=$name?></option>
-                                                    <?php } ?>
+                                            <div class="col-6 form-floating mb-2 pb-3 px-3">
+                                                <select name="series" class="form-select rounded rounded-5" id="series" aria-label="ttg">
+                                                    <?= $showInputSeries ?>
                                                 </select>
-                                                <label for="tacgia">Tên tác giả</label>
-                                                <div class="mt-2">
-                                                    <a href="<?=ACT_ADMIN?>author-add" class="me-3 pe-2">&rarr; Thêm tác giả mới</a>
-                                                </div>
+                                                <label for="series">Series</label>
                                             </div>
-                                            <div class="col-6 form-floating mb-2 p-0 px-3">
-                                                <input name="ngayxuatban" type="date" value="<?=$ngayxuatban?>" class="form-control rounded rounded-5" id="nxb" placeholder="name@example.com">
-                                                <label for="nxb">Ngày xuất bản</label>
-                                                <div class="mt-2 small text-info">Tháng / ngày / năm</div>
-                                            </div>
-                                            <div class="col-6 form-floating mb-2 p-0 px-3">
-                                                <select name="idnxb" class="form-select rounded rounded-5" id="nhaxb" aria-label="nxb">
-                                                    <?php
-                                                    $select = getAll('publishing',1);
-                                                    for ($i=0; $i < count($select); $i++) {
-                                                    extract($select[$i])
-                                                    ?>
-                                                    <option <?php if($idnxb == $id) echo'selected' ?> value="<?=$id?>"><?=$name?></option>
-                                                    <?php } ?>
+                                            <div class="col-6 form-floating mb-2 pb-3 px-3">
+                                                <select name="model" class="form-select rounded rounded-5" id="model" aria-label="ttg">
+                                                    <option value="1">Ẩn</option>
                                                 </select>
-                                                <label for="nhaxb">Nhà xuất bản</label>
-                                                <div class="mt-2">
-                                                    <a href="<?=ACT_ADMIN?>publishing-add" class="me-3 pe-2">&rarr; Thêm NXB mới</a>
-                                                </div>
+                                                <label for="model">Phiên bản</label>
+                                            </div>
+                                            <div class="col-6 form-floating mb-2 pb-3 px-3">
+                                                <input name="color" value="<?=$color?>" type="text" class="form-control rounded rounded-5" id="color" placeholder="name@example.com">
+                                                <label for="color">Tên màu</label>
+                                            </div>
+                                            <div class="col-6 form-floating mb-2 pb-3 px-3">
+                                                <select name="status" class="form-select rounded rounded-5" id="status" aria-label="ttg">
+                                                    <option value="1">Ẩn</option>
+                                                </select>
+                                                <label for="status">Trạng thái</label>
                                             </div>
                                             <div class="col-12 form-floating p-0 px-3">
                                                 <textarea name="motasp" class="form-control rounded rounded-5" placeholder="Nhập mô tả sản phẩm" id="mota"><?=$motasp?></textarea>
@@ -112,13 +84,7 @@
                                             <h2 class="mb-5 fs-exact-18">Hiển thị</h2>
                                             <div class="form-floating px-3">
                                                 <select name="idCategory" class="form-select rounded rounded-5" id="danhmuc" aria-label="nxb">
-                                                    <?php
-                                                    $select = getAll('category',1);
-                                                    for ($i=0; $i < count($select); $i++) {
-                                                    extract($select[$i])
-                                                    ?>
-                                                    <option <?php if($idCategory == $id) echo'selected' ?> value="<?=$id?>"><?=$name?></option>
-                                                    <?php } ?>
+                                                    <option >2</option>
                                                 </select>
                                                 <label for="danhmuc">Danh mục</label>
                                                 <div class="mt-2">
@@ -135,7 +101,7 @@
                                                     <div class="max-w-20x">
                                                         <?php
                                                         if(empty($filename)){ ?>
-                                                        <img src="<?=URL?>/uploads/system/image_default.jpg" id="image" class="w-100 h-auto" width="320" height="320" alt="image product" />
+                                                        <img src="<?=URL_IMGER_PRODUCT?>image_default.jpg" id="image" class="w-100 h-auto" width="320" height="320" alt="image product" />
                                                         <?php }else{ ?>
                                                         <img src="<?=URL?>/uploads/product/<?=$filename?>" id="image" class="w-100 h-auto" width="320" height="320" alt="image product" />
                                                         <div class="text-info text-center mt-2"><?=$hinhcu?></div>

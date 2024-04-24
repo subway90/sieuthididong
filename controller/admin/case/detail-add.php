@@ -1,5 +1,4 @@
 <?php
-require_once "../../view/admin/header.php";
 $idtg = 1;$idnxb = 1;$tensp = "";$ngayxuatban="2004-05-31";$hinhcu="";$giasp =1000;$giasale =0;$soluong =1;$motasp = "";$arr_error[] = array(); $point_valid = 0;$arrCateInput = []; $cate_3_input = ""; $cate_1_input = ""; $cate_2_input = "";$idCategory = 0;
 if(isset($_REQUEST['add'])) {
     $idCategory = $_POST['idCategory'];
@@ -79,4 +78,13 @@ if(isset($_REQUEST['add'])) {
     }
     if($point_valid==7) addProduct($tensp,$slug,$ngayxuatban,$giasp,$giasale,$soluong,$motasp,$filename,$cate_3_input,$idnxb,$idtg);
 }
-require_once "../../view/admin/product-add.php";
+
+# RENDER VIEW
+$showInputSeries = '<option value ="0">Vui lòng chọn Series</option>';
+$listSeries = getAllFieldByCustom('products','name,id','status = 1');
+for ($i=0; $i < count($listSeries); $i++) { 
+    extract($listSeries[$i]);
+    $showInputSeries .='<option value="'.$id.'">'.$name.'</option>';
+}
+require_once "../../view/admin/header.php";
+require_once "../../view/admin/detail-add.php";
