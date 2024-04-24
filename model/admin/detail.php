@@ -17,11 +17,9 @@ function getProduct($filter){
     return $list;
 }
 
-function addProduct($tensp,$slug,$ngayxuatban,$giasp,$giasale,$soluong,$motasp,$filename,$iddm,$idnxb,$idtg){
-    $sql = "INSERT INTO products(name,slug,price,priceSale,quantity,datePublish,image,decribe,status,idCategory,idPublishing,idAuthor) values('$tensp','$slug','$giasp','$giasale','$soluong','$ngayxuatban','$filename','$motasp',1,'$iddm','$idnxb','$idtg')";
+function addProduct($idModel,$color,$image,$quantity,$price,$priceSale,$status){
+    $sql = "INSERT INTO product_color(idModel,color,image,quantity,price,priceSale,status) values('$idModel','$color','$image','$quantity','$price','$priceSale','$status')";
     pdo_execute($sql);
-    addAlert('success','<i class="fas fa-check-circle"></i> Tạo sản phẩm thành công !');
-    header("Location:".ACT_ADMIN."product");
 };
 
 function editProduct($name,$slug,$datePublish,$price,$priceSale,$quantity,$decribe,$image,$idCategory,$idPublishing,$idAuthor,$id){
@@ -41,4 +39,8 @@ function checkSlug($slug,$id){
 function bgNumber($quantity) {
     if($quantity <= 0) return 'danger';
     else return 'primary';
+}
+function matchCollapse($a,$b) {
+    if($a == $b) return 'show';
+    else return 'collapse';
 }

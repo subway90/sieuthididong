@@ -77,7 +77,7 @@ if(empty($_SESSION['user'])){
                         header("Location:".URL);
                         exit;
                     }
-                    else header("Location: ".URL."/controller/admin");
+                    else header("Location: ".URL."/controller/admin/index.php");
                 }else addAlert('danger','<i class="fas fa-times-circle"></i> Tài khoản hoặc mật khẩu không chính xác.');
             }else addAlert('danger','<i class="fas fa-exclamation-triangle"></i> Vui lòng nhập mật khẩu.');
         }else addAlert('danger','<i class="fas fa-exclamation-triangle"></i> Vui lòng nhập thông tin tài khoản.');

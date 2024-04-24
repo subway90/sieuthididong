@@ -45,7 +45,7 @@
                                             <?= $name ?> 
                                             <div>
                                                 <span class="fw-bold"> Slug: </span> 
-                                                <a href="<?=URL?>/chi-tiet/<?=$slug?>" class="small text-muted"><?= $slug ?></a>
+                                                <a href="<?=URL?>chi-tiet/<?=$slug?>" class="small text-muted"><?= $slug ?></a>
                                             </div> 
                                         </td>
                                         <td> <?= getOneFieldByCustom('product_type','name','id ='.$idType)['name'] ?> </td>

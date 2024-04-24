@@ -24,7 +24,7 @@
 <body class="bg-secondary bg-opacity-10">
   <nav class="sticky-top navbar navbar-expand-lg navbar-light bg-success" data-bs-theme="dark">
     <div class="container p-0">
-      <a class="navbar-brand text-light" href="#"><?= WEB_TITLE ?></a>
+      <a class="navbar-brand text-light" href="<?=URL?>"><?= WEB_TITLE ?></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

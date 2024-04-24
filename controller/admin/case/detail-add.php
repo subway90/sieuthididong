@@ -1,90 +1,100 @@
 <?php
-$idtg = 1;$idnxb = 1;$tensp = "";$ngayxuatban="2004-05-31";$hinhcu="";$giasp =1000;$giasale =0;$soluong =1;$motasp = "";$arr_error[] = array(); $point_valid = 0;$arrCateInput = []; $cate_3_input = ""; $cate_1_input = ""; $cate_2_input = "";$idCategory = 0;
-if(isset($_REQUEST['add'])) {
-    $idCategory = $_POST['idCategory'];
-    $idtg = $_POST['idtg'];
-    $idnxb = $_POST['idnxb'];
-    $tensp = $_POST['tensp'];
-    if(empty($tensp)) {
-        $arr_error[] = 'Chưa nhập tên sản phẩm';
-    }else{
-        $slug = createSlug($tensp);
-        if(checkSlug($slug,0) == true) $point_valid++;
-        else $arr_error[] = 'Tên sản phẩm đã tồn tại';
-    }
-    $ngayxuatban = $_POST['ngayxuatban'];
-    if(empty($ngayxuatban)) {
-        $arr_error[] = 'Chưa nhập ngày xuất bản';
-    }else{
-        $point_valid++;
-    }
-    $giasp = $_POST['giasp'];
-    if(empty($giasp)) {
-        $arr_error[] = 'Chưa nhập giá gốc';
-    }else{
-        $point_valid++;
-    }
-    $giasale = $_POST['giasale'];
-    if(empty($giasale)) {
-        $giasale = 0;
-        $point_valid++;
-
-    }else{
-        if($giasale >= $giasp) $arr_error[] = 'Giá sale phải nhỏ hơn giá gốc';
+$target_dir = "../../uploads/product/";
+$hinhcu = $color = $decribe = "";
+$inputIdModel = $inputIdSeries  = $price = $priceSale = $quantity = 0;
+$image = $errorImage = $errorModel = false;
+# SUBMIT
+if(isset($_POST['submit'])) {
+    # có POST ảnh cũ
+    if(isset($_POST['hinhcu'])) $hinhcu = $_POST['hinhcu'];
+    # POST
+    $price = $_POST['price'];
+    $color = $_POST['color'];
+    $status = $_POST['status'];
+    $decribe = $_POST['decribe'];
+    $quantity = $_POST['quantity'];
+    $priceSale = $_POST['priceSale'];
+    # PriceSale default
+    if(!$priceSale) $priceSale = $price;
+    # Series - Model input
+    if(isset($_POST['idModel']) && $_POST['idModel']) {
+        $idModel = $_POST['idModel'];
+        $arrayId = explode('/',$idModel);
+        $inputIdSeries = $arrayId[0];
+        $inputIdModel = $arrayId[1];
+    }else $errorModel = true;
+        # IMAGE VALIDATION
+        ## có up file hình mới
+        if(!empty($_FILES['image']['name'])){
+            $image = true;
+            $checkImage = checkImage($_FILES['image'],1);
+            if($checkImage === true) {
+                if(!empty($hinhcu))unlink($target_dir.$hinhcu);    
+                $target_file = $target_dir . basename($_FILES["image"]["name"]);
+                move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
+                $hinhcu = $_FILES['image']['name'];
+            }else $errorImage = true;
+        }
+        ## không up file hình mới
         else{
-            $point_valid++;
+            if($hinhcu) $image = true;
         }
+        # VALIDATION
+        if($color) {
+            if($decribe) {
+                if($quantity) {
+                    if($quantity > 0 && $quantity <= MAX_QUANTITY_PRODUCT) {
+                        if($price) {
+                            if($price > 0 && $price <= MAX_PRICE_PRODUCT) {
+                                if($priceSale > 0 && $priceSale <= $price) {
+                                    if($image) {
+                                        if(!$errorImage) {
+                                            if(!$errorModel){
+                                                        addProduct($inputIdModel,$color,$hinhcu,$quantity,$price,$priceSale,$status);
+                                                        addAlert('success',ICON_CHECK.'Thêm mới thành công');
+                                                        header('Location:'.ACT_ADMIN.'detail');
+                                                        exit;
+                                            }else addAlert('danger',ICON_CLOSE.'Chưa chọn series và phiên bản.');
+                                        }else addAlert('danger',ICON_CLOSE.$checkImage);
+                                    }else addAlert('danger',ICON_CLOSE.'Chưa có <strong>ảnh sản phẩm</strong>.');
+                                }else addAlert('danger',ICON_CLOSE.'Giá SALE trong phạm vi <strong>[ 1 &rarr; giá gốc ('.number_format($price).') ] (VNĐ)</strong>.');
+                            }else addAlert('danger',ICON_CLOSE.'Giá gốc trong phạm vi <strong>[ 1 &rarr; '.number_format(MAX_PRICE_PRODUCT).' ] (VNĐ)</strong>.');
+                        }else addAlert('danger',ICON_CLOSE.'Chưa nhập <strong>giá gốc (VNĐ)</strong>.');
+                    }else addAlert('danger',ICON_CLOSE.'Số lượng trong phạm vi <strong>[1 &rarr; '.number_format(MAX_QUANTITY_PRODUCT).']</strong>.');
+                }else addAlert('danger',ICON_CLOSE.'Chưa nhập <strong>số lượng sản phẩm</strong>.');
+            }else addAlert('danger',ICON_CLOSE.'Chưa nhập <strong>mô tả chi tiết</strong>.');
+        }else addAlert('danger',ICON_CLOSE.'Chưa nhập <strong>tên màu</strong>.');
     }
-    $soluong = $_POST['soluong'];
-    if(empty($soluong)) {
-        $arr_error[] = 'Chưa nhập số lượng';
-    }else{
-        $point_valid++;
-    }
-    $motasp = $_POST['motasp'];
-    if(empty($motasp)) {
-        $arr_error[] = 'Chưa nhập mô tả';
-    }else{
-        $point_valid++;
-    }
-    if(isset($_POST['hinhcu'])){
-        $hinhcu = $_POST['hinhcu'];
-    }
-
-    $target_dir = "../../uploads/product/";
-    if(!empty($_FILES['hinhsp']['name'])){  //có up file hình mới
-        if(isset($hinhcu) && !empty($hinhcu)){ //có hình cũ -> gỡ hình cũ và up hình mới
-            unlink($target_dir.$hinhcu);    //gỡ hình cũ
-            $target_file = $target_dir . basename($_FILES["hinhsp"]["name"]);
-            move_uploaded_file($_FILES["hinhsp"]["tmp_name"], $target_file); //up hình mới
-            $filename = $_FILES['hinhsp']['name'];
-            $hinhcu = $filename;
-            $point_valid++;
-        }else{  //ko có hình cũ -> up hình mới
-            $target_file = $target_dir . basename($_FILES["hinhsp"]["name"]);
-            move_uploaded_file($_FILES["hinhsp"]["tmp_name"], $target_file); //up hình mới
-            $filename = $_FILES['hinhsp']['name'];
-            $hinhcu = $filename;
-            $point_valid++;
-        }
-    }
-    if(empty($_FILES['hinhsp']['name'])){ //không up hình mơi
-        if(isset($hinhcu) && !empty($hinhcu)){ //nếu có hình cũ -> vẫn có dữ liệu hình cũ (sẵn sàng thực thi SQL)
-            $filename = $hinhcu;
-            $point_valid++;
-        }else{ //thông báo chưa up hình gì cả
-            $arr_error[] = 'Chưa nhập ảnh sản phẩm';
-        }
-    }
-    if($point_valid==7) addProduct($tensp,$slug,$ngayxuatban,$giasp,$giasale,$soluong,$motasp,$filename,$cate_3_input,$idnxb,$idtg);
-}
-
 # RENDER VIEW
-$showInputSeries = '<option value ="0">Vui lòng chọn Series</option>';
-$listSeries = getAllFieldByCustom('products','name,id','status = 1');
+$showInputSeriesModel = '<div class="accordion card" id="series">';
+$listSeries = getAllFieldByCustom('products','name,id idSeries','status = 1');
 for ($i=0; $i < count($listSeries); $i++) { 
     extract($listSeries[$i]);
-    $showInputSeries .='<option value="'.$id.'">'.$name.'</option>';
+    $showInputSeriesModel .=
+    '<div class="accordion-item">
+        <h2 class="accordion-header"">
+            <button class="accordion-button sa-hover-area" type="button" data-bs-toggle="collapse" data-bs-target="#series'.$i.'"> 
+                <span class="accordion-sa-icon"></span>'.$name.'
+            </button>
+        </h2>
+        <div id="series'.$i.'" class="accordion-collapse  '.matchCollapse($inputIdSeries,$idSeries).' data-bs-parent="series">
+            <div class="accordion-body">';
+            $listModel = getAllFieldByCustom('product_model','model,id idModel','idProduct ='.$idSeries.' AND status = 1');
+            if($listModel){
+                for ($j=0; $j < count($listModel); $j++) { 
+                    extract($listModel[$j]);
+                    $showInputSeriesModel .=
+                '<label class="form-check">
+                        <input '.matchValue('checked',$inputIdModel,$idModel).' name="idModel" value="'.$idSeries.'/'.$idModel.'" type="radio" class="form-check-input"/>
+                        <span class="form-check-label">'.$model.'</span>
+                    </label>';
+                }
+            }else $showInputSeriesModel .= 'Chưa có phiên bản nào.<a class="ms-2" href="'.ACT_ADMIN.'model-add">&rarr; Thêm phiên bản</a>';
+    $showInputSeriesModel .='
+            </div>
+        </div>
+    </div>';
 }
+$showInputSeriesModel .='</div>';
 require_once "../../view/admin/header.php";
 require_once "../../view/admin/detail-add.php";

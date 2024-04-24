@@ -384,6 +384,10 @@ function matchSelected($a,$b) {
     if($a == $b) return 'selected';
     else return '';
 }
+function matchValue($type,$a,$b) {
+    if($a == $b) return $type;
+    else return '';
+}
 
 function show404($type) {
     if($type == 'admin') {

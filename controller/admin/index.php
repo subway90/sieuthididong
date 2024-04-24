@@ -17,6 +17,7 @@ $arr_error = [];
 $point_valid = 0;
 $edit = false;
 $subURL = '';
+$status = 1;
 
 # [Authorization]
 if(empty($_SESSION['user']) || $_SESSION['user']['role'] != 1) show404('user');
