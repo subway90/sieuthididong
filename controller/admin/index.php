@@ -28,6 +28,7 @@ else{
     require_once "../../model/admin/detail.php";
     require_once "../../model/admin/model.php";
     require_once "../../model/admin/style.php";
+    require_once "../../model/admin/category.php";
     require_once "../../model/admin/bill.php";
 
     //controller
@@ -66,6 +67,14 @@ else{
                 // [style ADD - EDIT]
                 case "style-add":
                     require_once "case/style-add.php";
+                    break;
+                // [category SHOW - HIDE]
+                case "category":
+                    require_once "case/category.php";
+                    break;
+                // [category ADD - EDIT]
+                case "category-add":
+                    require_once "case/category-add.php";
                     break;
 
                 // [INVOICE]
