@@ -19,16 +19,12 @@ $edit = false;
 $subURL = '';
 
 # [Authorization]
-if(empty($_SESSION['user']) || $_SESSION['user']['role'] != 1){
-    require_once "../../view/header.php";
-    require_once "../../view/404.php";
-    require_once "../../view/footer.php";
-    exit;
-}else{
+if(empty($_SESSION['user']) || $_SESSION['user']['role'] != 1) show404('user');
+else{
     # [FILE MODEL]
-    require_once "../../model/admin/series.php";
     require_once "../../model/pdo.php";
-    require_once "../../model/admin/product.php";
+    require_once "../../model/admin/series.php";
+    require_once "../../model/admin/detail.php";
     require_once "../../model/admin/model.php";
     require_once "../../model/admin/author.php";
     require_once "../../model/admin/bill.php";
@@ -59,13 +55,13 @@ if(empty($_SESSION['user']) || $_SESSION['user']['role'] != 1){
                     require_once "case/model-add.php";
                     break;
 
-                // [SẢN PHẨM - SP]
-                case "product":
+                // [DETAIL SHOW - HIDE]
+                case "detail":
                     $title="Danh sách sản phẩm";
-                    require_once "case/product.php";
+                    require_once "case/detail.php";
                     break;
-                // [THÊM SP]
-                case "product-add":
+                // [DETAIL ADD - EDIT]
+                case "detail-add":
                     $title="Thêm sản phẩm";
                     require_once "case/product-add.php";
                     break;

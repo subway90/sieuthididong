@@ -10,9 +10,8 @@
                                 <li class="breadcrumb-item active" aria-current="page">Quản lí sản phẩm</li>
                             </ol>
                         </nav>
-                        <h1 class="h3 m-0">Quản lí sản phẩm</h1>
                     </div>
-                    <div class="col-auto d-flex"><a href="<?=ACT_ADMIN?>product-add" class="btn btn-info btn-gradient">Thêm sản phẩm</a></div>
+                    <div class="col-auto d-flex"><a href="<?=ACT_ADMIN?>detail-add" class="btn btn-info btn-gradient">Thêm sản phẩm</a></div>
                 </div>
             </div>
             <div class="card">
@@ -30,6 +29,7 @@
                             <th>Trạng thái</th>
                             <th>Giá gốc</th>
                             <th>Giá sale</th>
+                            <th>Ngày tạo</th>
                             <th class="w-min" data-orderable="false"></th>
                         </tr>
                     </thead>
@@ -44,15 +44,15 @@
                                 <div class="d-flex align-items-center"><a href="#"
                                         class="me-4">
                                         <div class="sa-symbol sa-symbol--shape--rounded sa-symbol--size--lg">
-                                            <img src="<?=URL?>/uploads/product/<?=$image?>" class="" alt="imageproduct" />
+                                            <img src="<?=URL_IMGER_PRODUCT.$image?>" class="" alt="<?=$image?>" />
                                         </div>
                                     </a>
-                                    <div><a href="#" class="text-reset"><?=$name?></a>
-                                        <div class="text-muted mt-n1"><?=getOneFieldByCustom('product_color','color','id ='.$id)['color']?></div>
+                                    <div><a href="<?=URL?>/chi-tiet/<?=$slug?>" class="text-reset"><?=$name?></a>
+                                        <div class="text-muted mt-n1"><?= $color ?></div>
                                     </div>
                                 </div>
                             </td>
-                            <td class="text-nowrap"><?=getOneFieldByCustom('product_model','model','id ='.$idBrand)['model']?></td>
+                            <td class="text-nowrap"><?= $model ?></td>
                             <td>
                                 <div class="badge badge-sa-<?= bgNumber($quantity) ?>"><?=$quantity?></div>
                             </td>
@@ -68,6 +68,7 @@
                             <td>
                                 <div class="sa-price"><?= number_format($priceSale) ?></div>
                             </td>
+                            <td><div class="badge badge-sa-info"><?= $dateCreate ?></div></td>
                             <td>
                                 <div class="dropdown">
                                     <button class="btn btn-sa-muted btn-sm" type="button" id="customer-context-menu-0" data-bs-toggle="dropdown" aria-expanded="false" aria-label="More">
@@ -77,13 +78,13 @@
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end"
                                         aria-labelledby="customer-context-menu-0">
-                                        <li><a class="dropdown-item" href="<?=ACT_ADMIN?>product-edit&id=<?=$id?>">Chỉnh sửa</a></li>
+                                        <li><a class="dropdown-item" href="<?=ACT_ADMIN?>detail-edit&id=<?=$id?>">Chỉnh sửa</a></li>
                                         <li><hr class="dropdown-divider"/></li>
                                         <?php
                                         if($status == 1){ ?>
-                                        <li><a class="dropdown-item text-danger" href="<?=ACT_ADMIN?>product&delete=2&id=<?=$id?>">Ẩn sản phẩm</a></li>
+                                        <li><a class="dropdown-item text-danger" href="<?=ACT_ADMIN?>detail&delete=2&id=<?=$id?>">Ẩn sản phẩm</a></li>
                                         <?php }else{ ?>
-                                        <li><a class="dropdown-item text-success" href="<?=ACT_ADMIN?>product&delete=1&id=<?=$id?>">Hiện sản phẩm</a></li>
+                                        <li><a class="dropdown-item text-success" href="<?=ACT_ADMIN?>detail&delete=1&id=<?=$id?>">Hiện sản phẩm</a></li>
                                         <?php } ?>
                                     </ul>
                                 </div>

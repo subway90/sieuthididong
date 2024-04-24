@@ -392,4 +392,10 @@ function show404($type) {
         require_once "../../view/admin/footer.php";
         exit;
     }
+    if($type == 'user') {
+        require_once "../../view/user/header.php";
+        require_once "../../view/user/404.php";
+        require_once "../../view/user/footer.php";
+        exit;
+    }
 }
