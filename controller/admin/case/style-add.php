@@ -1,7 +1,8 @@
 <?php
-$showInputSeries = "";
+# VARIABLE
 $name = $decribe = "";
-$status = $idProduct = 1;
+$idProduct = 1;
+
 #  EDIT TRUE
 if(isset($_GET['edit']) && $_GET['edit']) {
     $styleEdit = getOneFieldByCustom('product_style','id,name,decribe,status','id ='.$_GET['edit']);
@@ -9,9 +10,10 @@ if(isset($_GET['edit']) && $_GET['edit']) {
         $edit = true;
         $subURL = '&edit='.$_GET['edit'];
         extract($styleEdit);
-    }
-    else show404('admin');
-}
+        $title = 'Sửa style '.strtoupper($name);
+    }else show404('admin');
+}else $title = 'Thêm mới Style';
+
 # SUBMIT
 if(isset($_POST['submit'])) {
     $name = $_POST['name'];
@@ -35,6 +37,5 @@ if(isset($_POST['submit'])) {
 }
 
 # RENDER VIEW
-$title = 'Thêm mới Style';
 require_once "../../view/admin/header.php";
 require_once "../../view/admin/style-add.php";
