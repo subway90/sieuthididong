@@ -71,40 +71,45 @@
                 extract($listProduct[$i]);
         ?>
         <div class="col-6 col-md-4 col-lg-2 pb-3 pb-md-4 pb-lg-5">
-            <div style="min-height: 100%;" class="card shadow">
-                <div class="position-relative hover-trigger">
-                    <img src="<?=URL_IMGER_PRODUCT.$image?>" class="card-img img-product" alt="<?=$image?>">
-                    <span style="left: 84%; top: -4%; width: 45px; height: 45px" class="btn bg-danger text-light rounded-circle position-absolute small p-0 pt-2 fw-bold "><?= saleProduct($price,$priceSale) ?>%</span>
-                    <span class="show-hover position-absolute end-0 bottom-0 w-100">
-                        <div class="d-flex justify-content-evenly">
-                            <button class="btn btn-success">
-                                <i class="far fa-heart"></i>
-                            </button>
-                            <button class="btn btn-success">
-                                <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                            </button>
-                            <button class="btn btn-success">
-                                <i class="fa fa-share-alt" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                    </span>
-                </div>
-                <div class="ms-2">
-                    <span class="badge bg-warning">KM</span>
-                    <span class="badge bg-success">Trả góp 0%</span>
-                </div>
-                <a class="text-decoration-none" href="<?=URL.'chi-tiet/'.$slug?>">
-                    <div class="card-body">
-                        <h5 class="card-title fs-6 fw-bold text-dark"> <?= $name.'-'.$model ?> </h5>
-                        <p class="card-text">
-                            <span ng-if="product.priceSale!=0">
-                                <span class="text-danger fw-bold me-1"><?= number_format($priceSale) ?> đ</span>
-                                <span class="text-secondary small"><del><small><?= number_format($price) ?> đ</small></del></span>
-                            </span>
-                        </p>
+            <form method="post">
+                <input type="hidden" name="idProduct" value="<?= $idProduct ?>">
+                <input type="hidden" name="idModel" value="<?= $idModel ?>">
+                <input type="hidden" name="idColor" value="<?= $id ?>">
+                <div style="min-height: 100%;" class="card shadow">
+                    <div class="position-relative hover-trigger">
+                        <img src="<?=URL_IMGER_PRODUCT.$image?>" class="card-img img-product" alt="<?=$image?>">
+                        <span style="left: 84%; top: -4%; width: 45px; height: 45px" class="btn bg-danger text-light rounded-circle position-absolute small p-0 pt-2 fw-bold "><?= saleProduct($price,$priceSale) ?>%</span>
+                        <span class="show-hover position-absolute end-0 bottom-0 w-100">
+                            <div class="d-flex justify-content-evenly">
+                                <button class="btn btn-success">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                                <button name="addProduct" type="submit" class="btn btn-success">
+                                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                </button>
+                                <button class="btn btn-success">
+                                    <i class="fa fa-share-alt" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </span>
                     </div>
-                </a>
-            </div>
+                    <div class="ms-2">
+                        <span class="badge bg-warning">KM</span>
+                        <span class="badge bg-success">Trả góp 0%</span>
+                    </div>
+                    <a class="text-decoration-none" href="<?=URL.'chi-tiet/'.$slug?>">
+                        <div class="card-body">
+                            <h5 class="card-title fs-6 fw-bold text-dark"> <?= $name.'-'.$model ?> </h5>
+                            <p class="card-text">
+                                <span ng-if="product.priceSale!=0">
+                                    <span class="text-danger fw-bold me-1"><?= number_format($priceSale) ?> đ</span>
+                                    <span class="text-secondary small"><del><small><?= number_format($price) ?> đ</small></del></span>
+                                </span>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </form>
         </div>
         <?php }}else{?> <div class="col-12 text-center py-5">Không tìm thấy sản phẩm. <a href="<?=URL?>san-pham" class="text-success">Quay lại</a></div> <?php }?>
         <!-- Product End -->

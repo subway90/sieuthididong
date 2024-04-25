@@ -5,19 +5,25 @@ $listStyle = getAllFieldByCustom('product_style','id,name','status = 1');
 # BIẾN
 $checkedBrand = $checkedStyle = $checkedColor = $checkedPrice = $checkedSorts = -1;
 $filter = "";
-# THÊM SP VÀO GIỎ HÀNG
-if(isset($_GET['add'])){
-  if(empty($_SESSION['user'])){ // nếu CHƯA ĐĂNG NHẬP (GUEST)
-      $check = checkCart($_GET['id']);
-      if($check == -1) $_SESSION['cart'][] = ['id' => $_GET['id'],'quantity' => $_GET['quantity']]; // nếu không trùng ID-> thêm SP vào CART
-      else  $_SESSION['cart'][$check]['quantity']++; // nếu trùng ID-> thêm số lượng (+1) vào ID đã trùng
-  }else{ // nếu ĐÃ ĐĂNG NHẬP (USER)
-      $check = checkCartByID($_GET['id']);
-      if(empty($check)) addCart($_SESSION['user']['id'],$_GET['idProduct'],$_GET['idModel'],$_GET['idColor'],$_GET['quantity']);
-      else updateQuantity($check,'quantity+1');
+# [MUA NGAY TỪ SẢN PHẨM]
+if(isset($_POST['addProduct'])){
+  # Trường hợp CHƯA ĐĂNG NHẬP (GUEST)
+  if(empty($_SESSION['user'])){
+      $check = checkCart($_POST['idColor']);
+      if($check == -1) {
+          $_SESSION['cart'][] = ['idProduct' => $_POST['idProduct'],'idModel' => $_POST['idModel'],'idColor' => $_POST['idColor'],'quantity' => 1];
+          addAlert('success',ICON_CHECK.'Thêm sản phẩm vào giỏ hàng thành công !');
+      }else addAlert('warning','<i class="fas fa-vote-yea"></i> Sản phẩm này đã có trong giỏ hàng.');
   }
-  addAlert('success','<i class="fas fa-check-circle"></i> Thêm sản phẩm thành công !');
-  header("Location:".URL."san-pham");
+  # Trường hợp ĐÃ ĐĂNG NHẬP (USER)
+  else{ 
+      $check = checkCartByID($_POST['idColor']);
+      if(empty($check)) {
+          addCart($_SESSION['user']['id'],$_POST['idProduct'],$_POST['idModel'],$_POST['idColor'],1);
+          addAlert('success',ICON_CHECK.'Thêm sản phẩm vào giỏ hàng thành công !');
+      }
+      else addAlert('warning','<i class="fas fa-vote-yea"></i> Sản phẩm này đã có trong giỏ hàng.');
+  }
 }
 
 # LỌC TÌM KIẾM
