@@ -1,5 +1,4 @@
 <?php
-$target_dir = "../../uploads/product/";
 $image = $errorImage = $errorModel = false;
 
 if(isset($_GET['edit']) && $_GET['edit']) {
@@ -44,9 +43,8 @@ if(isset($_POST['submit'])) {
             $image = true;
             $checkImage = checkImage($_FILES['image'],1);
             if($checkImage === true) {
-                if(!empty($hinhcu))unlink($target_dir.$hinhcu);    
-                $target_file = $target_dir . basename($_FILES["image"]["name"]);
-                move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
+                if(!empty($hinhcu))unlink(PATH_UPLOAD_IMAGE.$hinhcu);    
+                move_uploaded_file($_FILES["image"]["tmp_name"], PATH_UPLOAD_IMAGE.basename($_FILES["image"]["name"]));
                 $hinhcu = $_FILES['image']['name'];
             }else $errorImage = true;
         }

@@ -30,6 +30,7 @@ else{
     require_once "../../model/admin/style.php";
     require_once "../../model/admin/category.php";
     require_once "../../model/admin/bill.php";
+    require_once "../../model/admin/account.php";
 
     //controller
     if(isset($_GET['act'])){

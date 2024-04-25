@@ -3,7 +3,7 @@ if(empty($_SESSION['user'])){
     #LOGIN GOOGLE SUCCESS
     if(!empty($_SESSION['user_google'])) {
         extract($_SESSION['user_google']);
-        if(checkUserExist($username) === true) {
+        if(checkUserExist($username,1) === true) {
             addAccount(3,$username,'',$fullName,$email,'','',$image);
         }
         #tự động ĐĂNG NHẬP 
@@ -16,7 +16,7 @@ if(empty($_SESSION['user'])){
     #LOGIN FACEBBOK SUCCESS
     if(!empty($_SESSION['user_facebook'])){
         extract($_SESSION['user_facebook']);
-        if(checkUserExist($username) === true) {
+        if(checkUserExist($username,1) === true) {
             addAccount(2,$username,'',$fullName,'','','',$image);
         }
         #tự động ĐĂNG NHẬP 

@@ -9,10 +9,17 @@
                             <ol class="breadcrumb breadcrumb-sa-simple">
                                 <li class="breadcrumb-item"><a href="<?=URL_ADMIN?>">Quản lí</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Quản lí tài khoản</li>
+                                <li class="breadcrumb-item active" aria-current="page"><?= $showNavList ?></li>
                             </ol>
                         </nav>
                     </div>
-                    <div class="col-auto d-flex"><a href="#" class="btn btn-danger">Danh sách chặn</a></div>
+                    <div class="col-auto d-flex">
+                        <?php if(isset($_GET['blocklist'])) {?>
+                            <a href="<?=ACT_ADMIN?>account" class="btn btn-outline-success">Danh sách hoạt động</a>
+                        <?php } else {?>
+                            <a href="<?=ACT_ADMIN?>account&blocklist" class="btn btn-outline-danger">Danh sách bị cấm</a>
+                        <?php }?>
+                    </div>
                 </div>
             </div>
             <div class="card">
@@ -62,8 +69,13 @@
                                         </svg>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="customer-context-menu-0">
-                                        <li><a class="dropdown-item" href="<?=ACT_ADMIN?>account-detail=<?=$id?>">Xem</a></li>
+                                        <li><a class="dropdown-item text-warning" href="<?=ACT_ADMIN?>account&detail=<?=$id?>">Sửa chi tiết</a></li>
                                         <li><hr class="dropdown-divider"/></li>
+                                        <?php if(!isset($_GET['blocklist'])) {?>
+                                        <li><a class="dropdown-item text-danger" href="<?=ACT_ADMIN?>account&delete=2&id=<?=$id?>">Cấm tài khoản</a></li>
+                                        <?php }else{?>
+                                        <li><a class="dropdown-item text-success" href="<?=ACT_ADMIN?>account&delete=1&id=<?=$id?>">Mở tài khoản</a></li>
+                                        <?php }?>
                                     </ul>
                                 </div>
                             </td>

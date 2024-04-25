@@ -18,16 +18,6 @@ function addAccount($type,$user,$pass,$fullName,$email,$phone,$address,$image){
     $sql = "INSERT INTO accounts(type,user,pass,fullName,email,phone,address,image,role,status,dateCreate) values('$type','$user','$pass','$fullName','$email','$phone','$address','$image',2,1,current_timestamp())";
     pdo_execute($sql);
 }
-
-/**
- * @param string $input nhập username
- * Trả về TRUE nếu không tồn tại, ngược lại trả về FALSE
- */
-function checkUserExist($input){
-    $sql = "SELECT id FROM accounts WHERE user = '".$input."' AND status = 1";
-    if(empty(pdo_query_one($sql))) return true;
-    else return false;
-}
 function updateUser($fullName,$email,$phone,$address,$id){
     $sql = "UPDATE accounts SET fullName = '".$fullName."',email = '".$email."',phone = '".$phone."',address = '".$address."',dateUpdate = current_timestamp() WHERE id = ".$id;
     pdo_execute($sql);
@@ -68,7 +58,7 @@ function loginSocial($type){
     if($type===2 || $type===3){
         if($type===2) extract($_SESSION['user_facebook']);
         if($type===3) extract($_SESSION['user_google']);
-        if(checkUserExist($username) === true) {
+        if(checkUserExist($username,1) === true) {
             addAccount($type,$username,'',$fullName,$email,'','',$image);
         }
         #tự động ĐĂNG NHẬP 

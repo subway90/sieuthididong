@@ -305,7 +305,7 @@ function checkImage($image,$size){
     if(in_array($image['type'],['image/jpeg','image/jpg', 'image/png','image/gif','image/webp']) === true){ //cho phép đuôi jpeg,jpg,png,gif,webp | hàm in_array: kiểm tra input có trùng với phần tử nào trong mảng hay không, nếu trùng sẽ trả TRUE
         if($image['size'] <= ($size*1024*1024)){  //so sánh dung lượng cho phép (Byte)
             return true;
-        } else return 'Kích thước file không được trên 2MB.';
+        } else return 'Kích thước file không được trên '.$size.' MB.';
     }else return 'Đuôi tệp không hợp lệ.';
 }
 
@@ -409,5 +409,22 @@ function show404($type) {
  */
 function pathImage($nameFile){
     if(strstr($nameFile,'http')) return $nameFile;
-    else return URL.'/uploads/user/avatar/'.$nameFile;
+    else return URL.'uploads/user/avatar/'.$nameFile;
+}
+
+function hashImage($filename) {
+    return createTokenChar(16).'.'.substr($filename['type'],6); //định dạng lại tên file
+}
+
+/**
+ * @param string $user nhập username
+ * @param string $type  để [1] là không dùng, để [2] là dùng kiểm tra username theo hiện tại
+ * Trả về TRUE nếu không tồn tại, ngược lại trả về FALSE
+ */
+function checkUserExist($user,$type){
+    if($user === 1) $where = "1";
+    else $where = " user !='".$user."'";
+    $sql = "SELECT id FROM accounts WHERE user = '".$user."' AND status = 1 AND ".$where;
+    if(empty(pdo_query_one($sql))) return true;
+    else return false;
 }

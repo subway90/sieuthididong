@@ -19,6 +19,10 @@ const WEB_SGPKD = 'TTCP/KD/40025013';
 const WEB_COPYS = 'SUBWAY90 - HGROUP - 2024';
 const WEB_COPYL = 'https://github.com/subway90';
 
+# PATH
+const PATH_UPLOAD_IMAGE_AVATAR = "../../uploads/user/avatar";
+const PATH_UPLOAD_IMAGE_PRODUCT = "../../uploads/product/";
+
 # PAGE ACTIVE
 const PAGE_UPDATE = false;
 

@@ -12,7 +12,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $verifypass = $_POST['verifypass'];
     if(!empty($user)){
         if(strlen($user) >= 4){
-            $check = checkUserExist($user);
+            $check = checkUserExist($user,1);
             if($check === true) {
                 if(!empty($pass)) {
                     $checkPass = checkPass($pass);
