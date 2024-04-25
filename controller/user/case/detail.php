@@ -34,13 +34,18 @@ if(isset($arrayURL[1]) && !empty($arrayURL[1])) {
         }
         if(!$listColor) show404('user');
         # IMAGE LIST
+        $k = 0;
         for ($i=0; $i < count($listColor); $i++) {
             for ($j = 0; $j < count($listColor[$i]); $j++) { 
                 extract($listColor[$i][$j]);
-                if(in_array($color,$arrayColor)) continue;
+                if(in_array($color,$arrayColor)) {
+                    $listImage[$k-1]['arrayID'] .= '/'.$idColor;
+                }
                 else {
                     $arrayColor[] = $color;
-                    $listImage[] = $image;
+                    $listImage[$k]['name'] = $image;
+                    $listImage[$k]['arrayID'] = $idColor;
+                    ++$k;
                 }
             }
         }

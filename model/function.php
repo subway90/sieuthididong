@@ -432,3 +432,14 @@ function checkUserExist($user,$type){
     if(empty(pdo_query_one($sql))) return true;
     else return false;
 }
+
+function printClassImage($input) {
+    $output = '';
+    $arr = explode('/',$input);
+    if($arr) {
+        for ($i=0; $i < count($arr); $i++) { 
+            $output .=' imageNum-'.$arr[$i];
+        }
+        return $output;
+    }return ' imageNum-'.$input;
+}

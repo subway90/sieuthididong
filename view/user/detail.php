@@ -25,7 +25,7 @@
                     <?php
                     for ($i = 0; $i < count($listImage); $i++) { ?>
                         <div class="carousel-item <?= matchValue('active',0, $i) ?>">
-                            <img class="w-100" src="<?= URL_IMGER_PRODUCT . $listImage[$i] ?>" alt="<?= $listImage[$i] ?>">
+                            <img class="w-100" src="<?= URL_IMGER_PRODUCT . $listImage[$i]['name'] ?>" alt="<?= $listImage[$i]['name'] ?>">
                         </div>
                     <?php } ?>
                 </div>
@@ -44,9 +44,9 @@
                     <?php
                     for ($i = 0; $i < count($listImage); $i++) {
                         ?>
-                        <button class="image-<?=$i?> col-2 border-0 hover-btn-galery-product" data-bs-target="#galery-product"
+                        <button class="<?= printClassImage($listImage[$i]['arrayID']) ?> col-2 border-0 hover-btn-galery-product" data-bs-target="#galery-product"
                             data-bs-slide-to="<?= $i ?>" aria-label="Slide <?= $i + 1 ?>">
-                            <img class="w-100" src="<?= URL_IMGER_PRODUCT . $listImage[$i] ?>" alt="<? $image ?>">
+                            <img class="w-100" src="<?= URL_IMGER_PRODUCT . $listImage[$i]['name'] ?>" alt="<? $listImage[$i]['name'] ?>">
                         </button>
                     <?php } ?>
                 </div>
@@ -490,6 +490,6 @@
     </div>
 
 <script>
-    var clickImage = document.querySelector('.image-<?=$imageNumber?>');
+    var clickImage = document.querySelector('.imageNum-<?=$checkedColor?>');
     clickImage.click();
 </script>
