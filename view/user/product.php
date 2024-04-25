@@ -81,14 +81,13 @@
                         <span style="left: 84%; top: -4%; width: 45px; height: 45px" class="btn bg-danger text-light rounded-circle position-absolute small p-0 pt-2 fw-bold "><?= saleProduct($price,$priceSale) ?>%</span>
                         <span class="show-hover position-absolute end-0 bottom-0 w-100">
                             <div class="d-flex justify-content-evenly">
-                                <button class="btn btn-success">
-                                    <i class="far fa-heart"></i>
-                                </button>
                                 <button name="addProduct" type="submit" class="btn btn-success">
-                                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                    <i class="fa fa-cart-plus"></i>
+                                    <div class="fs-6 small" ><small>giỏ hàng</small></div>
                                 </button>
-                                <button class="btn btn-success">
-                                    <i class="fa fa-share-alt" aria-hidden="true"></i>
+                                <button name="addNowProduct" type="submit" class="btn btn-success">
+                                    <i class="fas fa-cart-arrow-down"></i>
+                                    <div class="fs-6 small" ><small>mua ngay</small></div>
                                 </button>
                             </div>
                         </span>

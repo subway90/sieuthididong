@@ -5,8 +5,10 @@ $listStyle = getAllFieldByCustom('product_style','id,name','status = 1');
 # BIẾN
 $checkedBrand = $checkedStyle = $checkedColor = $checkedPrice = $checkedSorts = -1;
 $filter = "";
+$route = false;
 # [MUA NGAY TỪ SẢN PHẨM]
-if(isset($_POST['addProduct'])){
+if(isset($_POST['addNowProduct'])) $route = true;
+if(isset($_POST['addProduct']) || $route){
   # Trường hợp CHƯA ĐĂNG NHẬP (GUEST)
   if(empty($_SESSION['user'])){
       $check = checkCart($_POST['idColor']);
@@ -24,6 +26,8 @@ if(isset($_POST['addProduct'])){
       }
       else addAlert('warning','<i class="fas fa-vote-yea"></i> Sản phẩm này đã có trong giỏ hàng.');
   }
+  # Route
+  if($route) header('Location:'.URL.'gio-hang');
 }
 
 # LỌC TÌM KIẾM
