@@ -196,6 +196,7 @@
                                         <div
                                             class="card-body d-flex align-items-center justify-content-between pb-0 pt-4">
                                             <h2 class="fs-exact-16 mb-0">THÔNG TIN USER - ID: <?=$getUser['id']?></h2>
+                                            <a href="#" class="text-danger">Xem chi tiết</a>
                                         </div>
                                         <div class="card-body d-flex align-items-center pt-4">
                                             <div class="mb-auto sa-symbol sa-symbol--shape--circle sa-symbol--size--lg">

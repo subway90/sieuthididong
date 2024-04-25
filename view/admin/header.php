@@ -97,7 +97,7 @@
                                     </a>
                                 </li>
                                 <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
-                                    <a href="<?=ACT_ADMIN?>bill" class="sa-nav__link">
+                                    <a href="<?=ACT_ADMIN?>account" class="sa-nav__link">
                                         <span class="sa-nav__icon">
                                             <i class="fas fa-user"></i>
                                         </span>
@@ -105,7 +105,7 @@
                                     </a>
                                 </li>
                                 <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
-                                    <a href="<?=ACT_ADMIN?>bill" class="sa-nav__link">
+                                    <a href="<?=ACT_ADMIN?>feedback" class="sa-nav__link">
                                         <span class="sa-nav__icon">
                                             <i class="fas fa-poll-h"></i>
                                         </span>
@@ -113,7 +113,7 @@
                                     </a>
                                 </li>
                                 <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
-                                    <a href="<?=ACT_ADMIN?>bill" class="sa-nav__link">
+                                    <a href="<?=ACT_ADMIN?>comment" class="sa-nav__link">
                                         <span class="sa-nav__icon">
                                             <i class="fas fa-comment"></i>
                                         </span>
@@ -121,7 +121,7 @@
                                     </a>
                                 </li>
                                 <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
-                                    <a href="<?=ACT_ADMIN?>bill" class="sa-nav__link">
+                                    <a href="<?=ACT_ADMIN?>interface" class="sa-nav__link">
                                         <span class="sa-nav__icon">
                                             <i class="fas fa-pen"></i>
                                         </span>
@@ -129,7 +129,7 @@
                                     </a>
                                 </li>
                                 <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
-                                    <a href="<?=ACT_ADMIN?>bill" class="sa-nav__link">
+                                    <a href="<?=ACT_ADMIN?>adminitrator" class="sa-nav__link">
                                         <span class="sa-nav__icon">
                                             <i class="fas fa-user-shield"></i>
                                         </span>

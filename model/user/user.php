@@ -43,15 +43,6 @@ function updatePass($pass,$id){
 }
 
 /**
- * Trả về đường dẫn ảnh phụ thuộc vào USER[type]
- * @param string $nameFile TYPE ACCOUNT, nếu để trống thì xét theo $_session['user]
- */
-function pathImage($nameFile){
-        if(strstr($nameFile,'http')) return $nameFile;
-        else return URL.'/uploads/user/avatar/'.$nameFile;
-}
-
-/**
  * Kiểm tra về validation của PASSWORD
  * Trả về TRUE nếu hợp lệ, ngược lại trả về chuỗi thông báo lỗi
  * @param string $input Mật khẩu cần kiểm tra

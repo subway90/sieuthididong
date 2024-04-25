@@ -12,7 +12,7 @@
                             </ol>
                         </nav>
                     </div>
-                    <div class="col-auto d-flex"><a href="#" class="btn btn-info btn-gradient">In hóa đơn</a></div>
+                    <div class="col-auto d-flex"><a href="#" class="btn btn-info">In hóa đơn</a></div>
                 </div>
             </div>
             <div class="card">

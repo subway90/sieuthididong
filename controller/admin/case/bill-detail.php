@@ -25,6 +25,6 @@ if($statusPay==2) $showStatusPay = '<div class="badge badge-sa-primary">Đã tha
 if($typePay==1) $showTypePay = '<div class="badge badge-sa-success">Tiền mặt (COD)</div>';
 if($typePay==2) $showTypePay = '<div class="badge badge-sa-ìnof">Ebanking</div>';
 
-
+$title = 'Hóa đơn chi tiết - '.$token;
 require_once '../../view/admin/header.php';
 require_once '../../view/admin/bill-detail.php';

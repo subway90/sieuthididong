@@ -76,13 +76,20 @@ else{
                 case "category-add":
                     require_once "case/category-add.php";
                     break;
-
                 // [INVOICE]
                 case "bill":
                     require_once "case/bill.php";
                     break;
                 case "bill-detail":
                     require_once "case/bill-detail.php";
+                    break;
+                // [account SHOW - HIDE]
+                case "account":
+                    require_once "case/account.php";
+                    break;
+                // [account ADD - EDIT]
+                case "account-add":
+                    require_once "case/account-add.php";
                     break;
                 // [404]
                 default:

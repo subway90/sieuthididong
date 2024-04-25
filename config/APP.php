@@ -69,5 +69,7 @@ const G_CLIENT_SECRET = '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';
 const G_URI_LOGIN     = 'https://subway90.vn/dang-nhap';
 
 # ICON
-const ICON_CLOSE = '<i class="fa fa-times-circle me-3"></i>';
-const ICON_CHECK  = '<i class="fa fa-check-circle me-3"></i>';
+const ICON_CLOSE    = '<i class="fa fa-times-circle me-3"></i>';
+const ICON_CHECK    = '<i class="fa fa-check-circle me-3"></i>';
+const ICON_FACEBOOK = '<i class="fab fa-facebook me-3"></i>';
+const ICON_GOOGLE   = '<i class="fab fa-google me-3"></i>';

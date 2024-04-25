@@ -403,3 +403,11 @@ function show404($type) {
         exit;
     }
 }
+/**
+ * Trả về đường dẫn ảnh phụ thuộc vào USER[type]
+ * @param string $nameFile TYPE ACCOUNT, nếu để trống thì xét theo $_session['user]
+ */
+function pathImage($nameFile){
+    if(strstr($nameFile,'http')) return $nameFile;
+    else return URL.'/uploads/user/avatar/'.$nameFile;
+}
