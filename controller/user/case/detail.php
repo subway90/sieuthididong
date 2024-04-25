@@ -5,8 +5,18 @@ $checkedModel = $checkedColor = -1;
 $listColor = [];
 $listImage = [];
 $arrayColor = [];
+$checkedModel = -1;
 
+# SELECT DETAIL BY SLUG
 if(isset($arrayURL[1]) && !empty($arrayURL[1])) {
+    # SELECT DETAIL BY MODEL & COLOR
+    if(isset($arrayURL[2]) && !empty($arrayURL[2]) && isset($arrayURL[3]) && !empty($arrayURL[3])) {
+        $checkInput = getOneProduct('pm.idModel ='.$arrayURL[2].' AND c.id ='.$arrayURL[3]);
+        if($checkInput) {
+            $checkedModel = $arrayURL[2];
+            $checkedColor = $arrayURL[3];
+        }else show404('user');
+    }
     # INFO SERIES
     $oneProduct = getOneFieldByCustom('products','id,idBrand, name','slug = "'.moveCharSpecial($arrayURL[1]).'" AND status = 1');
     if(!empty($oneProduct)){
@@ -19,6 +29,7 @@ if(isset($arrayURL[1]) && !empty($arrayURL[1])) {
         # COLOR PRODUCT
         for ($i=0; $i < count($listModel); $i++) { 
             $selectColor = getAllFieldByCustom('product_color','id idColor,color,image,quantity,price,priceSale','idModel='.$listModel[$i]['idModel'].' AND status = 1');
+            # Nếu màu có tồn tại -> thêm vào mảng màu
             if($selectColor) $listColor[] = $selectColor;
         }
         if(!$listColor) show404('user');
@@ -52,31 +63,26 @@ if(isset($arrayURL[1]) && !empty($arrayURL[1])) {
         # [MUA NGAY TỪ CHI TIẾT]
         if(isset($_POST['addProduct'])){
             if(isset($_POST['idModel'])){
-                $checkedModel = $_POST['idModel'];
+            $checkedModel = $_POST['idModel'];
                 if(isset($_POST['idColor'])){
                 $checkedColor = $_POST['idColor'];
-                    # Trường hợp CHƯA ĐĂNG NHẬP (GUEST)
-                    if(empty($_SESSION['user'])){
-                        $check = checkCart($_POST['idColor']);
-                        if($check == -1) {
-                            $_SESSION['cart'][] = ['idProduct' => $_POST['idProduct'],'idModel' => $_POST['idModel'],'idColor' => $_POST['idColor'],'quantity' => 1];
-                            $route = true;
+                    if(getOneProduct('pm.idModel ='.$checkedModel.' AND c.id ='.$checkedColor)){
+                        # Trường hợp CHƯA ĐĂNG NHẬP (GUEST)
+                        if(empty($_SESSION['user'])){
+                            $check = checkCart($_POST['idColor']);
+                            if($check == -1) $_SESSION['cart'][] = ['idProduct' => $_POST['idProduct'],'idModel' => $checkedModel,'idColor' => $checkedColor,'quantity' => 1];
                         }
-                        else addAlert('warning','<i class="fas fa-vote-yea"></i> Sản phẩm này đã có trong giỏ hàng.');
-                    }
-                    # Trường hợp ĐÃ ĐĂNG NHẬP (USER)
-                    else{ 
-                        $check = checkCartByID($_POST['idColor']);
-                        if(empty($check)) {
-                            addCart($_SESSION['user']['id'],$_POST['idProduct'],$_POST['idModel'],$_POST['idColor'],1);
-                            $route = true;
+                        # Trường hợp ĐÃ ĐĂNG NHẬP (USER)
+                        else{ 
+                            $check = checkCartByID($checkedColor);
+                            if(empty($check)) addCart($_SESSION['user']['id'],$_POST['idProduct'],$checkedModel,$checkedColor,1);
                         }
-                        else addAlert('warning','<i class="fas fa-vote-yea"></i> Sản phẩm này đã có trong giỏ hàng.');
-                    }
-                    // di chuyển ROUTE 
-                    if($route == true) header('Location:'.URL.'gio-hang');
-                }else  addAlert('danger','Vui lòng chọn màu sản phẩm');
-            }else addAlert('danger','Vui lòng chọn loại sản phẩm');
+                        // di chuyển ROUTE 
+                        header('Location:'.URL.'gio-hang');
+                        exit;
+                    }else addAlert('danger','Sản phẩm không tồn tại.');
+                }else addAlert('danger','Vui lòng chọn màu sản phẩm');
+            }else  addAlert('danger','Vui lòng chọn phiên bản.');
         }
         # [RENDER VIEW]
         $title = $name;

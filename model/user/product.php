@@ -16,6 +16,21 @@ function getProduct($filter){
     $list = pdo_query($sql);
     return $list;
 }
+function getOneProduct($filter){
+    $sql = "
+    SELECT pm.idProduct, pm.idModel, pm.idBrand, pm.idType, pm.idStyle, pm.slug, pm.name, pm.idModel, pm.model, c.*
+    FROM product_color c
+    JOIN (
+        SELECT p.name, p.idBrand, p.idType, p.idStyle, p.slug, p.id idProduct, m.id idModel, m.model
+        FROM products p
+        JOIN product_model m
+        ON m.idProduct = p.id
+        ) pm
+    ON pm.idModel = c.idModel
+    WHERE c.status = 1 AND ".$filter;
+    $list = pdo_query_one($sql);
+    return $list;
+}
 
 /**
  * @param int $limit giới hạn sản phẩm
@@ -67,11 +82,6 @@ function getListCmt($id){
 function addComment($idUser,$idProduct,$message){
     $sql = "INSERT INTO comments(idUser,idProduct,message) values('$idUser','$idProduct','$message')";
     pdo_execute($sql);
-}
-
-function boolColor($input) {
-    if(!$input) return 'disabled';
-    else return '';
 }
 
 function saleProduct($price,$priceSale) {

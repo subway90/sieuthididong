@@ -388,6 +388,10 @@ function matchValue($type,$a,$b) {
     if($a == $b) return $type;
     else return '';
 }
+function matchValue2($type1,$type2,$a,$b) {
+    if($a == $b) return $type1;
+    else return $type2;
+}
 
 function show404($type) {
     if($type == 'admin') {

@@ -1,8 +1,10 @@
 <div class="container mt-3 bg-light rounded pt-3 pb-1">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item fw-bold"><a href="<?=URL?>" class="text-decoration-none text-dark">Trang chủ</a></li>
-            <li class="breadcrumb-item fw-bold"><a href="<?=URL?>san-pham" class="text-decoration-none text-dark">Điện
+            <li class="breadcrumb-item fw-bold"><a href="<?= URL ?>" class="text-decoration-none text-dark">Trang
+                    chủ</a>
+            </li>
+            <li class="breadcrumb-item fw-bold"><a href="<?= URL ?>san-pham" class="text-decoration-none text-dark">Điện
                     thoại</a></li>
             <li class="breadcrumb-item fw-bold"><a href="<?= URL ?>san-pham/loc/?Brand=<?= $selectBrand['id'] ?>"
                     class="text-decoration-none text-dark"><?= $selectBrand['name'] ?></a></li>
@@ -16,17 +18,16 @@
         <div class="col-12 fw-bold fs-4 py-2">
             <?= $name ?>
         </div>
-
         <div class="col-12 col-md-12 col-lg-4">
             <div id="galery-product" class="carousel slide">
                 <!-- [ẢNH LỚN] -->
                 <div class="carousel-inner position-relative">
-                    <?php 
-                    for ($i=0; $i < count($listImage); $i++){ ?>
-                        <div class="carousel-item <?php if ($i == 0) echo ' active' ?>">
-                                <img class="w-100" src="<?= URL_IMGER_PRODUCT . $listImage[$i] ?>" alt="<?= $listImage[$i] ?>">
+                    <?php
+                    for ($i = 0; $i < count($listImage); $i++) { ?>
+                        <div class="carousel-item <?= matchValue('active',0, $i) ?>">
+                            <img class="w-100" src="<?= URL_IMGER_PRODUCT . $listImage[$i] ?>" alt="<?= $listImage[$i] ?>">
                         </div>
-                    <?php }?>
+                    <?php } ?>
                 </div>
                 <span class="position-absolute top-50 w-100 d-flex justify-content-between">
                     <button class="btn btn-success rounded-pill" data-bs-target="#galery-product" data-bs-slide="prev">
@@ -40,116 +41,136 @@
             <div class="container mt-3 d-flex justify-content-center">
                 <!-- [ẢNH NHỎ] -->
                 <div class="row d-flex justify-content-center">
-                <?php 
-                for ($i=0; $i < count($listImage); $i++) { 
-                ?>
-                    <button class="col-2 border-0 hover-btn-galery-product" data-bs-target="#galery-product" data-bs-slide-to="<?= $i ?>" aria-label="Slide <?= $i + 1 ?>">
-                        <img class="w-100" src="<?= URL_IMGER_PRODUCT . $listImage[$i] ?>" alt="<? $image ?>">
-                    </button>
-                <?php }?>
-                </div>
-                <!-- <div class="row d-flex justify-content-center">
-                    <?php for ($i = 0; $i < count($listColor[0]); $i++) {
-                        extract($listColor[0][$i]); ?>
-                        <button class="col-2 border-0 hover-btn-galery-product" data-bs-target="#galery-product"
+                    <?php
+                    for ($i = 0; $i < count($listImage); $i++) {
+                        ?>
+                        <button class="image-<?=$i?> col-2 border-0 hover-btn-galery-product" data-bs-target="#galery-product"
                             data-bs-slide-to="<?= $i ?>" aria-label="Slide <?= $i + 1 ?>">
-                            <img class="w-100" src="<?= URL_IMGER_PRODUCT . $image ?>" alt="<? $image ?>">
+                            <img class="w-100" src="<?= URL_IMGER_PRODUCT . $listImage[$i] ?>" alt="<? $image ?>">
                         </button>
                     <?php } ?>
-                    </button>
-                </div> -->
+                </div>
             </div>
         </div>
 
         <div class="col-12 col-md-12 col-lg-5">
-        <form action="<?=URL?>chi-tiet/<?=$arrayURL[1]?>" method="post">
-        <input type="hidden" name="idProduct" value="<?=$id?>">
-            <div class="row">
-                <div class="col-12 col-md-6 col-lg-6 mt-lg-3 p-0">
-                    <p class="text-center text-lg-start text-secondary fw-bold">(Giá đã bao gồm VAT)</p>
-                </div>
-                <div class="col-12 p-0">
-                    <div class="w-100 border border-success bg-light text-center text-success fw-bold py-1 rounded">
-                        <i class="fa fa-truck" aria-hidden="true"></i>
-                        Vận chuyển miễn phí toàn quốc
+            <form action="<?= URL ?>chi-tiet/<?= $arrayURL[1] ?>" method="post">
+                <input type="hidden" name="idProduct" value="<?= $id ?>">
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-6 mt-lg-3 p-0">
+                        <p class="text-center text-lg-start text-secondary fw-bold">(Giá đã bao gồm VAT)</p>
                     </div>
-                </div>
-                <div class="col-12 text-end small">SKU: <span class="fw-bold">AP30520VN</span></div>
-                <!-- [MODEL] -->
-                <div class="col-12 p-0">
-                    <div class="w-100 text-start fw-bolder">Lựa chọn loại</div>
-                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                        <?php for ($i = 0; $i < count($listModel); $i++) { extract($listModel[$i]); ?>
-                        <li class="nav-item me-1" >
-                            <input type="radio" name="idModel" value="<?=$idModel?>" id="model<?=$i?>" class="btn-check" <?php if($checkedModel == $idModel) echo'checked'?> data-bs-toggle="pill" data-bs-target="#model-<?=$i?>">
-                            <label class="btn btn-outline-success" for="model<?=$i?>"> <?= $model ?></label>
-                            
-                        </li>
-                        <?php } ?>
-                    </ul>
-                <!-- [COLOR] -->
-                    <div class="tab-content" id="modeltabContent">
-                        <div class="w-100 text-start fw-bolder">Lựa chọn màu</div>
-                        <?php for ($i=0; $i < count($listColor); $i++) { ?>
-                        <div class="tab-pane fade <?php if($i==0) echo'show active'?>" id="model-<?=$i?>">
-                            <div class="row p-0 mt-2">
-                                <ul class="nav">
-                                    <?php for ($j = 0; $j < count($listColor[$i]); $j++) {extract($listColor[$i][$j]);
-                                        ?>
-                                        <li class="ms-3">
-                                            <input type="radio" class="btn-check" name="idColor" value="<?=$idColor?>" <?php if($checkedColor == $idColor) echo'checked'?> id="option<?=$i.$j?>" <?php boolColor($quantity)?>>
-                                            <label class="btn btn-outline-success" for="option<?=$i.$j?>"> <?= $color ?> <div class="text-danger fw-bold small"> <?= number_format($priceSale) ?> đ</div> </label>
-                                        </li>
-                                    <?php } ?>
-                                </ul>
+                    <div class="col-12 p-0">
+                        <div class="w-100 border border-success bg-light text-center text-success fw-bold py-1 rounded">
+                            <i class="fa fa-truck" aria-hidden="true"></i>
+                            Vận chuyển miễn phí toàn quốc
+                        </div>
+                    </div>
+                    <div class="col-12 text-end small">SKU: <span class="fw-bold">AP30520VN</span></div>
+                    <!-- [MODEL] -->
+                    <div class="col-12 p-0">
+                        <div class="w-100 text-start fw-bolder">Lựa chọn loại</div>
+                        <ul class="nav nav-pills mb-3" id="myTab" role="tablist">
+                            <?php for ($i = 0; $i < count($listModel); $i++) {
+                                extract($listModel[$i]); ?>
+                                <li class="nav-item me-1" role="presentation">
+                                    <input <?= matchValue('checked', $checkedModel, $idModel) ?> type="radio" 
+                                    class="btn-check <?= matchValue('active', $checkedModel, $idModel) ?>" 
+                                    id="pane<?=$i?>"
+                                    data-bs-toggle="pill"
+                                    data-bs-target="#model<?=$i?>-pane" 
+                                    type="button" 
+                                    role="pill"
+                                    aria-controls="model<?=$i?>-pane" 
+                                    aria-selected="<?= matchValue2('true', 'false', $checkedModel, $idModel) ?>"
+                                    name="idModel"
+                                    value="<?= $idModel ?>"/>
+                                    <label class="btn btn-outline-success" for="pane<?=$i?>"><?= $model ?></label>
+                                </li>
+                            <?php } ?>
+                        </ul>
+                        <!-- [COLOR] -->
+                        <div class="tab-content" id="myTabContent">
+                            <div class="w-100 text-start fw-bolder">Lựa chọn màu</div>
+                            <?php for ($i = 0; $i < count($listColor); $i++) { ?>
+                                <div class="tab-pane fade <?= matchValue('active show', $listModel[$i]['idModel'], $checkedModel) ?>"
+                                    id="model<?=$i?>-pane" 
+                                    role="tabpanel" 
+                                    aria-labelledby="pane<?=$i?>" 
+                                    tabindex="0">
+                                    <div class="row p-0 mt-2">
+                                        <ul class="nav">
+                                            <?php for ($j = 0; $j < count($listColor[$i]); $j++) {
+                                                extract($listColor[$i][$j]);
+                                                ?>
+                                                <li class="ms-3">
+                                                    <input 
+                                                        type="radio" 
+                                                        class="btn-check" 
+                                                        name="idColor" 
+                                                        value="<?= $idColor ?>"
+                                                        <?= matchValue('checked', $checkedColor, $idColor) ?>
+                                                        id="option<?= $i . $j ?>" 
+                                                        <?= matchValue('disabled', 0, $quantity) ?>
+                                                    >
+                                                    <label class="btn btn-outline-success" for="option<?= $i . $j ?>">
+                                                        <?= $color ?>
+                                                        <div class="text-danger fw-bold small"> <?= number_format($priceSale) ?>
+                                                            đ</div>
+                                                    </label>
+                                                </li>
+                                            <?php } ?>
+                                        </ul>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                        </div>
+                    </div>
+                    <!-- [MUA - TRẢ GÓP - GIỎ HÀNG] -->
+                    <div class="col-12 mt-3">
+                        <div class="row">
+                            <div class="col-10 px-1">
+                                <button name="addProduct" type="submit" class="w-100 btn btn-danger bg-gradient">
+                                    MUA NGAY
+                                </button>
+                            </div>
+                            <div class="col-2 px-1">
+                                <button class="w-100 btn btn-outline-warning">
+                                    <i class="far fa-heart" aria-hidden="true"></i>
+                                </button>
                             </div>
                         </div>
-                        <?php }?>
+                    </div>
+                    <!-- [THÔNG TIN KM] -->
+                    <div class="col-12 mt-3">
+                        <p class="text-success">KHUYẾN MÃI</p>
+                        <div class="my-2">
+                            <div class="btn btn-warning bg-gradient text-light p-0 px-1 small">
+                                <span class="small">KM1</span>
+                            </div>
+                            <span>
+                                <a class="text-decoration-none text-green" href="#">
+                                    Giảm thêm 30% giá trị máy cũ, tối đa 2.000.000đ khi tham gia thu cũ, đổi mới iPhone
+                                    15
+                                    Series.
+                                </a>
+                            </span>
+                        </div>
+                        <div class="my-2">
+                            <div class="btn btn-warning bg-gradient text-light p-0 px-1 small">
+                                <span class="small">KM2</span>
+                            </div>
+                            <span>
+                                <a class="text-decoration-none text-green" href="#">
+                                    Giảm thêm 100.000đ khi khách hàng thanh toán bằng hình thức chuyển khoản ngân hàng
+                                    khi
+                                    mua iPhone 15 Series.
+                                </a>
+                            </span>
+                        </div>
                     </div>
                 </div>
-                <!-- [MUA - TRẢ GÓP - GIỎ HÀNG] -->
-                <div class="col-12 mt-3">
-                    <div class="row">
-                        <div class="col-10 px-1">
-                            <button name="addProduct" type="submit" class="w-100 btn btn-danger bg-gradient">
-                                MUA NGAY
-                            </button>
-                        </div>
-                        <div class="col-2 px-1">
-                            <button class="w-100 btn btn-outline-warning">
-                                <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- [THÔNG TIN KM] -->
-                <div class="col-12 mt-3">
-                    <p class="text-success">KHUYẾN MÃI</p>
-                    <div class="my-2">
-                        <div class="btn btn-warning bg-gradient text-light p-0 px-1 small">
-                            <span class="small">KM1</span>
-                        </div>
-                        <span>
-                            <a class="text-decoration-none text-green" href="#">
-                                Giảm thêm 30% giá trị máy cũ, tối đa 2.000.000đ khi tham gia thu cũ, đổi mới iPhone 15
-                                Series.
-                            </a>
-                        </span>
-                    </div>
-                    <div class="my-2">
-                        <div class="btn btn-warning bg-gradient text-light p-0 px-1 small">
-                            <span class="small">KM2</span>
-                        </div>
-                        <span>
-                            <a class="text-decoration-none text-green" href="#">
-                                Giảm thêm 100.000đ khi khách hàng thanh toán bằng hình thức chuyển khoản ngân hàng khi
-                                mua iPhone 15 Series.
-                            </a>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </form>
+            </form>
         </div>
 
         <div class="col-12 col-md-12 col-lg-3 mt-5 mt-md-4 mt-lg-3">
@@ -361,99 +382,105 @@
         <div class="col-12 mt-4">
             <!-- [SẢN PHẨM LIÊN QUAN] -->
             <div class="row">
-                <?php for ($i=0; $i < count($listProductHint); $i++) { extract($listProductHint[$i]) ?>
-                <div class="col-6 col-md-4 col-lg-2 pb-3 pb-md-4 pb-lg-5">
-                    <div style="min-height: 100%;" class="card shadow">
-                        <div class="position-relative hover-trigger">
-                            <img src="<?=URL_IMGER_PRODUCT.$image?>" class="card-img img-product" alt="<?=$image?>">
-                            <span style="left: 84%; top: -4%; width: 45px; height: 45px"
-                                class="btn bg-danger text-light rounded-circle position-absolute small p-0 pt-2 fw-bold ">51%</span>
-                            <span class="show-hover position-absolute end-0 bottom-0 w-100">
-                                <div class="d-flex justify-content-evenly">
-                                    <button class="btn btn-success">
-                                        <i class="far fa-heart" aria-hidden="true"></i>
-                                    </button>
-                                    <button class="btn btn-success">
-                                        <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                                    </button>
-                                    <button class="btn btn-success">
-                                        <i class="fa fa-share-alt" aria-hidden="true"></i>
-                                    </button>
-                                </div>
-                            </span>
-                        </div>
-                        <div class="ms-2">
-                            <span class="badge bg-warning">KM</span>
-                            <span class="badge bg-success">Trả góp 0%</span>
-                        </div>
-                        <a class="text-decoration-none" href="<?=URL?>chi-tiet/<?=$slug?>">
-                            <div class="card-body">
-                                <h5 class="card-title fs-6 fw-bold text-dark"> <?= $name ?> </h5>
-                                <p class="card-text">
-                                    <span class="text-danger fw-bold me-1">9,990,000 đ</span>
-                                    <span class="text-secondary small"><del><small>18,900,000</small></del></span>
-                                </p>
+                <?php for ($i = 0; $i < count($listProductHint); $i++) {
+                    extract($listProductHint[$i]) ?>
+                    <div class="col-6 col-md-4 col-lg-2 pb-3 pb-md-4 pb-lg-5">
+                        <div style="min-height: 100%;" class="card shadow">
+                            <div class="position-relative hover-trigger">
+                                <img src="<?= URL_IMGER_PRODUCT . $image ?>" class="card-img img-product"
+                                    alt="<?= $image ?>">
+                                <span style="left: 84%; top: -4%; width: 45px; height: 45px"
+                                    class="btn bg-danger text-light rounded-circle position-absolute small p-0 pt-2 fw-bold ">51%</span>
+                                <span class="show-hover position-absolute end-0 bottom-0 w-100">
+                                    <div class="d-flex justify-content-evenly">
+                                        <button class="btn btn-success">
+                                            <i class="far fa-heart" aria-hidden="true"></i>
+                                        </button>
+                                        <button class="btn btn-success">
+                                            <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                        </button>
+                                        <button class="btn btn-success">
+                                            <i class="fa fa-share-alt" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </span>
                             </div>
-                        </a>
+                            <div class="ms-2">
+                                <span class="badge bg-warning">KM</span>
+                                <span class="badge bg-success">Trả góp 0%</span>
+                            </div>
+                            <a class="text-decoration-none" href="<?= URL ?>chi-tiet/<?= $slug ?>">
+                                <div class="card-body">
+                                    <h5 class="card-title fs-6 fw-bold text-dark"> <?= $name ?> </h5>
+                                    <p class="card-text">
+                                        <span class="text-danger fw-bold me-1">9,990,000 đ</span>
+                                        <span class="text-secondary small"><del><small>18,900,000</small></del></span>
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                </div>
                 <?php } ?>
             </div>
         </div>
 
         <!-- Bình luận -->
         <div class="col-12">
-            <?php if($_SESSION['user']) {?>
-            <form method="post">
-                <div class="mt-5 d-flex justify-content-between align-items-center">
-                    <div class="me-2">
-                        <img width="45px" height="45px" src="<?= pathImage($_SESSION['user']['image']) ?>" alt="you-image"
-                            class="rounded-circle border-1 border-success">
+            <?php if ($_SESSION['user']) { ?>
+                <form method="post">
+                    <div class="mt-5 d-flex justify-content-between align-items-center">
+                        <div class="me-2">
+                            <img width="45px" height="45px" src="<?= pathImage($_SESSION['user']['image']) ?>"
+                                alt="you-image" class="rounded-circle border-1 border-success">
+                        </div>
+                        <div class="w-100">
+                            <textarea name="message" class="form-control" rows="1" type="text"
+                                placeholder="Nhập bình luận của bạn..."><?= $message ?></textarea>
+                        </div>
+                        <button name="comment" type="submit" class="ms-2 btn px-3 btn-success">gửi</button>
                     </div>
-                    <div class="w-100">
-                        <textarea name="message" class="form-control" rows="1" type="text"
-                            placeholder="Nhập bình luận của bạn..."><?=$message?></textarea>
-                    </div>
-                    <button name="comment" type="submit" class="ms-2 btn px-3 btn-success">gửi</button>
-                </div>
-            </form>
-            <?php }?>
+                </form>
+            <?php } ?>
             <p class="h6 mt-5">Bình luận được tải lên</p>
             <hr class="border-2 border-success">
-            <table class="table table-hover">   
-            <?php if($listComment) { 
-                for ($i=0; $i < count($listComment); $i++) { 
-                extract($listComment[$i]) ?>
-                <tr>
-                    <td style="width: 5%">
-                        <img width="45px" height="45px" src="<?= pathImage($image) ?>" alt="img-user-cmt-<?=$i+1?>"
-                            class="rounded-circle border-1 border-success">
-                    </td>
-                    <td>
-                        <div class="w-100 d-flex justify-content-between">
-                            <span class="text-start"><?=$fullName?> | 
-                                <span class="text-end"><i class="small text-secondary"> <?= formatTime($dateCreate,'hh:ss DD/MM/YYYY') ?> </i>
-                                </span>
-                            </span>
-                            <span>
-                                <?php 
-                                if($_SESSION['user']) {
-                                if($_SESSION['user']['id'] == $id || $_SESSION['user']['role'] == 1) { ?>
-                                <button class="btn btn-sm btn-outline-warning p-0 px-1 fw-sm">sửa</button>
-                                <button class="btn btn-sm btn-outline-danger p-0 px-1 fw-sm">xóa</button>
-                                <?php }if($_SESSION['user']['role'] == 1) {?>
-                                <button class="btn btn-sm btn-outline-success p-0 px-1 fw-sm">trả lời</button>
-                                <?php } }?>
-                            </span>
-                        </div>
-                        <p class="small"> <?= $message ?> </p>
-                    </td>
-                </tr>
-            <?php }}else {?>
-                <tr>
-                    <td colspan="2">Chưa có bình luận nào</td>
-                </tr>
-            <?php }?>
+            <table class="table table-hover">
+                <?php if ($listComment) {
+                    for ($i = 0; $i < count($listComment); $i++) {
+                        extract($listComment[$i]) ?>
+                        <tr>
+                            <td style="width: 5%">
+                                <img width="45px" height="45px" src="<?= pathImage($image) ?>" alt="img-user-cmt-<?= $i + 1 ?>"
+                                    class="rounded-circle border-1 border-success">
+                            </td>
+                            <td>
+                                <div class="w-100 d-flex justify-content-between">
+                                    <span class="text-start"><?= $fullName ?> |
+                                        <span class="text-end"><i class="small text-secondary">
+                                                <?= formatTime($dateCreate, 'hh:ss DD/MM/YYYY') ?> </i>
+                                        </span>
+                                    </span>
+                                    <span>
+                                        <?php
+                                        if ($_SESSION['user']) {
+                                            if ($_SESSION['user']['id'] == $id || $_SESSION['user']['role'] == 1) { ?>
+                                                <button class="btn btn-sm btn-outline-warning p-0 px-1 fw-sm">sửa</button>
+                                                <button class="btn btn-sm btn-outline-danger p-0 px-1 fw-sm">xóa</button>
+                                            <?php }
+                                            if ($_SESSION['user']['role'] == 1) { ?>
+                                                <button class="btn btn-sm btn-outline-success p-0 px-1 fw-sm">trả lời</button>
+                                            <?php }
+                                        } ?>
+                                    </span>
+                                </div>
+                                <p class="small"> <?= $message ?> </p>
+                            </td>
+                        </tr>
+                    <?php }
+                } else { ?>
+                    <tr>
+                        <td colspan="2">Chưa có bình luận nào</td>
+                    </tr>
+                <?php } ?>
             </table>
             <div class="col-12 text-center">
                 <button class="btn btn-outline-success text-center">Tải thêm bình luận</button>
@@ -461,3 +488,8 @@
 
         </div>
     </div>
+
+<script>
+    var clickImage = document.querySelector('.image-<?=$imageNumber?>');
+    clickImage.click();
+</script>

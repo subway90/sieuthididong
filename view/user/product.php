@@ -93,11 +93,12 @@
                             </div>
                         </span>
                     </div>
+            </form>
                     <div class="ms-2">
                         <span class="badge bg-warning">KM</span>
                         <span class="badge bg-success">Trả góp 0%</span>
                     </div>
-                    <a class="text-decoration-none" href="<?=URL.'chi-tiet/'.$slug?>">
+                    <a class="text-decoration-none" href="<?=URL.'chi-tiet/'.$slug?>/<?=$idModel.'/'.$id?>">
                         <div class="card-body">
                             <h5 class="card-title fs-6 fw-bold text-dark"> <?= $name.'-'.$model ?> </h5>
                             <p class="card-text">
@@ -109,7 +110,6 @@
                         </div>
                     </a>
                 </div>
-            </form>
         </div>
         <?php }}else{?> <div class="col-12 text-center py-5">Không tìm thấy sản phẩm. <a href="<?=URL?>san-pham" class="text-success">Quay lại</a></div> <?php }?>
         <!-- Product End -->

@@ -38,7 +38,7 @@ function showCart($type) {
         if(!empty($listIdProInCart)) {
             for ($i=0; $i < count($listIdProInCart); $i++) { 
                 extract($listIdProInCart[$i]);
-                $getProduct = getProduct('c.id ='.$idColor)[0];
+                $getProduct = getOneProduct('c.id ='.$idColor);
                 if(!empty($getProduct)) {
                     extract($getProduct);
                     # SỐ LƯỢNG
@@ -55,7 +55,7 @@ function showCart($type) {
     else { 
         if(!empty($_SESSION['cart'])) {
             for ($i=0; $i < count($_SESSION['cart']); $i++) { 
-                $getProduct = getProduct('c.id ='.$_SESSION['cart'][$i]['idColor'])[0];
+                $getProduct = getOneProduct('c.id ='.$_SESSION['cart'][$i]['idColor']);
                 if(!empty($getProduct)) {
                     extract($getProduct);
                     # SỐ LƯỢNG
