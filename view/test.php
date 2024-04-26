@@ -1,11 +1,13 @@
 <div class="container py-5 my-5">
     <div class="h1 text-danger">TEST AREA</div>
+    <div><span class="fw-bold">Your IP  : </span><?= getIPUser() ?></div>
+    <div><span class="fw-bold">Time : </span><span id="current-time"></span></div>
     <hr class="border border-danger">
+
 <?php
 #KHU VỰC CODE TEST
 if($verify == true){
 ?>
-
 
 
 <?php

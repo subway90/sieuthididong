@@ -129,6 +129,7 @@ function getAllFieldByCustom($table,$field,$custom){
  */
 function getOneFieldByCustom($table,$field,$custom){
     $sql = "SELECT ".$field." FROM ".$table." WHERE ".$custom;
+    var_dump($sql);
     $result = pdo_query_one($sql);
     return $result;
 }
@@ -217,7 +218,7 @@ function checkEmail($input){
  * @param $input Nhập chuỗi cần bỏ các kí tự khác [a-zA-Z0-9]
  */
 function moveCharSpecial($input){
-    $input = str_replace(["<",">","=","-","+","`","~","'",'"','!','@','#','$','%','^','&','*','(',')','{','}','/',],"",$input);
+    $input = str_replace(["<",">","=",'--',"+","`","~","'",'"','!','@','#','$','%','^','&','*','(',')','{','}','/',';',':',','],"",$input);
     return $input;
 }
 /**
@@ -444,10 +445,16 @@ function printClassImage($input) {
     }return ' imageNum-'.$input;
 }
 
+/**
+ * DelayTime tránh SPAM Request
+ */
 function delayTime($second) {
     setcookie('delay',$second,time()+$second);
 }
 
+/**
+ * Thực thi delayTime($second)
+ */
 function show_delayTime() {
     if(isset($_COOKIE['delay'])) {
         unset($_REQUEST);
@@ -456,7 +463,26 @@ function show_delayTime() {
     }
 }
 
+/**
+ * Trả về keyword SEARCH
+ */
 function showKeyWordSearch() {
     if(isset($_POST['search']) && $_POST['search']) return $_POST['search'];
     else return '';
+}
+
+/**
+ * Hàm trả về IP của người dùng
+ */
+function getIPUser(){  
+    if(!empty($_SERVER['HTTP_CLIENT_IP'])){
+        //check ip from share internet
+        $ip = $_SERVER['HTTP_CLIENT_IP'];
+    }else if(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+        //to check ip is pass from proxy
+        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    }else{
+        $ip = $_SERVER['REMOTE_ADDR'];
+    }
+    return $ip;
 }

@@ -93,5 +93,5 @@ if(isset($arrayURL[1]) && !empty($arrayURL[1])) {
         $title = $name;
         require_once "../../view/user/header.php";
         require_once "../../view/user/detail.php";
-    }else { require_once "../../view/user/header.php";require_once "../../view/user/404.php";}
-}else { require_once "../../view/user/header.php";require_once "../../view/user/404.php";}
+    }else show404('user');
+}else show404('user');

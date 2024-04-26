@@ -115,6 +115,7 @@ if(isset($arrayURL[1])){
     }
     else show404('user');
     $listProduct = getProduct($search);
+    delayTime(1);
   }
 }else {
   $listProduct = getProduct('');
