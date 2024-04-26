@@ -11,7 +11,7 @@ function getProduct($filter){
         ) pm
     ON pm.idModel = c.idModel
     WHERE c.status = 1 AND ";
-    if($filter) $sql .= $filter;
+    if($filter && $filter !== '1') $sql .= $filter;
     else $sql .=" 1 ORDER BY c.priceSale ASC";
     $list = pdo_query($sql);
     return $list;

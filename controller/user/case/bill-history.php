@@ -55,8 +55,8 @@ else{
                 $listDetail = getDetailBillByToken($token);
                 $previewBill = false;
             }else {
-                addAlert('danger','TOKEN '.$token.' không hợp lệ');
-                delayTime(3);
+                addAlert('danger','TOKEN '.$token.' không tồn tại');
+                delayTime(1);
             }
         }
         require_once "../../view/user/header.php";

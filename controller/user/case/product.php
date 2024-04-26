@@ -6,6 +6,11 @@ $listStyle = getAllFieldByCustom('product_style','id,name','status = 1');
 $checkedBrand = $checkedStyle = $checkedColor = $checkedPrice = $checkedSorts = -1;
 $filter = "";
 $route = false;
+
+# LOẠI HIỂN THỊ
+if(isset($arrayURL[2]) && $arrayURL[2] == 'series') $showType = 'series';
+else $showType = 'detail';
+
 # [MUA NGAY TỪ SẢN PHẨM]
 if(isset($_POST['addNowProduct'])) $route = true;
 if(isset($_POST['addProduct']) || $route){
@@ -118,6 +123,54 @@ for ($i=0; $i < count(PRICE_FILTER); $i++) {
 for ($i=0; $i < count(SORTS_FILTER); $i++) { 
   $showSelectSorts .='<option '.matchSelected($i,$checkedSorts).' value="'.SORTS_FILTER[$i][0].'">'.SORTS_FILTER[$i][1].'</option>';
 }
-  
+ 
+# List Series Product
+$showListSeries = '';
+# list ID Series
+$listIdSeries = getAllFieldByCustom('products','id,name','status = 1');
+for ($i=0; $i < count($listIdSeries); $i++) { 
+  $showListImageSeries = '';
+  $listProductSeries = getProduct('pm.idProduct ='.$listIdSeries[$i]['id'].' ORDER BY c.priceSale ASC');
+  if(!$listProductSeries) continue;
+  $nameSeries = $listIdSeries[$i]['name'];
+  $priceSeries = $listProductSeries[0]['priceSale'];
+  $listImageSeries[$i] = [];
+  for ($j=0; $j < count($listProductSeries); $j++) { 
+    extract($listProductSeries[$j]);
+    if(!in_array($image,$listImageSeries[$i])) $listImageSeries[$i][] = $image;
+  }
+  for ($j=0; $j < count($listImageSeries[$i]); $j++) { 
+    $showListImageSeries .='
+    <img width="40" src="'.URL_IMGER_PRODUCT.$listImageSeries[$i][$j].'" alt="'.$listImageSeries[$i][$j].'">';
+  }
+  #var_dump($showListImageSeries);exit;
+  $showListSeries .='
+<div class="col-12 col-md-6 col-lg-4 pb-3 pb-md-4 pb-lg-4">
+    <div class="card shadow py-3">
+        <div class="row">
+            <div class="col-6">
+                <div class="position-relative hover-trigger">
+                    <img src="'.URL_IMGER_PRODUCT.$listImageSeries[$i][0].'" class="card-img img-product" alt="'.$listImageSeries[$i][0].'">
+                    <span class="show-hover position-absolute end-0 bottom-0 w-100">
+                        <div class="d-flex justify-content-evenly">
+                            <button name="" type="submit" class="btn btn-success">
+                                <div class="fs-6 small" ><small>xem chi tiết</small></div>
+                            </button>
+                        </div>
+                    </span>
+                </div>
+            </div>
+            <div class="col-6">
+                <a href="'.URL.'chi-tiet/'.$slug.'" class="text-decoration-none text-green fw-bold">'. $nameSeries .'</a>
+                <div class="d-flex mt-3">
+                    '.$showListImageSeries.'
+                </div>
+                <div class="text-danger mt-3"><span class="fs-6"><small>giá chỉ từ </small></span><span class="fw-bold fs-5">'. number_format($priceSeries) .' đ</span></div>
+            </div>
+        </div>
+    </div>
+</div>';
+}
 require_once "../../view/user/header.php";
 require_once "../../view/user/product.php";
+exit;

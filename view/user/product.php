@@ -23,40 +23,51 @@
 <div class="container bg-light rounded py-3">
     <form action="<?=URL?>san-pham/loc/" method="get">
     <div class="row">
-        <div class="col-12 col-md-12 col-lg-2">
+        <div class="px-1 col-12 col-md-12 col-lg-1">
+            <label for="show">Hiển thị:</label>
+            <div class="d-flex justify-content-around">
+                <a href="<?=URL?>san-pham/" class="btn btn-outline-success <?= matchValue('active','detail',$showType) ?>">
+                    <i class="fas fa-th-large"></i>
+                </a>
+                <a  href="<?=URL?>san-pham/loc/series" class="btn btn-outline-success <?= matchValue('active','series',$showType) ?>">
+                    <i class="fas fa-th-list"></i>
+                </a>
+            </div>
+        </div>
+        <div class="px-1 col-12 col-md-12 col-lg-2">
             <label for="brand">Thương hiệu:</label>
             <select name="Brand" class="form-control" id="brand">
                 <?=$showSelectBrand?>
             </select>
         </div>
-        <div class="col-12 col-md-12 col-lg-2">
+        <div class="px-1 col-12 col-md-12 col-lg-2">
             <label for="color">Màu:</label>
             <select name="Color" class="form-control" id="color">
                 <?=$showSelectColor?>
             </select>
         </div>
-        <div class="col-12 col-md-12 col-lg-2">
+        <div class="px-1 col-12 col-md-12 col-lg-2">
             <label for="style">Phong cách:</label>
             <select name="Style" class="form-control" id="style">
                 <?=$showSelectStyle?>
             </select>
         </div>
-        <div class="col-12 col-md-12 col-lg-2">
+        <div class="px-1 col-12 col-md-12 col-lg-2">
             <label for="price">Giá tiền:</label>
             <select name="Price" class="form-control" id="price">
                 <?=$showSelectPrice?>
             </select>
         </div>
-        <div class="col-12 col-md-12 col-lg-2">
+        <div class="px-1 col-12 col-md-12 col-lg-2">
             <label for="sort">Sắp xếp:</label>
             <select name="Sorts" class="form-control" id="sort">
                 <?=$showSelectSorts?>
             </select>
         </div>
-        <div class="col-12 col-md-12 col-lg-2">
+        <div class="px-1 col-12 col-md-12 col-lg-1">
             <label class="" for="Filter">Tùy chọn</label>
             <div>
-            <button id="Filter" type="submit" class="btn btn-outline-success w-100"> <i class="fas fa-search"></i> Lọc tìm kiếm </button>
+            <button id="Filter" type="submit" class="btn btn-outline-success w-100"> <i class="fas fa-search"></i> Lọc </button>
             </div>
         </div>
     </div>
@@ -65,13 +76,15 @@
 <div class="container mt-3">
     <div class="row">
         <!-- Product Start -->
-        <?php
+    <?php
+    if($showType === 'series'){ 
+        echo $showListSeries;
+    }else {
         if($listProduct) {
             for ($i = 0; $i < count($listProduct); $i++) {
                 extract($listProduct[$i]);
         ?>
         <div class="col-6 col-md-4 col-lg-2 pb-3 pb-md-4 pb-lg-5">
-            
             <div style="min-height: 100%;" class="card shadow">
                 <div class="position-relative hover-trigger">
                     <img src="<?=URL_IMGER_PRODUCT.$image?>" class="card-img img-product" alt="<?=$image?>">
@@ -111,7 +124,7 @@
                 </a>
             </div>
         </div>
-        <?php }}else{?> <div class="col-12 text-center py-5">Không tìm thấy sản phẩm. <a href="<?=URL?>san-pham" class="text-success">Quay lại</a></div> <?php }?>
+        <?php }}else{?> <div class="col-12 text-center py-5">Không tìm thấy sản phẩm. <a href="<?=URL?>san-pham" class="text-success">Quay lại</a></div> <?php }}?>
         <!-- Product End -->
         <!-- Page Start -->
         <div class="col-12">
