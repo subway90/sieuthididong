@@ -1,7 +1,6 @@
 <?php
 $previewBill = false;
 $listDetailBill = [];
-require_once "../../view/user/header.php";
 #  XEM CHI TIẾT
 if(isset($arrayURL[1]) && !empty($arrayURL[1])){
     # ĐÃ ĐĂNG NHẬP
@@ -33,12 +32,17 @@ if(isset($arrayURL[1]) && !empty($arrayURL[1])){
         if ($typePay == 1) $showTypePay = '<span class="text-success">Thanh toán tiền mặt (COD)</span>';
         if ($typePay == 2) $showTypePay = '<span class="text-info">Thanh toán ebanking</span>';
         # RENDER VIEW
+        require_once "../../view/user/header.php";
         require_once "../../view/user/bill-detail.php";
-    }else require_once "../../view/user/404.php";
-}else{
+    }else show404('user');
+}
+# TRA CỨU ĐƠN HÀNG BỞI TOKEN
+else{
     //DANH SÁCH BILL
     if(!empty($_SESSION['user'])) {
         $listBill = getAllFieldByCustom('bill','*','idUser = '.$_SESSION['user']['id']);
+        #RENDER VIEW
+        require_once "../../view/user/header.php";
         require_once "../../view/user/bill-history.php";
     }else{
         $previewBill = true;
@@ -50,25 +54,12 @@ if(isset($arrayURL[1]) && !empty($arrayURL[1])){
                 extract($Bill);
                 $listDetail = getDetailBillByToken($token);
                 $previewBill = false;
-            }else addAlert('danger','TOKEN '.$token.' không hợp lệ');
+            }else {
+                addAlert('danger','TOKEN '.$token.' không hợp lệ');
+                delayTime(3);
+            }
         }
         require_once "../../view/user/header.php";
         require_once "../../view/user/bill-detail.php";
     }
-}
-
-if(1==2){
-    $previewBill = true;
-    $token = "";
-    if(isset($_POST['token'])  && !empty($_POST['token'])) {
-        $token = $_POST['token'];
-        $Bill = getOneFieldByCustom('bill','*','token = "'.moveCharSpecial($_POST['token']).'" AND idUser = 0');
-        if(!empty($Bill)) {
-            extract($Bill);
-            $listDetail = getDetailBillByToken($token);
-            $previewBill = false;
-        }else addAlert('danger','TOKEN '.$token.' không hợp lệ');
-    }
-    require_once "../../view/user/header.php";
-    require_once "../../view/user/bill-detail.php";
 }

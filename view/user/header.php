@@ -21,6 +21,7 @@
   </head>
 <?= showAlert('') ?>
 <?php show_alert_2() ?>
+<?php show_delayTime() ?>
 <body class="bg-secondary bg-opacity-10">
   <nav class="sticky-top navbar navbar-expand-lg navbar-light bg-success" data-bs-theme="dark">
     <div class="container p-0">

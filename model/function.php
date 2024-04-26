@@ -443,3 +443,15 @@ function printClassImage($input) {
         return $output;
     }return ' imageNum-'.$input;
 }
+
+function delayTime($second) {
+    setcookie('delay',$second,time()+$second);
+}
+
+function show_delayTime() {
+    if(isset($_COOKIE['delay'])) {
+        unset($_REQUEST);
+        alert('Thao tác quá nhanh, vui lòng thử lại sau '.$_COOKIE['delay'].' giây.');
+        sleep($_COOKIE['delay']);
+    }
+}
