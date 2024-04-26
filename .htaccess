@@ -12,3 +12,4 @@ DirectoryIndex controller/user/index.php?act=0
 
 #Chuyển đến trang thông báo lỗi
 ErrorDocument 404 /view/404.php
+ErrorDocument 403 /view/404.php

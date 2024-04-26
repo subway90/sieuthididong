@@ -217,7 +217,7 @@ function checkEmail($input){
  * @param $input Nhập chuỗi cần bỏ các kí tự khác [a-zA-Z0-9]
  */
 function moveCharSpecial($input){
-    $input = str_replace(["<",">","=","`","~","'",'"','!','@','#','$','%','^','&','*','(',')','{','}','/',],"",$input);
+    $input = str_replace(["<",">","=","-","+","`","~","'",'"','!','@','#','$','%','^','&','*','(',')','{','}','/',],"",$input);
     return $input;
 }
 /**
@@ -454,4 +454,9 @@ function show_delayTime() {
         alert('Thao tác quá nhanh, vui lòng thử lại sau '.$_COOKIE['delay'].' giây.');
         sleep($_COOKIE['delay']);
     }
+}
+
+function showKeyWordSearch() {
+    if(isset($_POST['search']) && $_POST['search']) return $_POST['search'];
+    else return '';
 }

@@ -39,70 +39,83 @@ if(isset($_POST['addProduct']) || $route){
 }
 
 # LỌC TÌM KIẾM
-if(isset($arrayURL[1]) && $arrayURL[1] == 'loc'){
-  #Nav
-  if($showType !== 'series') $showNav = '<li class="breadcrumb-item fw-bold"><a href="'.URL.'san-pham" class="text-decoration-none text-dark">Điện thoại</a></li>';
-    # Thương hiệu
-    if(isset($_GET['Brand']) && $_GET['Brand']){
-      for ($i=0; $i < count($listBrand); $i++) { 
-        if($listBrand[$i]['id'] == $_GET['Brand']) {
-          $filter .= "idBrand = ".$_GET['Brand']." AND ";
-          $checkedBrand = $i;
-          $nameBrand = getOneFieldByCustom('product_brands','name','id ='.$_GET['Brand'])['name'];
-          $showNav .= '<li class="breadcrumb-item fw-bold"><a href="'.URL.'san-pham/loc/?Brand='.$_GET['Brand'].'" class="text-decoration-none text-dark">'.$nameBrand.'</a></li>';
+if(isset($arrayURL[1])){
+  # FILTER CASE
+  if($arrayURL[1] === 'loc'){
+    #Nav
+    if($showType !== 'series') $showNav = '<li class="breadcrumb-item fw-bold"><a href="'.URL.'san-pham" class="text-decoration-none text-dark">Điện thoại</a></li>';
+      # Thương hiệu
+      if(isset($_GET['Brand']) && $_GET['Brand']){
+        for ($i=0; $i < count($listBrand); $i++) { 
+          if($listBrand[$i]['id'] == $_GET['Brand']) {
+            $filter .= "idBrand = ".$_GET['Brand']." AND ";
+            $checkedBrand = $i;
+            $nameBrand = getOneFieldByCustom('product_brands','name','id ='.$_GET['Brand'])['name'];
+            $showNav .= '<li class="breadcrumb-item fw-bold"><a href="'.URL.'san-pham/loc/?Brand='.$_GET['Brand'].'" class="text-decoration-none text-dark">'.$nameBrand.'</a></li>';
+          }
         }
       }
-    }
-    # Màu
-    if(isset($_GET['Color']) && $_GET['Color']){
-      for ($i=0; $i < count(COLOR_FILTER); $i++) {
-          if($_GET['Color'] == COLOR_FILTER[$i]) {
-            $filter .= 'color like "%'.COLOR_FILTER[$i].'%"'." AND ";
-            $checkedColor = $i;
-            $showNav .= '<li class="breadcrumb-item fw-bold"><a href="'.URL.'san-pham/loc/?Brand='.$_GET['Brand'].'&Color='.$_GET['Color'].'" class="text-decoration-none text-dark">màu '.$_GET['Color'].'</a></li>';
-          }
-      }
-    }
-    # Phong cách
-    if(isset($_GET['Style']) && $_GET['Style']){
-      for ($i=0; $i < count($listStyle); $i++) { 
-        if($listStyle[$i]['id'] == $_GET['Style']) {
-          $filter .= "idStyle = ".$_GET['Style']." AND ";
-          $checkedStyle = $i;
-          $nameStyle = getOneFieldByCustom('product_style','name','id ='.$_GET['Style'])['name'];
-          $showNav .= '<li class="breadcrumb-item fw-bold"><a href="'.URL.'san-pham/loc/?Brand='.$_GET['Brand'].'&Color='.$_GET['Color'].'&Style='.$_GET['Style'].'" class="text-decoration-none text-dark">'.$nameStyle.'</a></li>';
+      # Màu
+      if(isset($_GET['Color']) && $_GET['Color']){
+        for ($i=0; $i < count(COLOR_FILTER); $i++) {
+            if($_GET['Color'] == COLOR_FILTER[$i]) {
+              $filter .= 'color like "%'.COLOR_FILTER[$i].'%"'." AND ";
+              $checkedColor = $i;
+              $showNav .= '<li class="breadcrumb-item fw-bold"><a href="'.URL.'san-pham/loc/?Brand='.$_GET['Brand'].'&Color='.$_GET['Color'].'" class="text-decoration-none text-dark">màu '.$_GET['Color'].'</a></li>';
+            }
         }
       }
-    }
-    # Loại (chưa dùng)
-    if(isset($_GET['Type']) && $_GET['Type']){
-      $filter .= "idType = ".$_GET['Type']." AND ";
-    }
-    # Giá
-    if(isset($_GET['Price']) && $_GET['Price']){
-      for ($i=0; $i < count(PRICE_FILTER); $i++) {
-          if($_GET['Price'] == PRICE_FILTER[$i][0]) {
-            $filter .= 'c.priceSale > '.(PRICE_FILTER[$i][2]*1000).' AND c.priceSale < '.(PRICE_FILTER[$i][3]*1000).' AND ';
-            $checkedPrice = $i;
-            $showNav .= '<li class="breadcrumb-item fw-bold"><a href="'.URL.'san-pham/loc/?Brand='.$_GET['Brand'].'&Color='.$_GET['Color'].'&Style='.$_GET['Style'].'&Price='.$_GET['Price'].'" class="text-decoration-none text-dark">'.PRICE_FILTER[$i][1].'</a></li>';
+      # Phong cách
+      if(isset($_GET['Style']) && $_GET['Style']){
+        for ($i=0; $i < count($listStyle); $i++) { 
+          if($listStyle[$i]['id'] == $_GET['Style']) {
+            $filter .= "idStyle = ".$_GET['Style']." AND ";
+            $checkedStyle = $i;
+            $nameStyle = getOneFieldByCustom('product_style','name','id ='.$_GET['Style'])['name'];
+            $showNav .= '<li class="breadcrumb-item fw-bold"><a href="'.URL.'san-pham/loc/?Brand='.$_GET['Brand'].'&Color='.$_GET['Color'].'&Style='.$_GET['Style'].'" class="text-decoration-none text-dark">'.$nameStyle.'</a></li>';
           }
+        }
       }
-      
+      # Loại (chưa dùng)
+      if(isset($_GET['Type']) && $_GET['Type']){
+        $filter .= "idType = ".$_GET['Type']." AND ";
+      }
+      # Giá
+      if(isset($_GET['Price']) && $_GET['Price']){
+        for ($i=0; $i < count(PRICE_FILTER); $i++) {
+            if($_GET['Price'] == PRICE_FILTER[$i][0]) {
+              $filter .= 'c.priceSale > '.(PRICE_FILTER[$i][2]*1000).' AND c.priceSale < '.(PRICE_FILTER[$i][3]*1000).' AND ';
+              $checkedPrice = $i;
+              $showNav .= '<li class="breadcrumb-item fw-bold"><a href="'.URL.'san-pham/loc/?Brand='.$_GET['Brand'].'&Color='.$_GET['Color'].'&Style='.$_GET['Style'].'&Price='.$_GET['Price'].'" class="text-decoration-none text-dark">'.PRICE_FILTER[$i][1].'</a></li>';
+            }
+        }
+        
+      }
+      # Sắp xếp
+      if(isset($_GET['Sorts']) && $_GET['Sorts']){
+        $sort = false;
+        for ($i=0; $i < count(SORTS_FILTER); $i++) {
+            if($_GET['Sorts'] == SORTS_FILTER[$i][0]) {
+              $filter .= ' 1 '.SORTS_FILTER[$i][2];
+              $sort = true;
+              $checkedSorts = $i;
+              $showNav .= '<li class="breadcrumb-item fw-bold"><a href="'.URL.'san-pham/loc/?Brand='.$_GET['Brand'].'&Color='.$_GET['Color'].'&Style='.$_GET['Style'].'&Price='.$_GET['Price'].'&Sorts='.SORTS_FILTER[$i][0].'" class="text-decoration-none text-dark">'.SORTS_FILTER[$i][1].'</a></li>';
+              break;
+            }
+        }if(!$sort) $filter .="1";
+      }else $filter .="1";
+      $listProduct = getProduct($filter);
+  }
+  # SEARCH
+  else if($arrayURL[1] === 'tim-kiem'){
+    #Nav
+    if($showType !== 'series') $showNav = '<li class="breadcrumb-item fw-bold text-success">Tìm kiếm từ khóa : '.showKeyWordSearch().'</li>';
+    if(isset($_POST['search']) && $_POST['search']) {
+      $search = 'pm.name LIKE "%'.moveCharSpecial($_POST['search']).'%"';
     }
-    # Sắp xếp
-    if(isset($_GET['Sorts']) && $_GET['Sorts']){
-      $sort = false;
-      for ($i=0; $i < count(SORTS_FILTER); $i++) {
-          if($_GET['Sorts'] == SORTS_FILTER[$i][0]) {
-            $filter .= ' 1 '.SORTS_FILTER[$i][2];
-            $sort = true;
-            $checkedSorts = $i;
-            $showNav .= '<li class="breadcrumb-item fw-bold"><a href="'.URL.'san-pham/loc/?Brand='.$_GET['Brand'].'&Color='.$_GET['Color'].'&Style='.$_GET['Style'].'&Price='.$_GET['Price'].'&Sorts='.SORTS_FILTER[$i][0].'" class="text-decoration-none text-dark">'.SORTS_FILTER[$i][1].'</a></li>';
-            break;
-          }
-      }if(!$sort) $filter .="1";
-    }else $filter .="1";
-    $listProduct = getProduct($filter);
+    else show404('user');
+    $listProduct = getProduct($search);
+  }
 }else {
   $listProduct = getProduct('');
   $showNav = '<li class="breadcrumb-item active text-success fw-bolder" aria-current="page">Điện thoại</li>';

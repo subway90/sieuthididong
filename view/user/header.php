@@ -73,8 +73,8 @@
             </li>
           <?php } ?>
         </ul>
-        <form class="d-flex" data-bs-theme="light">
-          <input class="form-control me-2" type="search" placeholder="Nhập tên sản phẩm..." aria-label="Search">
+        <form action="<?=URL?>san-pham/tim-kiem" method="post" class="d-flex" data-bs-theme="light">
+          <input name="search" value="<?=showKeyWordSearch()?>" class="form-control me-2" type="search" placeholder="Nhập tên sản phẩm..." aria-label="Search">
           <button class="btn btn-outline-light w-50" type="submit">Tìm kiếm</button>
         </form>
       </div>
