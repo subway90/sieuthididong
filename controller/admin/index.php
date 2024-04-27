@@ -92,6 +92,14 @@ else{
                 case "account-add":
                     require_once "case/account-add.php";
                     break;
+                // [news SHOW - HIDE]
+                case "news":
+                    require_once "case/news.php";
+                    break;
+                // [news ADD - EDIT]
+                case "news-add":
+                    require_once "case/news-add.php";
+                    break;
                 // [404]
                 default:
                     require_once "../../view/admin/header.php";

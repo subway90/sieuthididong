@@ -496,3 +496,12 @@ function getIPUser(){
     }
     return $ip;
 }
+
+/** 
+ * Hàm cắt chữ
+ * @param int $length độ dài cần trả về
+ * @param string $input đoạn chuỗi cần cắt
+ */
+function cutStringByWordCount($input, $length) {
+    return implode(' ', array_slice(explode(' ', $input),0,$length));
+}

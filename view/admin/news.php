@@ -8,11 +8,11 @@
                                     <nav class="mb-2" aria-label="breadcrumb">
                                         <ol class="breadcrumb breadcrumb-sa-simple">
                                             <li class="breadcrumb-item"><a href="<?=URL_ADMIN?>">Quản lí</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Quản lí Style</li>
+                                            <li class="breadcrumb-item active" aria-current="page">Quản lí bài viết</li>
                                         </ol>
                                     </nav>
                                 </div>
-                                <div class="col-auto d-flex"><a href="<?=ACT_ADMIN?>style-add" class="btn btn-info btn-gradient">Thêm Style</a></div>
+                                <div class="col-auto d-flex"><a href="<?=ACT_ADMIN?>news-add" class="btn btn-info btn-gradient">Tạo bài viết</a></div>
                             </div>
                         </div>
                         <div class="card">
@@ -24,25 +24,32 @@
                                 <thead>
                                     <tr>
                                         <th class="w-min">ID</th>
-                                        <th class="min-w-20x">Tên Style</th>
-                                        <th class="min-w-10x">Trạng thái</th>
-                                        <th class="min-w-10x">Ngày thêm</th>
+                                        <th class="min-w-20x">Tiêu đề</th>
+                                        <th class="min-w-20x">Ghi chú ngắn</th>
+                                        <th class="min-w-5x">Ngày tạo</th>
                                         <th class="w-min" data-orderable="false"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 <?php
-                                for ($i=0; $i < count($listStyle); $i++) {
-                                    extract($listStyle[$i]);
+                                for ($i=0; $i < count($listNews); $i++) {
+                                    extract($listNews[$i]);
                                 ?>
                                     <tr>
                                         <td> <?= $id ?> </td>
-                                        <td class="text-nowrap"> <?= $name ?> </td>
+                                        <td class=""> 
+                                            <div class="d-flex align-items-center">
+                                                <div class="me-2" >
+                                                 <img width="50" src="<?=URL?>uploads/news/<?=$imageTitle?>" alt="<?=$imageTitle?>">
+                                                </div>
+                                                <div>
+                                                    <div class="text-muted"><span class="fw-bold">Tiêu đề: </span><?= $title ?></div>
+                                                    <div class="text-muted"><span class="fw-bold">Danh mục: </span><?=getOneFieldByCustom('news_category','name','id ='.$idCate)['name']?></div>
+                                                </div>
+                                            </div>
+                                        </td>
                                         <td>
-                                        <?php
-                                        if($status==1) echo '<div class="badge badge-sa-success">Đang hiện</div>';
-                                                  else echo '<div class="badge badge-sa-info">Đang ẩn</div>';
-                                        ?>
+                                            <?= cutStringByWordCount($shortDecribe,40).'...' ?>
                                         </td>
                                         <td>
                                             <div class="badge badge-sa-primary"> <?= $dateCreate ?> </div>
@@ -56,13 +63,13 @@
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-end"
                                                     aria-labelledby="customer-context-menu-0">
-                                                    <li><a class="dropdown-item" href="<?=ACT_ADMIN?>style-add&edit=<?=$id?>">Chỉnh sửa</a></li>
+                                                    <li><a class="dropdown-item" href="<?=ACT_ADMIN?>news-add&edit=<?=$id?>">Chỉnh sửa</a></li>
                                                     <li><hr class="dropdown-divider"/></li>
                                                     <?php
                                                     if($status == 1){ ?>
-                                                    <li><a class="dropdown-item text-danger" href="<?=ACT_ADMIN?>style&delete=2&id=<?=$id?>">Ẩn Style</a></li>
+                                                    <li><a class="dropdown-item text-danger" href="<?=ACT_ADMIN?>news&delete=2&id=<?=$id?>">Ẩn news</a></li>
                                                     <?php }else{ ?>
-                                                    <li><a class="dropdown-item text-success" href="<?=ACT_ADMIN?>style&delete=1&id=<?=$id?>">Hiện Style</a></li>
+                                                    <li><a class="dropdown-item text-success" href="<?=ACT_ADMIN?>news&delete=1&id=<?=$id?>">Hiện news</a></li>
                                                     <?php } ?>
                                                 </ul>
                                             </div>

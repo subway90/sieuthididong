@@ -105,6 +105,14 @@
                                     </a>
                                 </li>
                                 <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
+                                    <a href="<?=ACT_ADMIN?>news" class="sa-nav__link">
+                                        <span class="sa-nav__icon">
+                                            <i class="far fa-newspaper"></i>
+                                        </span>
+                                        <span class="sa-nav__title">News</span>
+                                    </a>
+                                </li>
+                                <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
                                     <a href="<?=ACT_ADMIN?>feedback" class="sa-nav__link">
                                         <span class="sa-nav__icon">
                                             <i class="fas fa-poll-h"></i>
