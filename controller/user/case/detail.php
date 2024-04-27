@@ -11,6 +11,7 @@ $checkedModel = -1;
 if(isset($arrayURL[1]) && !empty($arrayURL[1])) {
     # SELECT DETAIL BY MODEL & COLOR
     if(isset($arrayURL[2]) && !empty($arrayURL[2]) && isset($arrayURL[3]) && !empty($arrayURL[3])) {
+        if(!checkNumber($arrayURL[2]) || !checkNumber($arrayURL[3])) show404('user');
         $checkInput = getOneProduct('pm.idModel ='.$arrayURL[2].' AND c.id ='.$arrayURL[3]);
         if($checkInput) {
             $checkedModel = $arrayURL[2];

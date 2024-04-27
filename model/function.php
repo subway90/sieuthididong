@@ -129,7 +129,6 @@ function getAllFieldByCustom($table,$field,$custom){
  */
 function getOneFieldByCustom($table,$field,$custom){
     $sql = "SELECT ".$field." FROM ".$table." WHERE ".$custom;
-    var_dump($sql);
     $result = pdo_query_one($sql);
     return $result;
 }
@@ -183,6 +182,17 @@ function checkPhone($input){
     $word_diff = array_diff($arr_phone,[0,1,2,3,4,5,6,7,8,9]); //trả về mảng kí tự không trùng với mảng [0-9]
     if(count($word_diff)!=0 || count($arr_phone)!=10 || $arr_phone[0] !=0) return false; //nếu mảng không trùng có -> có kí tự chữ
     else return true;
+}
+
+/**
+ * Hàm kiểm tra số nguyên
+ * @param string | int  $input Số cần kiểm tra
+ * Trả về TRUE nếu là số nguyên, ngược lại trả về FALSE
+ */
+function checkNumber($input){
+    $arrayNum = mb_str_split($input);
+    if(!array_diff($arrayNum,[0,1,2,3,4,5,6,7,8,9])) return true; //trả về mảng kí tự không trùng với mảng [0-9]
+    else return false;
 }
 
 /**

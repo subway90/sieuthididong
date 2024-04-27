@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * Lấy tất cả sản phẩm
+ * @param string $filter Điều kiện [SQL : after WHERE]
+ */
 function getProduct($filter){
     $sql = "
     SELECT pm.idProduct, pm.idModel, pm.idBrand, pm.idType, pm.idStyle, pm.slug, pm.name, pm.idModel, pm.model, c.*
@@ -17,6 +22,11 @@ function getProduct($filter){
     $list = pdo_query($sql);
     return $list;
 }
+
+/**
+ * Lấy 1 dòng sản phẩm
+ * @param string $filter Điều kiện [SQL : after WHERE]
+ */
 function getOneProduct($filter){
     $sql = "
     SELECT pm.idProduct, pm.idModel, pm.idBrand, pm.idType, pm.idStyle, pm.slug, pm.name, pm.idModel, pm.model, c.*

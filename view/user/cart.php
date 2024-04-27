@@ -44,7 +44,15 @@
                             <td class="text-end"><?= number_format($quantity*$priceSale) ?> đ</td>
                             <td><a href="<?=URL?>gio-hang&delete=<?=$idCart+1?>" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></a></td>
                         </tr>
-                        <?php }}else{?>
+                        <?php } ?>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5" class="text-end">
+                                    <a href="<?=URL?>gio-hang&close" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i> tất cả</a>
+                                </td>
+                            </tr>
+                        </tfoot>
+                        <?php }else{?>
                         <tr>
                             <td colspan="6" class="text-center">Chưa có sản phẩm nào <a class="nav-link text-success" href="<?=URL?>san-pham">&rarr; Cửa hàng</a></td>
                         </tr>
