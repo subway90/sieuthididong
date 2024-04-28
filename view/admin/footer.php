@@ -32,5 +32,29 @@
     <script src="<?=URL?>/publics/admin/js/calendar.js"></script>
     <script src="<?=URL?>/publics/admin/js/demo.js"></script>
     <script src="<?=URL?>/publics/admin/js/demo-chart-js.js"></script>
+    <!-- js custom by subway90 -->
+    <script src="<?=URL?>/publics/js/image.js"></script>
+    <script src="<?=URL?>/publics/js/custom-copytext.js"></script>
+    <!-- Summernote JS - CDN Link -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // $("#description_news").summernote();
+            $('#shortDecribe').summernote({
+                placeholder: 'Nhập nội dung mô tả ngắn',
+                tabsize: 2,
+                height: 100
+            });
+            $('#decribe').summernote({
+                placeholder: 'Nhập nội dung bài viết',
+                tabsize: 2,
+                height: 300
+            });
+            // $('.dropdown-toggle').dropdown();
+        });
+    </script>
+    <!-- //Summernote JS - CDN Link -->
 </body>
 </html>

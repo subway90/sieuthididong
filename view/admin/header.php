@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="<?=URL?>/publics/admin/css/style.css" />
     <!-- cdn google -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- cdn jquery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" ></script>
     <!-- Summernote CSS - CDN Link -->
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
@@ -48,45 +50,91 @@
                     <ul class="sa-nav sa-nav--sidebar" data-sa-collapse="">
                         <li class="sa-nav__section">
                             <ul class="sa-nav__menu sa-nav__menu--root">
-                                <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
-                                    <a href="<?=ACT_ADMIN?>series" class="sa-nav__link">
-                                        <span class="sa-nav__icon">
-                                            <i class="fas fa-boxes"></i>
-                                        </span>
-                                        <span class="sa-nav__title">Series</span>
+                                <!-- Product Case -->
+                                <li class="sa-nav__menu-item sa-nav__menu-item--has-icon" data-sa-collapse-item="sa-nav__menu-item--open">
+                                    <a href="#" class="sa-nav__link" data-sa-collapse-trigger="">
+                                        <span class="sa-nav__icon"> <i class="fa fa-mobile"></i></span>
+                                        <span class="sa-nav__title">Products</span>
+                                        <span class="sa-nav__arrow"><i class="fas fa-caret-left"></i></span>
                                     </a>
+                                    <ul class="sa-nav__menu sa-nav__menu--sub" data-sa-collapse-content="">
+                                        <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
+                                            <a href="<?=ACT_ADMIN?>series" class="sa-nav__link">
+                                                <span class="sa-nav__icon">
+                                                    <i class="fas fa-boxes"></i>
+                                                </span>
+                                                <span class="sa-nav__title">Series</span>
+                                            </a>
+                                        </li>
+                                        <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
+                                            <a href="<?=ACT_ADMIN?>model" class="sa-nav__link">
+                                                <span class="sa-nav__icon">
+                                                <i class="fas fa-microchip"></i>
+                                                </span>
+                                                <span class="sa-nav__title">Model</span>
+                                            </a>
+                                        </li>
+                                        <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
+                                            <a href="<?=ACT_ADMIN?>detail" class="sa-nav__link">
+                                                <span class="sa-nav__icon">
+                                                <i class="fa fa-mobile"></i>
+                                                </span>
+                                                <span class="sa-nav__title">Detail</span>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
-                                <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
-                                    <a href="<?=ACT_ADMIN?>model" class="sa-nav__link">
-                                        <span class="sa-nav__icon">
-                                        <i class="fas fa-microchip"></i>
-                                        </span>
-                                        <span class="sa-nav__title">Model</span>
+                                <!-- Custom Case -->
+                                <li class="sa-nav__menu-item sa-nav__menu-item--has-icon" data-sa-collapse-item="sa-nav__menu-item--open">
+                                    <a href="#" class="sa-nav__link" data-sa-collapse-trigger="">
+                                        <span class="sa-nav__icon"><i class="fas fa-dice-d6"></i></span>
+                                        <span class="sa-nav__title">Custom</span>
+                                        <span class="sa-nav__arrow"><i class="fas fa-caret-left"></i></span>
                                     </a>
+                                    <ul class="sa-nav__menu sa-nav__menu--sub" data-sa-collapse-content="">
+                                        <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
+                                            <a href="<?=ACT_ADMIN?>style" class="sa-nav__link">
+                                                <span class="sa-nav__icon">
+                                                <i class="fas fa-swatchbook"></i>
+                                                </span>
+                                                <span class="sa-nav__title">Style</span>
+                                            </a>
+                                        </li>
+                                        <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
+                                            <a href="<?=ACT_ADMIN?>category" class="sa-nav__link">
+                                                <span class="sa-nav__icon">
+                                                <i class="fas fa-stream"></i>
+                                                </span>
+                                                <span class="sa-nav__title">Category</span>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
-                                <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
-                                    <a href="<?=ACT_ADMIN?>detail" class="sa-nav__link">
-                                        <span class="sa-nav__icon">
-                                        <i class="fa fa-mobile"></i>
-                                        </span>
-                                        <span class="sa-nav__title">Detail</span>
+                                <!-- News Case -->
+                                <li class="sa-nav__menu-item sa-nav__menu-item--has-icon" data-sa-collapse-item="sa-nav__menu-item--open">
+                                    <a href="#" class="sa-nav__link" data-sa-collapse-trigger="">
+                                        <span class="sa-nav__icon"><i class="far fa-newspaper"></i></span>
+                                        <span class="sa-nav__title">News</span>
+                                        <span class="sa-nav__arrow"><i class="fas fa-caret-left"></i></span>
                                     </a>
-                                </li>
-                                <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
-                                    <a href="<?=ACT_ADMIN?>style" class="sa-nav__link">
-                                        <span class="sa-nav__icon">
-                                        <i class="fas fa-swatchbook"></i>
-                                        </span>
-                                        <span class="sa-nav__title">Style</span>
-                                    </a>
-                                </li>
-                                <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
-                                    <a href="<?=ACT_ADMIN?>category" class="sa-nav__link">
-                                        <span class="sa-nav__icon">
-                                        <i class="fas fa-stream"></i>
-                                        </span>
-                                        <span class="sa-nav__title">Category</span>
-                                    </a>
+                                    <ul class="sa-nav__menu sa-nav__menu--sub" data-sa-collapse-content="">
+                                        <li class="sa-nav__menu-item">
+                                            <a href="<?=ACT_ADMIN?>news" class="sa-nav__link">
+                                                <span class="sa-nav__icon">
+                                                    <i class="fas fa-swatchbook"></i>
+                                                </span>
+                                                <span class="sa-nav__title">Blogs</span>
+                                            </a>
+                                        </li>
+                                        <li class="sa-nav__menu-item">
+                                            <a href="<?=ACT_ADMIN?>news-category" class="sa-nav__link">
+                                                <span class="sa-nav__icon">
+                                                    <i class="fas fa-swatchbook"></i>
+                                                </span>
+                                                <span class="sa-nav__title">Category</span>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
                                     <a href="<?=ACT_ADMIN?>bill" class="sa-nav__link">
@@ -102,14 +150,6 @@
                                             <i class="fas fa-user"></i>
                                         </span>
                                         <span class="sa-nav__title">Account</span>
-                                    </a>
-                                </li>
-                                <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
-                                    <a href="<?=ACT_ADMIN?>news" class="sa-nav__link">
-                                        <span class="sa-nav__icon">
-                                            <i class="far fa-newspaper"></i>
-                                        </span>
-                                        <span class="sa-nav__title">News</span>
                                     </a>
                                 </li>
                                 <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
