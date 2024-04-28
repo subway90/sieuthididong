@@ -22,6 +22,7 @@ const WEB_COPYL = 'https://github.com/subway90';
 # PATH
 const PATH_UPLOAD_IMAGE_AVATAR = "../../uploads/user/avatar";
 const PATH_UPLOAD_IMAGE_PRODUCT = "../../uploads/product/";
+const PATH_UPLOAD_IMAGE_NEWS = "../../uploads/news/";
 
 # PAGE ACTIVE
 const PAGE_UPDATE = false;

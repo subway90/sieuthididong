@@ -43,8 +43,8 @@ if(isset($_POST['submit'])) {
             $image = true;
             $checkImage = checkImage($_FILES['image'],1);
             if($checkImage === true) {
-                if(!empty($hinhcu))unlink(PATH_UPLOAD_IMAGE.$hinhcu);    
-                move_uploaded_file($_FILES["image"]["tmp_name"], PATH_UPLOAD_IMAGE.basename($_FILES["image"]["name"]));
+                if(!empty($hinhcu))unlink(PATH_UPLOAD_IMAGE_PRODUCT.$hinhcu);    
+                move_uploaded_file($_FILES["image"]["tmp_name"], PATH_UPLOAD_IMAGE_PRODUCT.basename($_FILES["image"]["name"]));
                 $hinhcu = $_FILES['image']['name'];
             }else $errorImage = true;
         }
