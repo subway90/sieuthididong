@@ -12,7 +12,7 @@
                                         </ol>
                                     </nav>
                                 </div>
-                                <div class="col-auto d-flex"><a href="<?=ACT_ADMIN?>style-add" class="btn btn-info btn-gradient">Thêm loại mới</a></div>
+                                <div class="col-auto d-flex"><a href="<?=ACT_ADMIN?>news-category-add" class="btn btn-info btn-gradient">Thêm loại mới</a></div>
                             </div>
                         </div>
                         <div class="card">

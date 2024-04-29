@@ -24,11 +24,11 @@
                         <div class="card">
                             <div class="card-body p-5 row">
                                 <div class="col-12 mb-5">
-                                    <h2 class="mb-0 fs-exact-18">Nhập thông tin Style</h2>
+                                    <h2 class="mb-0 fs-exact-18">Nhập thông tin loại tin</h2>
                                 </div>
                                 <div class="col-6 form-floating mb-2 p-0 px-3">
                                     <input name="name" value="<?=$name?>" type="text" class="form-control rounded rounded-5" id="name" placeholder="name@example.com">
-                                    <label for="name">Tên Style</label>
+                                    <label for="name">Tên loại</label>
                                 </div>
                                 <div class="col-6 form-floating mb-2 p-0 px-3">
                                     <select name="status" class="form-select rounded rounded-5" id="status" aria-label="ttg">
