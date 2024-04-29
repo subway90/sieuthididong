@@ -3,7 +3,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item fw-bold"><a href="<?= URL ?>" class="text-decoration-none text-dark">Trang chủ</a></li>
             <li class="breadcrumb-item fw-bold"><a href="<?= URL ?>tin-tuc" class="text-decoration-none text-dark">Tin tức</a></li>
-            <li class="breadcrumb-item active text-success fw-bolder" aria-current="page">Name Title</li>
+            <li class="breadcrumb-item active text-success fw-bolder" aria-current="page">chủ đề <?= getOneFieldByCustom('news_category','name','id ='.$idCate)['name'] ?></li>
         </ol>
     </nav>
 </div>
@@ -11,7 +11,20 @@
     <div class="row">
         <!-- NEWS TOP -->
         <div class="col-lg-8 p-0">
-            <?= '' ?>
+            <div class="mb-lg-3"> 
+                <div class="fw-bold h4"><?= $title ?></div>
+                <div class="text-muted"><?= formatTime($dateUpdate,'lúc hh:mm MM/DD/YYYY') ?></div>
+            </div>
+            <div class="my-lg-5"> 
+                <?= $shortDecribe ?>  
+            </div>
+            <div class="">
+                <?= $Decribe ?>
+            </div>
+            <div class="fs-6">
+                <span class="text-muted">Tác giả:</span>
+                <span class="fw-bold"><?= getOneFieldByCustom('accounts','fullName','id ='.$idUser)['fullName'] ?></span>
+            </div>
         </div>
         <!-- NEWS RECOMMEND -->
         <div class="pe-0 col-lg-4 d-flex flex-column">
@@ -55,20 +68,25 @@
         <div class="col-12 p-0 pb-1 my-4 d-flex justify-content-between text-success h5 border-2 border-success border-bottom">
             <div class="">Bình luận</div>
         </div>
-        <!-- NEWS DETAIL -->
+        <!-- NEWS COMMENT -->
         <div class="col-lg-8 d-flex flex-column">
             <table class="table table-hover">
                 <tr class="">
+                    <?php for ($i=0; $i < count($listComment); $i++) { 
+                        extract($listComment[$i]);
+                    ?>
                     <td style="width: 5%" class="">
-                        <img class="rounded-circle" width="40" height="40" src="<?=URL_IMAGE_SYSTEM?>image_default.jpg" alt="img user">
+                        <img class="rounded-circle" width="40" height="40" src="<?=pathImage(getOneFieldByCustom('accounts','image','id ='.$idUser)['image'])?>" alt="imguser">
                     </td>
                     <td class=" text-muted">
-                        <div class="fs-6"><span class="fw-bold">Name User</span> | <span class="small">12:22 12/02/2024</span></div>
+                        <div class="fs-6">
+                            <span class="fw-bold"><?= getOneFieldByCustom('accounts','fullName','id ='.$idUser)['fullName'] ?></span> | 
+                            <span class="small"><?= formatTime($dateUpdate,'lúc hh:mm MM/DD/YYYY') ?></span></div>
                         <div class="text-muted">
-                            Bài viết này quá hay !!!</br>
-                            10 điểm chất lượng.
+                            <?= $message ?>
                         </div>
                     </td>
+                    <?php }?>
                 </tr>
             </table>
             <div class="w-100 d-flex">
