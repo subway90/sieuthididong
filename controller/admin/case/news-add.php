@@ -41,11 +41,11 @@ if(isset($_POST['submit'])) {
         if($decribe) {
             # EDIT SUBMIT
             if($edit === true) {
-                editNews($id,$title,$idCate,$oldImage,$shortDecribe,$decribe,$status);
+                editNews($id,$titleNews,$idCate,$oldImage,$shortDecribe,$decribe,$status);
                 addAlert('primary',ICON_CHECK.'Sửa bài viết thành công !');
             # ADD SUBMIT
             }else {
-                addNews($title,$idCate,$oldImage,$shortDecribe,$decribe,$status);
+                addNews($titleNews,$idCate,$oldImage,$shortDecribe,$decribe,$status);
                 addAlert('success',ICON_CHECK.'Thêm bài viết mới thành công !');
             }
             header('Location: '.ACT_ADMIN.'news');
