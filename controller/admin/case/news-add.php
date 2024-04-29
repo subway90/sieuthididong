@@ -6,7 +6,7 @@ $image = $errorImage = false;
 
 #  EDIT TRUE
 if(isset($_GET['edit']) && $_GET['edit']) {
-    $newsEdit = getOneFieldByCustom('news','idCate,title titleNews,imageTitle oldImage,shortDecribe,decribe,status','id ='.$_GET['edit']);
+    $newsEdit = getOneFieldByCustom('news','idCate, id, title titleNews,imageTitle oldImage,shortDecribe,decribe,status','id ='.$_GET['edit']);
     if($newsEdit) {
         $edit = true;
         $subURL = '&edit='.$_GET['edit'];
@@ -17,7 +17,7 @@ if(isset($_GET['edit']) && $_GET['edit']) {
 
 # SUBMIT
 if(isset($_POST['submit'])) {
-    $titleNews = $_POST['titleNews'];
+    $titleNews = $_POST['titleNews'];   
     $idCate = $_POST['idCate'];
     $status = $_POST['status'];
     $decribe = $_POST['decribe'];
@@ -35,9 +35,9 @@ if(isset($_POST['submit'])) {
     }
     ## không up file hình mới
     else{
-        if($hinhcu) $image = true;
+        if($oldImage) $image = true;
     }
-    if($name) {
+    if($titleNews) {
         if($decribe) {
             # EDIT SUBMIT
             if($edit === true) {
@@ -55,7 +55,7 @@ if(isset($_POST['submit'])) {
 }
 
 # RENDER VIEW
-$listCateNews = getAllFieldByCustom('news_category','id,name','1');
+$listCateNews = getAllFieldByCustom('news_category','id,name','status = 1');
 for ($i=0; $i < count($listCateNews); $i++) { 
     extract($listCateNews[$i]);
     $showInputCateNews .= '
