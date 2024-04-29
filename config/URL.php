@@ -6,4 +6,5 @@
     define('URL_USER_AVATAR',DOMAIN.'/uploads/user/avatar/');
     define('URL_IMGER_PRODUCT',DOMAIN.'/uploads/product/');
     define('URL_IMAGE_NEWS',DOMAIN.'/uploads/news/');
+    define('URL_IMAGE_SYSTEM',DOMAIN.'/uploads/system/');
 

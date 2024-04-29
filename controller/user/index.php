@@ -99,6 +99,9 @@ if(isset($_GET['act'])){
                     $title = "Đánh giá sản phẩm";
                     require_once 'case/notifycation.php';
                     break;
+                case "tin-tuc":
+                    require_once 'case/news.php';
+                    break;
                 case "test":
                     $title = '&#9760; BUG &#9760;';
                     require_once 'case/test.php';
