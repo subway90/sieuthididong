@@ -22,12 +22,15 @@ if(isset($_POST['submit'])) {
     $status = $_POST['status'];
     $decribe = $_POST['decribe'];
     $shortDecribe = $_POST['shortDecribe'];
+    if(isset($_POST['oldImage']) && $_POST['oldImage']) $oldImage = $_POST['oldImage'];
     # IMAGE VALIDATION
     ## có up file hình mới
     if(!empty($_FILES['image']['name'])){
         $image = true;
         $checkImage = checkImage($_FILES['image'],1);
         if($checkImage === true) {
+            $hash_name_image =  createTokenChar(16); //mã hóa tên ảnh 
+            $_FILES['image']['name'] = $hash_name_image.'.'.substr($_FILES['image']['type'],6); //định dạng lại tên file
             if(!empty($oldImage))unlink(PATH_UPLOAD_IMAGE_NEWS.$oldImage);    
             move_uploaded_file($_FILES["image"]["tmp_name"], PATH_UPLOAD_IMAGE_NEWS.basename($_FILES["image"]["name"]));
             $oldImage = $_FILES['image']['name'];
@@ -38,20 +41,24 @@ if(isset($_POST['submit'])) {
         if($oldImage) $image = true;
     }
     if($titleNews) {
-        if($decribe) {
-            # EDIT SUBMIT
-            if($edit === true) {
-                editNews($id,$titleNews,$idCate,$oldImage,$shortDecribe,$decribe,$status);
-                addAlert('primary',ICON_CHECK.'Sửa bài viết thành công !');
-            # ADD SUBMIT
-            }else {
-                addNews($titleNews,$idCate,$oldImage,$shortDecribe,$decribe,$status);
-                addAlert('success',ICON_CHECK.'Thêm bài viết mới thành công !');
-            }
-            header('Location: '.ACT_ADMIN.'news');
-            exit;
-        }else addAlert('danger',ICON_CLOSE.'Chưa nhập mô tả');
-    }else addAlert('danger',ICON_CLOSE.'Chưa nhập tên Style');
+        $slug = createSlug($titleNews);
+        if(!getOneFieldByCustom('news','id','slug = "'.$slug.'"')){
+            if($shortDecribe) {
+                if($decribe){
+                    if($edit === true) {
+                        editNews($id,$titleNews,$idCate,$oldImage,$shortDecribe,$decribe,$status);
+                        addAlert('primary',ICON_CHECK.'Sửa bài viết thành công !');
+                    # ADD SUBMIT
+                    }else {
+                        addNews($titleNews,$idCate,$oldImage,$shortDecribe,$decribe,$status);
+                        addAlert('success',ICON_CHECK.'Thêm bài viết mới thành công !');
+                    }
+                    header('Location: '.ACT_ADMIN.'news');
+                    exit;
+                }else addAlert('danger',ICON_CLOSE.'Chưa nhập nội dung bài viết.');
+            }else addAlert('danger',ICON_CLOSE.'Chưa nhập mô tả ngắn.');
+        }else addAlert('danger',ICON_CLOSE.'Tiêu đề này đã tồn tại.');
+    }else addAlert('danger',ICON_CLOSE.'Chưa nhập tiêu đề bài viết.');
 }
 
 # RENDER VIEW

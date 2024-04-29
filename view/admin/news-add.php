@@ -83,27 +83,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <?php 
-                            #demo API tạo link ảnh
-                            if(1==2) { ?>
-                            <div class="card w-100">
-                                <div class="card-body p-5 pt-0">
-                                    <div class="mb-5 h2 fs-exact-18">Tạo link ảnh</div>
-                                    <?php
-                                    $urlGalery = 'https://i.imgur.com/W6YzeDF.png';
-                                    ?>
-                                    <div class="my-2 d-flex align-items-center justify-content-between">
-                                        <img width="40" id="<?=$idGalery?>" src="<?= $urlGalery ?>" alt="<?= $urlGalery ?>">
-                                        <div class="text-muted"><?= $urlGalery ?></div>
-                                        <span onclick="copyContent('<?= $urlGalery ?>')" class="btn btn-sm btn-outline-success">Copy</span>
-                                    </div>
-                                    <div class="mt-5 input-group d-flex align-items-center">
-                                        <input type="file" id="imgGallery" name="image" onchange="chooseFileCustom(this,id)" class="form-control" accept="image/jpeg,image/png, image/gif" >
-                                        <a href="<?=ACT_ADMIN?>news-add&AddGalery" class="btn btn-outline-primary">Thêm</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php } ?>
                         </div>
                     </div>
                 </div>

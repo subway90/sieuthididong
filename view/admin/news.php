@@ -9,10 +9,14 @@
                                         <ol class="breadcrumb breadcrumb-sa-simple">
                                             <li class="breadcrumb-item"><a href="<?=URL_ADMIN?>">Quản lí</a></li>
                                             <li class="breadcrumb-item active" aria-current="page">Quản lí bài viết</li>
+                                            <li class="breadcrumb-item active" aria-current="page"><?=$showNav?></li>
                                         </ol>
                                     </nav>
                                 </div>
-                                <div class="col-auto d-flex"><a href="<?=ACT_ADMIN?>news-add" class="btn btn-info btn-gradient">Tạo bài viết</a></div>
+                                <div class="col-auto d-flex">
+                                    <?= $showBtn ?>
+                                    <a href="<?=ACT_ADMIN?>news-add" class="btn btn-info">Tạo bài viết</a>
+                                </div>
                             </div>
                         </div>
                         <div class="card">
@@ -24,8 +28,9 @@
                                 <thead>
                                     <tr>
                                         <th class="w-min">ID</th>
+                                        <th class="min-w-5x">Ảnh heading</th>
                                         <th class="min-w-20x">Tiêu đề</th>
-                                        <th class="min-w-20x">Ghi chú ngắn</th>
+                                        <th class="min-w-20x">Danh mục</th>
                                         <th class="min-w-5x">Ngày tạo</th>
                                         <th class="w-min" data-orderable="false"></th>
                                     </tr>
@@ -37,19 +42,14 @@
                                 ?>
                                     <tr>
                                         <td> <?= $id ?> </td>
-                                        <td class=""> 
-                                            <div class="d-flex align-items-center">
-                                                <div class="me-2" >
-                                                 <img width="50" src="<?=URL?>uploads/news/<?=$imageTitle?>" alt="<?=$imageTitle?>">
-                                                </div>
-                                                <div>
-                                                    <div class="text-muted"><span class="fw-bold">Tiêu đề: </span><?= $title ?></div>
-                                                    <div class="text-muted"><span class="fw-bold">Danh mục: </span><?=getOneFieldByCustom('news_category','name','id ='.$idCate)['name']?></div>
-                                                </div>
-                                            </div>
-                                        </td>
                                         <td>
-                                            <?= cutStringByWordCount($shortDecribe,40).'...' ?>
+                                            <img class="w-100" src="<?=URL?>uploads/news/<?=$imageTitle?>" alt="<?=$imageTitle?>">
+                                        </td>
+                                        <td class="text-muted"> 
+                                            <?= $title ?>
+                                        </td>
+                                        <td class="text-muted">
+                                            <?=getOneFieldByCustom('news_category','name','id ='.$idCate)['name']?>
                                         </td>
                                         <td>
                                             <div class="badge badge-sa-primary"> <?= $dateCreate ?> </div>
@@ -67,9 +67,9 @@
                                                     <li><hr class="dropdown-divider"/></li>
                                                     <?php
                                                     if($status == 1){ ?>
-                                                    <li><a class="dropdown-item text-danger" href="<?=ACT_ADMIN?>news&delete=2&id=<?=$id?>">Ẩn news</a></li>
+                                                    <li><a class="dropdown-item text-danger" href="<?=ACT_ADMIN?>news&delete=2&id=<?=$id?>">Xóa bài viết</a></li>
                                                     <?php }else{ ?>
-                                                    <li><a class="dropdown-item text-success" href="<?=ACT_ADMIN?>news&delete=1&id=<?=$id?>">Hiện news</a></li>
+                                                    <li><a class="dropdown-item text-success" href="<?=ACT_ADMIN?>news&delete=1&id=<?=$id?>">Khôi phục bài viết</a></li>
                                                     <?php } ?>
                                                 </ul>
                                             </div>
