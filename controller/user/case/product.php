@@ -39,7 +39,7 @@ if(isset($_POST['addProduct']) || $route){
 }
 
 # LỌC TÌM KIẾM
-if(isset($arrayURL[1])){
+if(isset($arrayURL[1]) && $arrayURL[1]){
   # FILTER CASE
   if($arrayURL[1] === 'loc'){
     #Nav
