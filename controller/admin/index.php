@@ -101,6 +101,14 @@ else{
                 case "news-add":
                     require_once "case/news-add.php";
                     break;
+                // [news-category SHOW - HIDE]
+                case "news-category":
+                    require_once "case/news-category.php";
+                    break;
+                // [news-category ADD - EDIT]
+                case "news-category-add":
+                    require_once "case/news-category-add.php";
+                    break;
                 // [404]
                 default:
                     require_once "../../view/admin/header.php";
