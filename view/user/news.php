@@ -10,8 +10,9 @@
 <div class="container pt-5">
     <div class="row">
         <!-- NEWS TOP -->
-        <div class="col-lg-8 p-0">
-            <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+        <div class="col-lg-8 p-lg-0">
+            <div class="fs-6 text-success p-lg-0 border-bottom border-success mb-3">Tin đầu</div>
+            <div id="headingNews" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img height="460" src="<?= URL_IMAGE_SYSTEM ?>image_default.jpg" class="d-block w-100" alt="<?= URL_IMAGE_SYSTEM ?>image_default.jpg">
@@ -23,12 +24,12 @@
                         <img height="460" src="<?= URL_IMAGE_SYSTEM ?>image_default.jpg" class="d-block w-100" alt="<?= URL_IMAGE_SYSTEM ?>image_default.jpg">
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                <button class="carousel-control-prev" type="button" data-bs-target="#headingNews"
                     data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                <button class="carousel-control-next" type="button" data-bs-target="#headingNews"
                     data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
@@ -36,7 +37,7 @@
             </div>
         </div>
         <!-- NEWS TOP -->
-        <div class="pe-0 col-lg-4 d-flex flex-column">
+        <div class="pe-lg-0 mt-5 mt-lg-0 col-lg-4 d-flex flex-column">
             <div class="fs-6 text-success p-lg-0 border-bottom border-success mb-3">Tin tức liên quan</div>
            <div class="d-flex shadow mb-3 pe-1">
                 <img class="me-2 w-25" src="<?= URL_IMAGE_SYSTEM ?>image_default.jpg" alt="image">
@@ -92,63 +93,63 @@
         </div>
         <!-- NEWS DETAIL -->
         <div class="col-lg-8 d-flex flex-column">
-            <div style="max-height:500" class="mb-2 shadow d-flex">
-                <img class="w-25" src="<?=URL?>publics/img/ads/ads-zflip-1.png" alt="">
+            <div style="max-height:500" class="mb-lg-2 mb-4 shadow d-flex">
+                <img width="40%" class="" src="<?=URL?>publics/img/ads/ads-zflip-1.png" alt="">
                 <div class="fs-6 mx-2">
                     <a href="#" class="text-green text-decoration-none  ">
                         Hỗ trợ trả góp khi mua Samsung Z-flip 5, trả góp 0%, quà siêu ưu đãi và cơ hội trúng voucher SALE 50% Tủ Lạnh Samsung Ultra Freeze Max UTIS 102kg
                     </a>
-                    <div class="small">
+                    <div class="small mt-3">
                         <a class="text-green small text-decoration-none" href="#">#khuyenmaisamsung</a>
                     </div>
                 </div>
             </div>
-            <div style="max-height:500" class="mb-2 shadow d-flex">
-                <img class="w-25" src="<?=URL?>publics/img/ads/ads-zflip-1.png" alt="">
+            <div style="max-height:500" class="mb-lg-2 mb-4 shadow d-flex">
+                <img width="40%" class="" src="<?=URL?>publics/img/ads/ads-zflip-1.png" alt="">
                 <div class="fs-6 mx-2">
                     <a href="#" class="text-green text-decoration-none  ">
                         Hỗ trợ trả góp khi mua Samsung Z-flip 5, trả góp 0%, quà siêu ưu đãi và cơ hội trúng voucher SALE 50% Tủ Lạnh Samsung Ultra Freeze Max UTIS 102kg
                     </a>
-                    <div class="small">
+                    <div class="small mt-3">
                         <a class="text-green small text-decoration-none" href="#">#khuyenmaisamsung</a>
                     </div>
                 </div>
             </div>
-            <div style="max-height:500" class="mb-2 shadow d-flex">
-                <img class="w-25" src="<?=URL?>publics/img/ads/ads-zflip-1.png" alt="">
+            <div style="max-height:500" class="mb-lg-2 mb-4 shadow d-flex">
+                <img width="40%" class="" src="<?=URL?>publics/img/ads/ads-zflip-1.png" alt="">
                 <div class="fs-6 mx-2">
                     <a href="#" class="text-green text-decoration-none  ">
                         Hỗ trợ trả góp khi mua Samsung Z-flip 5, trả góp 0%, quà siêu ưu đãi và cơ hội trúng voucher SALE 50% Tủ Lạnh Samsung Ultra Freeze Max UTIS 102kg
                     </a>
-                    <div class="small">
+                    <div class="small mt-3">
                         <a class="text-green small text-decoration-none" href="#">#khuyenmaisamsung</a>
                     </div>
                 </div>
             </div>
-            <div style="max-height:500" class="mb-2 shadow d-flex">
-                <img class="w-25" src="<?=URL?>publics/img/ads/ads-zflip-1.png" alt="">
+            <div style="max-height:500" class="mb-lg-2 mb-4 shadow d-flex">
+                <img width="40%" class="" src="<?=URL?>publics/img/ads/ads-zflip-1.png" alt="">
                 <div class="fs-6 mx-2">
                     <a href="#" class="text-green text-decoration-none  ">
                         Hỗ trợ trả góp khi mua Samsung Z-flip 5, trả góp 0%, quà siêu ưu đãi và cơ hội trúng voucher SALE 50% Tủ Lạnh Samsung Ultra Freeze Max UTIS 102kg
                     </a>
-                    <div class="small">
+                    <div class="small mt-3">
                         <a class="text-green small text-decoration-none" href="#">#khuyenmaisamsung</a>
                     </div>
                 </div>
             </div>
-            <div style="max-height:500" class="mb-2 shadow d-flex">
-                <img class="w-25" src="<?=URL?>publics/img/ads/ads-zflip-1.png" alt="">
+            <div style="max-height:500" class="mb-lg-2 mb-4 shadow d-flex">
+                <img width="40%" class="" src="<?=URL?>publics/img/ads/ads-zflip-1.png" alt="">
                 <div class="fs-6 mx-2">
                     <a href="#" class="text-green text-decoration-none  ">
                         Hỗ trợ trả góp khi mua Samsung Z-flip 5, trả góp 0%, quà siêu ưu đãi và cơ hội trúng voucher SALE 50% Tủ Lạnh Samsung Ultra Freeze Max UTIS 102kg
                     </a>
-                    <div class="small">
+                    <div class="small mt-3">
                         <a class="text-green small text-decoration-none" href="#">#khuyenmaisamsung</a>
                     </div>
                 </div>
             </div>
-            <div class="w-100 d-flex">
-                <div class="input-group">
+            <div class="w-100 d-flex mt-3 ">
+                <div class="input-group justify-content-center justify-content-lg-start">
                     <a href="#" class="btn btn-sm btn-outline-success disabled">Trang trước</a>
                     <a href="#" class="btn btn-sm btn-outline-success active">1</a>
                     <a href="#" class="btn btn-sm btn-outline-success">2</a>
@@ -159,7 +160,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 bg-info bg-opacity-50 bg-gradient text-center mb-2">
+        <div class="col-lg-4 mt-lg-0 mt-5 bg-info bg-opacity-50 bg-gradient text-center mb-2">
                 banner ads [COL-LG 4]
         </div>
     </div>
