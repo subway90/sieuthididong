@@ -10,7 +10,7 @@
 <div class="container pt-5">
     <div class="row">
         <!-- NEWS TOP -->
-        <div class="col-lg-8 p-0">
+        <div class="col-lg-8 p-lg-0">
             <div class="mb-lg-3"> 
                 <div class="fw-bold h4"><?= $title ?></div>
                 <div class="text-muted"><?= formatTime($dateUpdate,'lúc hh:mm MM/DD/YYYY') ?></div>
@@ -27,38 +27,10 @@
             </div>
         </div>
         <!-- NEWS RECOMMEND -->
-        <div class="pe-0 col-lg-4 d-flex flex-column">
+        <div class="pe-lg-0 col-lg-4 d-flex flex-column mt-lg-0 mt-5">
             <div class="fs-6 text-success p-lg-0 border-bottom border-success mb-3">Tin tức liên quan</div>
            <div class="d-flex shadow mb-3 pe-1">
-                <img class="me-2 w-25" src="<?= URL_IMAGE_SYSTEM ?>image_default.jpg" alt="image">
-                <div class="fs-6">
-                    <a href="#" class="text-green text-decoration-none">Thông tin mới nhất về iPhone 15 Pro Max & IOS 16.0.1</a>
-                    <div class="text-muted small">Minh Hiếu | 16.02.2024</div>
-                </div>
-           </div>
-           <div class="d-flex shadow mb-3 pe-1">
-                <img class="me-2 w-25" src="<?= URL_IMAGE_SYSTEM ?>image_default.jpg" alt="image">
-                <div class="fs-6">
-                    <a href="#" class="text-green text-decoration-none">Thông tin mới nhất về iPhone 15 Pro Max & IOS 16.0.1</a>
-                    <div class="text-muted small">Minh Hiếu | 16.02.2024</div>
-                </div>
-           </div>
-           <div class="d-flex shadow mb-3 pe-1">
-                <img class="me-2 w-25" src="<?= URL_IMAGE_SYSTEM ?>image_default.jpg" alt="image">
-                <div class="fs-6">
-                    <a href="#" class="text-green text-decoration-none">Thông tin mới nhất về iPhone 15 Pro Max & IOS 16.0.1</a>
-                    <div class="text-muted small">Minh Hiếu | 16.02.2024</div>
-                </div>
-           </div>
-           <div class="d-flex shadow mb-3 pe-1">
-                <img class="me-2 w-25" src="<?= URL_IMAGE_SYSTEM ?>image_default.jpg" alt="image">
-                <div class="fs-6">
-                    <a href="#" class="text-green text-decoration-none">Thông tin mới nhất về iPhone 15 Pro Max & IOS 16.0.1</a>
-                    <div class="text-muted small">Minh Hiếu | 16.02.2024</div>
-                </div>
-           </div>
-           <div class="d-flex shadow mb-3 pe-1">
-                <img class="me-2 w-25" src="<?= URL_IMAGE_SYSTEM ?>image_default.jpg" alt="image">
+                <img class="me-lg-2 w-25" src="<?= URL_IMAGE_SYSTEM ?>image_default.jpg" alt="image">
                 <div class="fs-6">
                     <a href="#" class="text-green text-decoration-none">Thông tin mới nhất về iPhone 15 Pro Max & IOS 16.0.1</a>
                     <div class="text-muted small">Minh Hiếu | 16.02.2024</div>
@@ -90,7 +62,7 @@
                 </tr>
             </table>
             <div class="w-100 d-flex">
-                <div class="input-group">
+                <div class="input-group justify-content-center justify-content-lg-start">
                     <a href="#" class="btn btn-sm btn-outline-success disabled">Trang trước</a>
                     <a href="#" class="btn btn-sm btn-outline-success active">1</a>
                     <a href="#" class="btn btn-sm btn-outline-success">2</a>
@@ -101,7 +73,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 bg-info bg-opacity-50 bg-gradient text-center mb-2">
+        <div class="col-lg-4 bg-info bg-opacity-50 bg-gradient text-center my-lg-0 my-3">
                 banner ads [COL-LG 4]
         </div>
     </div>

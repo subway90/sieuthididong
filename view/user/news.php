@@ -19,10 +19,10 @@
                         extract($listHeading[$i])
                     ?>
                     <div class="w-100 carousel-item position-relative <?=matchValue('active',0,$i)?>">
-                       <a href="<?=$URL?>tin-tuc/<?=$slug?>">
+                       <a href="<?=URL?>tin-tuc/<?=$slug?>">
                        <img src="<?= URL_IMAGE_NEWS.$imageTitle ?>" class="img object-fit-cover w-100 d-block" alt="<?= $imageTitle ?>">
                        </a>
-                        <span class="w-100 p-3 position-absolute bg-success bg-opacity-75 text-light bottom-0">
+                        <span class="w-100 p-lg-3 px-2 position-absolute bg-success bg-opacity-75 text-light bottom-0">
                             <?= $title ?>
                         <div class="small">
                             <small>

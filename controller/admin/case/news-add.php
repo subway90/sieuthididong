@@ -42,15 +42,17 @@ if(isset($_POST['submit'])) {
     }
     if($titleNews) {
         $slug = createSlug($titleNews);
-        if(!getOneFieldByCustom('news','id','slug = "'.$slug.'"')){
+        if($edit) $checkSlug = getOneFieldByCustom('news','id','slug = "'.$slug.'" AND id != '.$_GET['edit']);
+        else $checkSlug = getOneFieldByCustom('news','id','slug = "'.$slug.'"');
+        if(!$checkSlug){
             if($shortDecribe) {
                 if($decribe){
                     if($edit === true) {
-                        editNews($id,$titleNews,$idCate,$oldImage,$shortDecribe,$decribe,$status);
+                        editNews($id,$titleNews,$slug,$idCate,$oldImage,$shortDecribe,$decribe,$status);
                         addAlert('primary',ICON_CHECK.'Sửa bài viết thành công !');
                     # ADD SUBMIT
                     }else {
-                        addNews($titleNews,$idCate,$oldImage,$shortDecribe,$decribe,$status);
+                        addNews($titleNews,$slug,$idCate,$oldImage,$shortDecribe,$decribe,$status);
                         addAlert('success',ICON_CHECK.'Thêm bài viết mới thành công !');
                     }
                     header('Location: '.ACT_ADMIN.'news');

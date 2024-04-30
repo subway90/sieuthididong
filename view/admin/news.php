@@ -47,6 +47,9 @@
                                         </td>
                                         <td class="text-muted"> 
                                             <?= $title ?>
+                                            <div>
+                                                <a href="<?=URL?>tin-tuc/<?=$slug?>" class="text-success fst-italic small">(View in USER)</a>
+                                            </div>
                                         </td>
                                         <td class="text-muted">
                                             <?=getOneFieldByCustom('news_category','name','id ='.$idCate)['name']?>
