@@ -7,38 +7,43 @@
         </ol>
     </nav>
 </div>
-<div class="container pt-5">
+<div class="container pt-lg-5 pt-3">
     <div class="row">
         <!-- NEWS TOP -->
         <div class="col-lg-8 p-lg-0">
             <div class="fs-6 text-success p-lg-0 border-bottom border-success mb-3">Tin đầu</div>
-            <div id="headingNews" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img height="460" src="<?= URL_IMAGE_SYSTEM ?>image_default.jpg" class="d-block w-100" alt="<?= URL_IMAGE_SYSTEM ?>image_default.jpg">
+            <div id="headingNews" class="carousel slide position-relative" data-bs-ride="carousel">
+                <div class="carousel-inner px-3">
+                    <?php
+                    for ($i=0; $i < count($listHeading); $i++) { 
+                        extract($listHeading[$i])
+                    ?>
+                    <div class="w-100 carousel-item position-relative <?=matchValue('active',0,$i)?>">
+                       <a href="<?=$URL?>tin-tuc/<?=$slug?>">
+                       <img src="<?= URL_IMAGE_NEWS.$imageTitle ?>" class="img object-fit-cover w-100 d-block" alt="<?= $imageTitle ?>">
+                       </a>
+                        <span class="w-100 p-3 position-absolute bg-success bg-opacity-75 text-light bottom-0">
+                            <?= $title ?>
+                        <div class="small">
+                            <small>
+                                bởi <a class="text-decoration-none text-light fst-italic me-2" href="<?=URL?>thong-tin/<?=$idUser?>">
+                                 <?= getOneFieldByCustom('accounts','fullName','id ='.$idUser)['fullName'] ?></a> 
+                                <div class=""><?= formatTime($dateCreate,'lúc hh:mm DD/MM/YYYY') ?></div>
+                            </small>
+                        </div>
+                        </span>
                     </div>
-                    <div class="carousel-item">
-                        <img height="460" src="<?= URL_IMAGE_SYSTEM ?>image_default.jpg" class="d-block w-100" alt="<?= URL_IMAGE_SYSTEM ?>image_default.jpg">
-                    </div>
-                    <div class="carousel-item">
-                        <img height="460" src="<?= URL_IMAGE_SYSTEM ?>image_default.jpg" class="d-block w-100" alt="<?= URL_IMAGE_SYSTEM ?>image_default.jpg">
-                    </div>
+                    <?php } ?>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#headingNews"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#headingNews"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+                <span class="position-absolute w-100 d-flex justify-content-between top-50">
+                    <button class="btn rounded-circle bg-success text-light bg-opacity-75" data-bs-target="#headingNews" data-bs-slide="prev"><i class="fas fs-2 mx-1 fa-caret-left"></i></button>
+                    <button class="btn rounded-circle bg-success text-light bg-opacity-75"  data-bs-target="#headingNews" data-bs-slide="next"><i class="fas fs-2 mx-1 fa-caret-right"></i></button>
+                </span>
             </div>
         </div>
         <!-- NEWS TOP -->
         <div class="pe-lg-0 mt-5 mt-lg-0 col-lg-4 d-flex flex-column">
-            <div class="fs-6 text-success p-lg-0 border-bottom border-success mb-3">Tin tức liên quan</div>
+            <div class="fs-6 text-success p-lg-0 border-bottom border-success mb-3">Tin nổi bật khác</div>
            <div class="d-flex shadow mb-3 pe-1">
                 <img class="me-2 w-25" src="<?= URL_IMAGE_SYSTEM ?>image_default.jpg" alt="image">
                 <div class="fs-6">
