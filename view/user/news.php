@@ -36,7 +36,11 @@
                         <p class="fs-6 fw-bold"> <?= $title ?> </p>
                     </a>
                 </div>
-                <?php }}else{?>
+                <?php } ?>
+                <div class="col-12 input-group d-flex justify-content-center">
+                    <?= $showPagingNews ?>
+                </div>
+                <?php }else{?>
                 <div class="col-12 text-center">
                     <p class="text-muted" >Không tìm thấy bài viết nào.</p>
                     <a href="<?=URL?>tin-tuc" class="btn btn-sm btn-outline-success mb-3">Quay lại</a>

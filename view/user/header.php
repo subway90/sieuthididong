@@ -42,7 +42,7 @@
             <a class="nav-link" href="<?= URL ?>gio-hang">Giỏ hàng</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?= URL ?>tin-tuc">Tin tức</a>
+            <a class="nav-link" href="<?= URL ?>tin-tuc/tat-ca">Tin tức</a>
           </li>
           <?php if ($_SESSION['user']) {?>
             <li class="nav-item dropdown" data-bs-theme="light">
