@@ -44,7 +44,7 @@
                                         <label for="status">Trạng thái</label>
                                     </div>
                                     <div class="col-12 form-floating px-3 mb-5">
-                                        <input name="titleNews" value="<?= $titleNews ?>" type="text"
+                                        <input name="titleNews" value='<?= $titleNews ?>' type="text"
                                             class="form-control rounded rounded-5" id="titleNews"
                                             placeholder="titleNews@example.com">
                                         <label for="titleNews">Tiêu đề</label>

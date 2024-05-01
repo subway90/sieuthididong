@@ -17,11 +17,11 @@ if(isset($_GET['edit']) && $_GET['edit']) {
 
 # SUBMIT
 if(isset($_POST['submit'])) {
-    $titleNews = $_POST['titleNews'];   
+    $titleNews = str_replace("'",'"',$_POST['titleNews']);   
     $idCate = $_POST['idCate'];
     $status = $_POST['status'];
-    $decribe = $_POST['decribe'];
-    $shortDecribe = $_POST['shortDecribe'];
+    $decribe = str_replace("'",'"',$_POST['decribe']);
+    $shortDecribe = str_replace("'",'"',$_POST['shortDecribe']);
     if(isset($_POST['oldImage']) && $_POST['oldImage']) $oldImage = $_POST['oldImage'];
     # IMAGE VALIDATION
     ## có up file hình mới
@@ -48,11 +48,11 @@ if(isset($_POST['submit'])) {
             if($shortDecribe) {
                 if($decribe){
                     if($edit === true) {
-                        editNews($id,$titleNews,$slug,$idCate,$oldImage,$shortDecribe,$decribe,$status);
+                        editNews($_SESSION['user']['id'],$id,$titleNews,$slug,$idCate,$oldImage,$shortDecribe,$decribe,$status);
                         addAlert('primary',ICON_CHECK.'Sửa bài viết thành công !');
                     # ADD SUBMIT
                     }else {
-                        addNews($titleNews,$slug,$idCate,$oldImage,$shortDecribe,$decribe,$status);
+                        addNews($_SESSION['user']['id'],$titleNews,$slug,$idCate,$oldImage,$shortDecribe,$decribe,$status);
                         addAlert('success',ICON_CHECK.'Thêm bài viết mới thành công !');
                     }
                     header('Location: '.ACT_ADMIN.'news');

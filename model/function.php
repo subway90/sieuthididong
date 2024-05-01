@@ -281,10 +281,8 @@ function createSlug($input)
  * on: trả về dạng URL -
  * off: trả về chuỗi bình thường
  */
-function Slug($type,$input){
-    if($type == "on")  return str_replace(" ","-",$input);
-    elseif($type == "off") return str_replace("-"," ",$input);
-    else return "ERROR";
+function moveSlug($input){
+    return str_replace("-"," ",$input);
 }
 
 /**

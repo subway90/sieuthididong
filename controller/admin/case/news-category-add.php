@@ -22,6 +22,7 @@ if(isset($_POST['submit'])) {
     if($name) {
         if($decribe) {
             # EDIT SUBMIT
+            $decribe = str_replace("'",'"',$decribe);
             if($edit === true) {
                 editNewsCategory($id,$name,$decribe,$status);
                 addAlert('primary',ICON_CHECK.'Sửa loại tin tức thành công !');
