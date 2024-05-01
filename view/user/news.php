@@ -18,7 +18,7 @@
         <div class="fs-5 fw-bold text-success mb-2">Tìm kiếm</div>
             <form action="" method="get">
             <div class="input-group">
-                <input type="text" name="tim-kiem" id="#" class="form-control" placeholder="Nhập từ khóa bài viết...">
+                <input type="text" name="tim-kiem" value="<?= $keyword ?>" id="#" class="form-control" placeholder="Nhập từ khóa bài viết...">
                 <button type="submit" class="btn btn-success">Tìm kiếm</button>
             </div>
             </form>
@@ -32,7 +32,7 @@
                     extract($listNews[$i]) ?>
                 <div class="col-lg-3 col-6">
                     <a class="text-decoration-none text-green" href="<?=URL?>tin-tuc/<?=$slug?>">
-                        <img class="w-100 rounded-4" src="<?=URL_IMAGE_NEWS.$imageTitle?>" alt="<?=$imageTitle?>">
+                        <img height="70%" class="w-100 rounded-4" src="<?=URL_IMAGE_NEWS.$imageTitle?>" alt="<?=$imageTitle?>">
                         <p class="fs-6 fw-bold"> <?= $title ?> </p>
                     </a>
                 </div>
@@ -58,7 +58,7 @@
             </a>
         </div>
         <div class="col-12 p-0 pb-1 my-4 d-flex justify-content-between text-success h5 border-2 border-success border-bottom">
-            <div class="">Tin tức mới nhất</div>
+            <div class="">Tin tức nổi bật</div>
         </div>
         <!-- NEWS ALL -->
         <div class="col-lg-8 d-flex flex-column">
