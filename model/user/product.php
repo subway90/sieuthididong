@@ -18,7 +18,7 @@ function getProduct($filter){
     WHERE c.status = 1 AND ";
     if($filter && $filter !== '1') $sql .= $filter;
     else $sql .=" 1 ORDER BY c.priceSale ASC";
-    #var_dump($sql);exit;
+    //var_dump($sql);exit;
     $list = pdo_query($sql);
     return $list;
 }

@@ -44,53 +44,58 @@
             </div>
         </div>
     </div>
+    <?php if(FLASH_SALE) { 
+        $listProductFlashSale = getProduct('c.flashsale = 1');
+        echo'<pre>';
+        print_r($listProductFlashSale);
+        echo'</pre>'
+        ; exit;
+        ?>
     <!-- Flash Sale Start -->
     <div class="mt-4">
-        <ul class="nav nav-tabs flex-column flex-lg-row align-items-center justify-content-lg-between bg-light pt-3 pb-2 mb-4 px-lg-3" id="myTab" role="tablist">
-            <li class="">
-                <p class="h3" style="color: #fc521d;"><strong>FLASH SALE ONLINE</strong></p>
-            </li>
-            <div class="d-flex mb-3 mb-lg-0">
-                <li class="nav-item" role="presentation">
-                    <button class="btn btn-sm fw-bold btn-outline-success me-lg-4 me-1 px-lg-5 px-3 active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">
-                    Điện thoại
-                    </button>
+            <ul class="nav nav-tabs flex-column flex-lg-row align-items-center justify-content-lg-between bg-light pt-3 pb-2 mb-4 px-lg-3" id="myTab" role="tablist">
+                <li class="">
+                    <p class="h3" style="color: #fc521d;"><strong>FLASH SALE ONLINE</strong></p>
                 </li>
-                <li class="nav-item" role="presentation">
-                    <button class="btn btn-sm fw-bold btn-outline-success me-lg-4 me-1 px-lg-5 px-3" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">
-                    Laptop
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="btn btn-sm fw-bold btn-outline-success me-lg-4 me-1 px-lg-5 px-3" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">
-                    Phụ kiện
-                    </button>
-                </li>
-            </div>
-            <li class="">
-                <!-- Time Countdown Start -->
-                <div><span class="btn btn-sm btn-dark px-xl-2 px-5 fs-6 fw-bold mb-2" id="time"></div>
-            </li>
+                <div class="d-flex mb-3 mb-lg-0">
 
-          </ul>
-          <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-               <!-- Body Tab 1  (điện thoại FS)-->
-               <div id="phoneFS" class="carousel slide position-relative">
+                    <li class="nav-item" role="presentation">
+                        <button class="btn btn-sm fw-bold btn-outline-success me-lg-4 me-1 px-lg-5 px-3 active" 
+                        id="<?='home-tab'?>" 
+                        data-bs-toggle="tab" 
+                        data-bs-target="#<?='home'?>" 
+                        type="button" 
+                        role="tab" 
+                        aria-controls="<?='home'?>" 
+                        aria-selected="<?='true'?>">
+                        Điện thoại
+                        </button>
+                    </li>
+                    
+                </div>
+
+                <!-- Time Countdown Start -->
+                <li class=""><div><span class="btn btn-sm btn-dark px-xl-2 px-5 fs-6 fw-bold mb-2" id="time"></div></li>
+
+            </ul>
+            <div class="tab-content" id="myTabContent">
+
+            <div class="tab-pane fade <?= 'show active' ?>" id="<?= 'home' ?>" role="tabpanel" aria-labelledby="<?= 'home-tab' ?>">
+                <!-- Body Tab 1  (điện thoại FS)-->
+                <div id="<?= 'phoneFS' ?>" class="carousel slide position-relative">
                         <span class="z-1 top-50 w-100 position-absolute d-flex justify-content-between">
-                            <button style="width: 50px; height: 50px;" class="btn btn-success rounded-circle opacity-75" data-bs-target="#phoneFS" data-bs-slide="prev">
+                            <button style="width: 50px; height: 50px;" class="btn btn-success rounded-circle opacity-75" data-bs-target="#<?= 'phoneFS' ?>" data-bs-slide="prev">
                                 <i class="fa fa-lg fa-angle-left" aria-hidden="true"></i>
                             </button>
-                            <button style="width: 50px; height: 50px;" class="btn btn-success rounded-circle opacity-75" data-bs-target="#phoneFS" data-bs-slide="next">
+                            <button style="width: 50px; height: 50px;" class="btn btn-success rounded-circle opacity-75" data-bs-target="#<?= 'phoneFS' ?>" data-bs-slide="next">
                                 <i class="fa fa-lg fa-angle-right" aria-hidden="true"></i>
                             </button>
                         </span>
                     <div class="carousel-indicators">
-                        <button  class="active" type="button" data-bs-target="#phoneFS" data-bs-slide-to="0" aria-current="true" aria-label="Slide 1"></button>
-                        <button class="" type="button" data-bs-target="#phoneFS" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button  class="active" type="button" data-bs-target="#<?= 'phoneFS' ?>" data-bs-slide-to="0" aria-current="true" aria-label="Slide 1"></button>
+                        <button class="" type="button" data-bs-target="#<?= 'phoneFS' ?>" data-bs-slide-to="1" aria-label="Slide 2"></button>
                     </div>
                     <div class="carousel-inner pt-3 px-3 px-md-4 px-lg-4">
-                        
                         <!-- Tab 1-1 -->
                         <div class="carousel-item active">
                             <div class="row">
@@ -119,156 +124,6 @@
                                                 <p class="card-text">
                                                     <span class="text-danger fw-bold me-1">5,990,000 đ</span>
                                                     <span class="text-secondary small"><del><small>8,900,000</small></del></span>
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4 col-lg-2 pb-3 pb-md-4 pb-lg-5">
-                                    <div style="min-height:100%" class="card shadow">
-                                        <div class="position-relative hover-trigger">
-                                            <img src="publics/img/phone/samsung/a15.jpg" class="card-img img-product" alt="...">
-                                            <span style="left: 84%; top: -4%; width: 45px; height: 45px" class="btn bg-danger text-light rounded-circle position-absolute small p-0 pt-2 fw-bold ">8%</span>
-                                            <span class="show-hover position-absolute end-0 bottom-0 w-100">
-                                                <div class="d-flex justify-content-evenly">
-                                                    <button class="btn btn-success">
-                                                        <i class="far fa-heart"></i>
-                                                    </button>
-                                                    <button class="btn btn-success">
-                                                        <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                                                    </button>
-                                                    <button class="btn btn-success">
-                                                        <i class="fa fa-share-alt" aria-hidden="true"></i>
-                                                    </button>
-                                                </div>
-                                            </span>
-                                        </div>
-                                        <a class="text-decoration-none" href="#!/chi-tiet/1">
-                                            <div class="card-body">
-                                                <h5 class="card-title fs-6 fw-bold text-dark">Samsung A15 8GB /128GB</h5>
-                                                <p class="card-text">
-                                                    <span class="text-danger fw-bold me-1">4,550,000 đ</span>
-                                                    <span class="text-secondary small"><del><small>5,200,000</small></del></span>
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4 col-lg-2 pb-3 pb-md-4 pb-lg-5">
-                                    <div style="min-height:100%" class="card shadow">
-                                        <div class="position-relative hover-trigger">
-                                            <img src="publics/img/phone/realme/c51.jpg" class="card-img img-product" alt="...">
-                                            <span style="left: 84%; top: -4%; width: 45px; height: 45px" class="btn bg-danger text-light rounded-circle position-absolute small p-0 pt-2 fw-bold ">34%</span>
-                                            <span class="show-hover position-absolute end-0 bottom-0 w-100">
-                                                <div class="d-flex justify-content-evenly">
-                                                    <button class="btn btn-success">
-                                                        <i class="far fa-heart"></i>
-                                                    </button>
-                                                    <button class="btn btn-success">
-                                                        <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                                                    </button>
-                                                    <button class="btn btn-success">
-                                                        <i class="fa fa-share-alt" aria-hidden="true"></i>
-                                                    </button>
-                                                </div>
-                                            </span>
-                                        </div>
-                                        <a class="text-decoration-none" href="#!/chi-tiet/1">
-                                            <div class="card-body">
-                                                <h5 class="card-title fs-6 fw-bold text-dark">Realme C51 3GB /64GB</h5>
-                                                <p class="card-text">
-                                                    <span class="text-danger fw-bold me-1">2,359,000 đ</span>
-                                                    <span class="text-secondary small"><del><small>3,290,000</small></del></span>
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4 col-lg-2 pb-3 pb-md-4 pb-lg-5">
-                                    <div style="min-height:100%" class="card shadow">
-                                        <div class="position-relative hover-trigger">
-                                            <img src="publics/img/phone/realme/c55-den.jpg" class="card-img img-product" alt="...">
-                                            <span style="left: 84%; top: -4%; width: 45px; height: 45px" class="btn bg-danger text-light rounded-circle position-absolute small p-0 pt-2 fw-bold ">27%</span>
-                                            <span class="show-hover position-absolute end-0 bottom-0 w-100">
-                                                <div class="d-flex justify-content-evenly">
-                                                    <button class="btn btn-success">
-                                                        <i class="far fa-heart"></i>
-                                                    </button>
-                                                    <button class="btn btn-success">
-                                                        <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                                                    </button>
-                                                    <button class="btn btn-success">
-                                                        <i class="fa fa-share-alt" aria-hidden="true"></i>
-                                                    </button>
-                                                </div>
-                                            </span>
-                                        </div>
-                                        <a class="text-decoration-none" href="#!/chi-tiet/1">
-                                            <div class="card-body">
-                                                <h5 class="card-title fs-6 fw-bold text-dark">Realme C55 6GB /128GB</h5>
-                                                <p class="card-text">
-                                                    <span class="text-danger fw-bold me-1">3,660,000 đ</span>
-                                                    <span class="text-secondary small"><del><small>4,990,000</small></del></span>
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4 col-lg-2 pb-3 pb-md-4 pb-lg-5">
-                                    <div style="min-height:100%" class="card shadow">
-                                        <div class="position-relative hover-trigger">
-                                            <img src="publics/img/phone/honor/new90.jpg" class="card-img img-product" alt="...">
-                                            <span style="left: 84%; top: -4%; width: 45px; height: 45px" class="btn bg-danger text-light rounded-circle position-absolute small p-0 pt-2 fw-bold ">25%</span>
-                                            <span class="show-hover position-absolute end-0 bottom-0 w-100">
-                                                <div class="d-flex justify-content-evenly">
-                                                    <button class="btn btn-success">
-                                                        <i class="far fa-heart"></i>
-                                                    </button>
-                                                    <button class="btn btn-success">
-                                                        <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                                                    </button>
-                                                    <button class="btn btn-success">
-                                                        <i class="fa fa-share-alt" aria-hidden="true"></i>
-                                                    </button>
-                                                </div>
-                                            </span>
-                                        </div>
-                                        <a class="text-decoration-none" href="#!/chi-tiet/1">
-                                            <div class="card-body">
-                                                <h5 class="card-title fs-6 fw-bold text-dark">HONOR 90 Lite 5G 8G /256GB</h5>
-                                                <p class="card-text">
-                                                    <span class="text-danger fw-bold me-1">4,990,000 đ</span>
-                                                    <span class="text-secondary small"><del><small>6,500,000</small></del></span>
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4 col-lg-2 pb-3 pb-md-4 pb-lg-5">
-                                    <div style="min-height:100%" class="card shadow">
-                                        <div class="position-relative hover-trigger">
-                                            <img src="publics/img/phone/honor/x9a.jpg" class="card-img img-product" alt="...">
-                                            <span style="left: 84%; top: -4%; width: 45px; height: 45px" class="btn bg-danger text-light rounded-circle position-absolute small p-0 pt-2 fw-bold ">14%</span>
-                                            <span class="show-hover position-absolute end-0 bottom-0 w-100">
-                                                <div class="d-flex justify-content-evenly">
-                                                    <button class="btn btn-success">
-                                                        <i class="far fa-heart"></i>
-                                                    </button>
-                                                    <button class="btn btn-success">
-                                                        <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                                                    </button>
-                                                    <button class="btn btn-success">
-                                                        <i class="fa fa-share-alt" aria-hidden="true"></i>
-                                                    </button>
-                                                </div>
-                                            </span>
-                                        </div>
-                                        <a class="text-decoration-none" href="#!/chi-tiet/1">
-                                            <div class="card-body">
-                                                <h5 class="card-title fs-6 fw-bold text-dark">HONOR X9A 5G 8GB /256GB</h5>
-                                                <p class="card-text">
-                                                    <span class="text-danger fw-bold me-1">6,990,000 đ</span>
-                                                    <span class="text-secondary small"><del><small>7,990,000</small></del></span>
                                                 </p>
                                             </div>
                                         </a>
@@ -309,256 +164,16 @@
                                         </a>
                                     </div>
                                 </div>
-                                <div class="col-6 col-md-4 col-lg-2 pb-3 pb-md-4 pb-lg-5">
-                                    <div style="min-height:100%" class="card shadow">
-                                        <div class="position-relative hover-trigger">
-                                            <img src="publics/img/phone/redmi/not13.jpg" class="card-img img-product" alt="...">
-                                            <span style="left: 84%; top: -4%; width: 45px; height: 45px" class="btn bg-danger text-light rounded-circle position-absolute small p-0 pt-2 fw-bold ">23%</span>
-                                            <span class="show-hover position-absolute end-0 bottom-0 w-100">
-                                                <div class="d-flex justify-content-evenly">
-                                                    <button class="btn btn-success">
-                                                        <i class="far fa-heart"></i>
-                                                    </button>
-                                                    <button class="btn btn-success">
-                                                        <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                                                    </button>
-                                                    <button class="btn btn-success">
-                                                        <i class="fa fa-share-alt" aria-hidden="true"></i>
-                                                    </button>
-                                                </div>
-                                            </span>
-                                        </div>
-                                        <a class="text-decoration-none" href="#!/chi-tiet/1">
-                                            <div class="card-body">
-                                                <h5 class="card-title fs-6 fw-bold text-dark">Redmi Note 13 6GB /128GB</h5>
-                                                <p class="card-text">
-                                                    <span class="text-danger fw-bold me-1">4,550,000 đ</span>
-                                                    <span class="text-secondary small"><del><small>5,990,000</small></del></span>
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4 col-lg-2 pb-3 pb-md-4 pb-lg-5">
-                                    <div style="min-height:100%" class="card shadow">
-                                        <div class="position-relative hover-trigger">
-                                            <img src="publics/img/phone/infinix/30i.jpg" class="card-img img-product" alt="...">
-                                            <span style="left: 84%; top: -4%; width: 45px; height: 45px" class="btn bg-danger text-light rounded-circle position-absolute small p-0 pt-2 fw-bold ">27%</span>
-                                            <span class="show-hover position-absolute end-0 bottom-0 w-100">
-                                                <div class="d-flex justify-content-evenly">
-                                                    <button class="btn btn-success">
-                                                        <i class="far fa-heart"></i>
-                                                    </button>
-                                                    <button class="btn btn-success">
-                                                        <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                                                    </button>
-                                                    <button class="btn btn-success">
-                                                        <i class="fa fa-share-alt" aria-hidden="true"></i>
-                                                    </button>
-                                                </div>
-                                            </span>
-                                        </div>
-                                        <a class="text-decoration-none" href="#!/chi-tiet/1">
-                                            <div class="card-body">
-                                                <h5 class="card-title fs-6 fw-bold text-dark">Infinix HOT 30i 4GB /128GB</h5>
-                                                <p class="card-text">
-                                                    <span class="text-danger fw-bold me-1">2,259,000 đ</span>
-                                                    <span class="text-secondary small"><del><small>2,790,000</small></del></span>
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
                 
-              </div>
-            </div>
-            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                <!-- Body Tab 2 (laptop FS)-->
-                <div id="LaptopFS" class="carousel slide position-relative">
-                    <span class="z-1 top-50 w-100 position-absolute d-flex justify-content-between">
-                        <button style="width: 50px; height: 50px;" class="btn btn-success rounded-circle opacity-75" data-bs-target="#LaptopFS" data-bs-slide="prev">
-                            <i class="fa fa-lg fa-angle-left" aria-hidden="true"></i>
-                        </button>
-                        <button style="width: 50px; height: 50px;" class="btn btn-success rounded-circle opacity-75" data-bs-target="#LaptopFS" data-bs-slide="next">
-                            <i class="fa fa-lg fa-angle-right" aria-hidden="true"></i>
-                        </button>
-                    </span>
-                <div class="carousel-indicators">
-                    <button  class="active" type="button" data-bs-target="#LaptopFS" data-bs-slide-to="0" aria-current="true" aria-label="Slide 1"></button>
-                    <button class="" type="button" data-bs-target="#LaptopFS" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                </div>
-                <div class="carousel-inner pt-3 px-3 px-md-4 px-lg-4">
-                    <!-- Tab 2-1 -->
-                    <div class="carousel-item active">
-                        <div class="row">
-                            <!-- Product Start -->
-                            <div class="col-6 col-md-4 col-lg-2 pb-3 pb-md-4 pb-lg-5">
-                                <div style="min-height:100%" class="card shadow">
-                                    <div class="position-relative hover-trigger">
-                                        <img src="publics/img/laptop/acer/nitro-5-an515.jpg" class="card-img img-product" alt="...">
-                                        <span style="left: 84%; top: -4%; width: 45px; height: 45px" class="btn bg-danger text-light rounded-circle position-absolute small p-0 pt-2 fw-bold ">32%</span>
-                                        <span class="show-hover position-absolute end-0 bottom-0 w-100">
-                                            <div class="d-flex justify-content-evenly">
-                                                <button class="btn btn-success">
-                                                    <i class="far fa-heart"></i>
-                                                </button>
-                                                <button class="btn btn-success">
-                                                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                                                </button>
-                                                <button class="btn btn-success">
-                                                    <i class="fa fa-share-alt" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </span>
-                                    </div>
-                                    <a class="text-decoration-none" href="#!/chi-tiet/1">
-                                        <div class="card-body">
-                                            <h5 class="card-title fs-6 fw-bold text-dark">Gaming Acer Nitro 5 AN515 8GB /512GB 144Hz GTX 1650 i5 11440H</h5>
-                                            <p class="card-text">
-                                                <span class="text-danger fw-bold me-1">15,990,000 đ</span>
-                                                <span class="text-secondary small"><del><small>15,990,000</small></del></span>
-                                            </p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Tab 2-2 -->
-                    <div class="carousel-item">
-                        <div class="row">
-                            <!-- Product Start -->
-                            <div class="col-6 col-md-4 col-lg-2 pb-3 pb-md-4 pb-lg-5">
-                                <div style="min-height:100%" class="card shadow">
-                                    <div class="position-relative hover-trigger">
-                                        <img src="publics/img/laptop/acer/nitro-5-an515.jpg" class="card-img img-product" alt="...">
-                                        <span style="left: 84%; top: -4%; width: 45px; height: 45px" class="btn bg-danger text-light rounded-circle position-absolute small p-0 pt-2 fw-bold ">32%</span>
-                                        <span class="show-hover position-absolute end-0 bottom-0 w-100">
-                                            <div class="d-flex justify-content-evenly">
-                                                <button class="btn btn-success">
-                                                    <i class="far fa-heart"></i>
-                                                </button>
-                                                <button class="btn btn-success">
-                                                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                                                </button>
-                                                <button class="btn btn-success">
-                                                    <i class="fa fa-share-alt" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </span>
-                                    </div>
-                                    <a class="text-decoration-none" href="#!/chi-tiet/1">
-                                        <div class="card-body">
-                                            <h5 class="card-title fs-6 fw-bold text-dark">Gaming Acer Nitro 5 AN515 8GB /512GB 144Hz GTX 1650 i5 11440H</h5>
-                                            <p class="card-text">
-                                                <span class="text-danger fw-bold me-1">15,990,000 đ</span>
-                                                <span class="text-secondary small"><del><small>15,990,000</small></del></span>
-                                            </p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-          </div>
-            </div>
-            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                <!-- Body Tab 3 (phụ kiện FS)-->
-                <div id="accessoriesFS" class="carousel slide position-relative">
-                    <span class="z-1 top-50 w-100 position-absolute d-flex justify-content-between">
-                        <button style="width: 50px; height: 50px;" class="btn btn-success rounded-circle opacity-75" data-bs-target="#accessoriesFS" data-bs-slide="prev">
-                            <i class="fa fa-lg fa-angle-left" aria-hidden="true"></i>
-                        </button>
-                        <button style="width: 50px; height: 50px;" class="btn btn-success rounded-circle opacity-75" data-bs-target="#accessoriesFS" data-bs-slide="next">
-                            <i class="fa fa-lg fa-angle-right" aria-hidden="true"></i>
-                        </button>
-                    </span>
-                <div class="carousel-indicators">
-                    <button  class="active" type="button" data-bs-target="#accessoriesFS" data-bs-slide-to="0" aria-current="true" aria-label="Slide 1"></button>
-                    <button class="" type="button" data-bs-target="#accessoriesFS" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                </div>
-                <div class="carousel-inner pt-3 px-3 px-md-4 px-lg-4">
-                    
-                    <!-- Tab 3-1 -->
-                    <div class="carousel-item active">
-                        <div class="row">
-                            <!-- Product Start -->
-                            <div class="col-6 col-md-4 col-lg-2 pb-3 pb-md-4 pb-lg-5">
-                                <div style="min-height:100%" class="card shadow">
-                                    <div class="position-relative hover-trigger">
-                                        <img src="publics/img/accesories/huawei/freeclip-huawei.jpg" class="card-img img-product" alt="...">
-                                        <span style="left: 84%; top: -4%; width: 45px; height: 45px" class="btn bg-warning text-light rounded-circle position-absolute small p-0 pt-2 fw-bold ">NEW</span>
-                                        <span class="show-hover position-absolute end-0 bottom-0 w-100">
-                                            <div class="d-flex justify-content-evenly">
-                                                <button class="btn btn-success">
-                                                    <i class="far fa-heart"></i>
-                                                </button>
-                                                <button class="btn btn-success">
-                                                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                                                </button>
-                                                <button class="btn btn-success">
-                                                    <i class="fa fa-share-alt" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </span>
-                                    </div>
-                                    <a class="text-decoration-none" href="#!/chi-tiet/1">
-                                        <div class="card-body">
-                                            <h5 class="card-title fs-6 fw-bold text-dark">Tai nghe Bluetooh Huawei FreeClip</h5>
-                                            <p class="card-text">
-                                                <span class="text-danger fw-bold me-1">4,290,000 đ</span>
-                                                <span class="text-secondary small"><del><small>4,990,000</small></del></span>
-                                            </p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Tab 3-2 -->
-                    <div class="carousel-item">
-                        <div class="row">
-                            <div class="col-6 col-md-4 col-lg-2 pb-3 pb-md-4 pb-lg-5">
-                                <div style="min-height:100%" class="card shadow">
-                                    <div class="position-relative hover-trigger">
-                                        <img src="publics/img/accesories/huawei/freeclip-huawei.jpg" class="card-img img-product" alt="...">
-                                        <span style="left: 84%; top: -4%; width: 45px; height: 45px" class="btn bg-warning text-light rounded-circle position-absolute small p-0 pt-2 fw-bold ">NEW</span>
-                                        <span class="show-hover position-absolute end-0 bottom-0 w-100">
-                                            <div class="d-flex justify-content-evenly">
-                                                <button class="btn btn-success">
-                                                    <i class="far fa-heart"></i>
-                                                </button>
-                                                <button class="btn btn-success">
-                                                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                                                </button>
-                                                <button class="btn btn-success">
-                                                    <i class="fa fa-share-alt" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </span>
-                                    </div>
-                                    <a class="text-decoration-none" href="#!/chi-tiet/1">
-                                        <div class="card-body">
-                                            <h5 class="card-title fs-6 fw-bold text-dark">Tai nghe Bluetooh Huawei FreeClip</h5>
-                                            <p class="card-text">
-                                                <span class="text-danger fw-bold me-1">4,290,000 đ</span>
-                                                <span class="text-secondary small"><del><small>4,990,000</small></del></span>
-                                            </p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
-          </div>
+
+        </div>
     </div>
-</div>
+    <?php }?>
 <!--[PHONE] Ads Box Image -->
 <div class="container-fluid p-0">
     <a href="#!/chi-tiet/1">
