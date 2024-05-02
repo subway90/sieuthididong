@@ -44,3 +44,8 @@ function matchCollapse($a,$b) {
     if($a == $b) return 'show';
     else return 'collapse';
 }
+
+function updateFlashSale($id,$type){
+    $sql = "UPDATE product_color SET flashsale ='".$type."' WHERE id=".$id;
+    pdo_execute($sql);
+}

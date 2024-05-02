@@ -22,14 +22,14 @@
                     data-sa-search-input="#table-search">
                     <thead>
                         <tr>
-                            <th class="w-min">STT</th>
+                            <th class="w-min">Loại</th>
                             <th class="min-w-20x">Tên sản phẩm</th>
                             <th>Phiên bản</th>
                             <th>Số lượng</th>
                             <th>Trạng thái</th>
                             <th>Giá gốc</th>
                             <th>Giá sale</th>
-                            <th>Ngày tạo</th>
+                            <th>FlashSale</th>
                             <th class="w-min" data-orderable="false"></th>
                         </tr>
                     </thead>
@@ -39,7 +39,9 @@
                         extract($listProduct[$i]);
                     ?>
                         <tr>
-                            <td><?=$i+1?></td>
+                            <td>
+                                <?=getOneFieldByCustom('product_type','name','id ='.$idType)['name']?>
+                            </td>
                             <td>
                                 <div class="d-flex align-items-center"><a href="#"
                                         class="me-4">
@@ -68,7 +70,10 @@
                             <td>
                                 <div class="sa-price"><?= number_format($priceSale) ?></div>
                             </td>
-                            <td><div class="badge badge-sa-info"><?= $dateCreate ?></div></td>
+                            <td>
+                                <?php if(!$flashsale) echo '<div class="badge badge-sa-secondary">không</div>' ?>
+                                <?php if($flashsale) echo '<div class="badge badge-sa-warning">có</div>' ?>
+                            </td>
                             <td>
                                 <div class="dropdown">
                                     <button class="btn btn-sa-muted btn-sm" type="button" id="customer-context-menu-0" data-bs-toggle="dropdown" aria-expanded="false" aria-label="More">
@@ -85,6 +90,14 @@
                                         <li><a class="dropdown-item text-danger" href="<?=ACT_ADMIN?>detail&delete=2&id=<?=$id?>">Ẩn sản phẩm</a></li>
                                         <?php }else{ ?>
                                         <li><a class="dropdown-item text-success" href="<?=ACT_ADMIN?>detail&delete=1&id=<?=$id?>">Hiện sản phẩm</a></li>
+                                        <?php } ?>
+                                        <li><hr class="dropdown-divider"/></li>
+
+                                        <?php 
+                                        if($flashsale){ ?>
+                                        <li><a class="dropdown-item text-warning" href="<?=ACT_ADMIN?>detail&flashsale=0&id=<?=$id?>">Tắt Flashsale</a></li>
+                                        <?php }else{ ?>
+                                        <li><a class="dropdown-item text-success" href="<?=ACT_ADMIN?>detail&flashsale=1&id=<?=$id?>">Bật Flashsale</a></li>
                                         <?php } ?>
                                     </ul>
                                 </div>

@@ -7,6 +7,13 @@ if(isset($_GET['delete']) && !empty($_GET['delete']) && isset($_GET['id']) && !e
     header('Location: '.ACT_ADMIN.'detail');
     exit;
 }
+# FLASHSALE
+if(isset($_GET['flashsale']) && isset($_GET['id']) && !empty($_GET['id'])) {
+    updateFlashSale($_GET['id'],$_GET['flashsale']);
+    addAlert('success','<i class="fas fa-check-circle"></i> Thay đổi trạng thái FLASHSALE thành công !');
+    header('Location: '.ACT_ADMIN.'detail');
+    exit;
+}
 
 # THÊM SẢN PHẨM
 if(isset($_REQUEST['success'])) addAlert('success','<i class="fas fa-check-circle"></i> Đăng sản phẩm thành công !');
