@@ -13,7 +13,7 @@
         <div class="col-lg-12 p-lg-0">
             <div class="mb-lg-3"> 
                 <div class="fw-bold h4"><?= $title ?></div>
-                <div class="text-muted"><?= formatTime($dateUpdate,'lúc hh:mm MM/DD/YYYY') ?></div>
+                <div class="text-muted"><?= formatTime($dateCreate,'lúc hh:mm MM/DD/YYYY') ?></div>
                 <img class="my-lg-3 w-100" src="<?=URL_IMAGE_NEWS.$imageTitle?>" alt="<?= $imageTitle ?>">
             </div>
             <div class="my-lg-5"> 
