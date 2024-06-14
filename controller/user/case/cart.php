@@ -96,7 +96,7 @@ if(isset($_REQUEST['thanhtoan']) && $total !=0){
         #tạo HÓA ĐƠN CHI TIẾT
         for($i=0; $i < count($listCart); $i++){ //thêm hóa đơn chi tiết
             extract($listCart[$i]);
-            addBillDetail($token,$idProduct,$priceSale,$quantity); 
+            addBillDetail($token,$idProduct,$idModel,$idColor,$priceSale,$quantity); 
         }
         header("Location:".URL."gio-hang&close=".$token);
     }

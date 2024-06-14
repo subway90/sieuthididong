@@ -11,8 +11,11 @@ if($verify == true){
 
 
 <?php
-
-var_dump(strstr($_SESSION['user']['image'],'http'));
+    for ($i=0; $i < 10; $i++) { 
+        $price = mt_rand(12500000,37500000);
+        $percent = mt_rand(0,20);
+        echo number_format($price).' đ - KM còn : '.number_format(round($price*((100- $percent)/100))).' đ ('.$percent.'%)<br>';
+    }
     function checkPassHash($input,$hash){
         $pass_verify = $hash;
         $enteredPassword = $input;

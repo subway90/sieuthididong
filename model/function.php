@@ -203,7 +203,10 @@ function createTokenChar($length){
     $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     return substr(str_shuffle($permitted_chars), 0, $length); //hàm str_shuffle :Trả về cho một chuỗi xáo trộn ngẫu nhiên
 }
-
+function createName(){
+    $permitted_chars = '01 23 45 67 89 AB CD EF GH IJ KL MN OP QR ST UV WX YZ';
+    return substr(str_shuffle($permitted_chars), 0, 16); //hàm str_shuffle :Trả về cho một chuỗi xáo trộn ngẫu nhiên
+}
 /**
  * Kiểm tra xem email có hợp lệ hay không
  * Điều kiện: cho phép kí tự a còng [@](1),dấu chấm [.](nhiều) và [a-z][0-9] 

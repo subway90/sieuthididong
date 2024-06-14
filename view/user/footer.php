@@ -115,5 +115,4 @@
 <script src="<?= URL ?>publics/js/image.js"></script>
 <script src="<?= URL ?>publics/js/custom_timenow.js"></script>
 <script src="<?= URL ?>publics/js/modal.js"></script>
-<script src="<?= URL ?>publics/js/modal.js"></script>
 <script src="<?= URL ?>publics/js/countdown-time.js"></script>

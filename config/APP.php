@@ -1,6 +1,6 @@
 <?php
 # DOMAIN
-const DOMAIN = "https://subway90.vn";
+const DOMAIN = "http://localhost/MVC-PHONE";
 
 # DATABASE
 const HOST_DB = 'localhost';
@@ -28,14 +28,15 @@ const PATH_UPLOAD_IMAGE_NEWS = "../../uploads/news/";
 const PAGE_UPDATE = false;
 
 # FUNCTION ACTIVE
-const LOGIN_GOOGLE = true;
+const LOGIN_GOOGLE = false;
 const LOGIN_FACEBOOK = false;
 
 # EVENT ACTIVE
-const FLASH_SALE = true;
+const FLASH_SALE = false;
 
 #SETTING LIMIT
 const LIMIT_NEWS_IN_PAGE = 16;
+const LIMIT_PRODUCT_IN_PAGE_FLASH_SALE = 6;
 
 # SETTING TIME
 const TIME_CLOSE_ALERT = 3000;

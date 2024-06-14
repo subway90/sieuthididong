@@ -2,7 +2,7 @@
     <div class="row">
 
         <div class="col-12 col-md-12 col-lg-5 p-0 bg-success-subtle text-center pt-4">
-            <img class="w-50" src="/publics/img/system/login-bg.png" alt="LOGIN">
+            <img class="w-50" src="<?=URL?>/publics/img/system/login-bg.png" alt="LOGIN">
         </div>
 
         <div class="col-12 col-md-12 col-lg-7 bg-light p-0 py-3">

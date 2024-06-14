@@ -4,9 +4,9 @@ function addBill($token,$idUser,$total,$fullName,$phone,$email,$address,$typePay
     values('$token','$idUser','$total','$fullName','$phone','$email','$address','$typePay',1,1,'','',current_timestamp(),1)";
     pdo_execute($sql);
 }
-function addBillDetail($token,$id,$price,$quantity){
-    $sql = "INSERT INTO billdetail(tokenBill,idProduct,price,quantity,dateCreate,status) 
-    values('$token','$id','$price','$quantity',current_timestamp(),1)";
+function addBillDetail($token,$idProduct,$idModel,$idColor,$price,$quantity){
+    $sql = "INSERT INTO billdetail(tokenBill,idProduct,idModel,idColor,price,quantity,dateCreate,status) 
+    values('$token','$idProduct','$idModel','$idColor','$price','$quantity',current_timestamp(),1)";
     pdo_execute($sql);
 }
 function getDetailBillByToken($token){

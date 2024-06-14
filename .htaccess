@@ -3,12 +3,10 @@ RewriteCond %{REQUEST_FILENAME} !-f
 
 RewriteCond %{REQUEST_FILENAME} !-d
 
-RewriteRule ^(.+)$ /controller/user/index.php?act=$1 [QSA,L]
-
-
-
 #Chuyển đến trang mặc định
-DirectoryIndex controller/user/index.php?act=0
+DirectoryIndex controller/user/index.php
+
+RewriteRule ^(.+)$ /MVC-PHONE/controller/user/index.php?act=$1 [QSA,L]
 
 #Chuyển đến trang thông báo lỗi
 ErrorDocument 404 /view/404.php

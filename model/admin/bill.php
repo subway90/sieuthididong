@@ -22,7 +22,7 @@ function editStatus($nameStatus,$token,$status,$date){
     pdo_execute($sql);
 }
 function editQuantity($idProduct,$quantity){
-    $sql = "UPDATE products SET quantity = quantity-".$quantity." WHERE id = ".$idProduct;
+    $sql = "UPDATE product_color SET quantity = quantity-".$quantity." WHERE id = ".$idProduct;
     pdo_execute($sql);
 }
 function addFeedback($idUser,$idBillDetail){
