@@ -1,6 +1,6 @@
 
 <?php
-require_once '../../config/URL.php';
+require_once '../../config/APP.php';
 ?>
 <script>
 var images = document.getElementsByTagName("img");
