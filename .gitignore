@@ -33,7 +33,6 @@
 
 # git reset --hard [id commit] (Quay về commit cũ, [id commit]: khi dùng lệnh git log)
 # git push --force (Đẩy các code cũ từ commit đã quay lại khi - tức sau khi dùng lệnh reset --hard [id commit])
-# git clone [URL REPO] (kéo repo từ server về máy mình)
 
 #!!# Branch #!!#
 # git branch [Name Branch] (thêm mới 1 branch, [Name Branch]: tên của branch cần tạo)

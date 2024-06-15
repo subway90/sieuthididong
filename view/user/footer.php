@@ -70,36 +70,36 @@
             <p class="h5 text-light">Thanh toán Online</p>
             <div class="row">
                 <div class="col-3 col-md-3 col-lg-3 text-center py-2">
-                    <img src="/publics/img/system/icon-tranfer-online/logo-atm.png" alt="">
+                    <img class="w-100" src="/publics/img/system/icon-tranfer-online/logo-atm.png" alt="">
                 </div>
                 <div class="col-3 col-md-3 col-lg-3 text-center py-2">
-                    <img src="/publics/img/system/icon-tranfer-online/logo-jcb.png" alt="">
+                    <img class="w-100" src="/publics/img/system/icon-tranfer-online/logo-jcb.png" alt="">
                 </div>
                 <div class="col-3 col-md-3 col-lg-3 text-center py-2">
-                    <img src="/publics/img/system/icon-tranfer-online/logo-master.png" alt="">
+                    <img class="w-100" src="/publics/img/system/icon-tranfer-online/logo-master.png" alt="">
                 </div>
                 <div class="col-3 col-md-3 col-lg-3 text-center py-2">
-                    <img src="/publics/img/system/icon-tranfer-online/logo-samsungpay.png" alt="">
+                    <img class="w-100" src="/publics/img/system/icon-tranfer-online/logo-samsungpay.png" alt="">
                 </div>
                 <div class="col-3 col-md-3 col-lg-3 text-center py-2">
-                    <img src="/publics/img/system/icon-tranfer-online/logo-visa.png" alt="">
+                    <img class="w-100" src="/publics/img/system/icon-tranfer-online/logo-visa.png" alt="">
                 </div>
                 <div class="col-3 col-md-3 col-lg-3 text-center py-2">
-                    <img src="/publics/img/system/icon-tranfer-online/logo-vnpay.png" alt="">
+                    <img class="w-100" src="/publics/img/system/icon-tranfer-online/logo-vnpay.png" alt="">
                 </div>
             </div>
             <p class="h5 text-light mt-3">Nhà vận chuyển</p>
             <div class="row">
                 <div class="col-3">
-                    <img src="/publics/img/system/icon-transport/nhattin.jpg" alt="">
+                    <img class="w-100" src="/publics/img/system/icon-transport/nhattin.jpg" alt="">
                 </div>
                 <div class="col-3">
-                    <img src="/publics/img/system/icon-transport/vnpost.jpg" alt="">
+                    <img class="w-100" src="/publics/img/system/icon-transport/vnpost.jpg" alt="">
                 </div>
             </div>
             <p class="h5 text-light mt-3">Giấy phép</p>
             <div>
-                <img src="/publics/img/system/logo-bct.png" height="40px" alt="">
+                <img class="w-100" src="/publics/img/system/logo-bct.png" height="40px" alt="">
             </div>
         </div>
 
@@ -111,8 +111,13 @@
     </div>
 </footer>
 </html>
-<!-- Script Custom File -->
+<!-- Script File -->
 <script src="<?= URL ?>publics/js/image.js"></script>
-<script src="<?= URL ?>publics/js/custom_timenow.js"></script>
 <script src="<?= URL ?>publics/js/modal.js"></script>
 <script src="<?= URL ?>publics/js/countdown-time.js"></script>
+
+<!-- SCRIPT CUSTOM -->
+<?php 
+require_once '../../publics/js/js.time_countdown_fs.php';
+require_once '../../publics/js/js.onerror_image.php';
+?>

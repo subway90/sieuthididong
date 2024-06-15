@@ -11,24 +11,19 @@ if($verify == true){
 
 
 <?php
-    for ($i=0; $i < 10; $i++) { 
-        $price = mt_rand(12500000,37500000);
-        $percent = mt_rand(0,20);
-        echo number_format($price).' đ - KM còn : '.number_format(round($price*((100- $percent)/100))).' đ ('.$percent.'%)<br>';
-    }
     function checkPassHash($input,$hash){
         $pass_verify = $hash;
         $enteredPassword = $input;
         if (password_verify($enteredPassword, $pass_verify)) return 1;
-        else return 2;
+        else return 0;
     }
 
-    $password = 'HieuTest79@@';
-    $hash = password_hash($password, PASSWORD_DEFAULT); 
-    echo $hash;
-    echo '<br>'.checkPassHash('T1234563',$hash);
-    echo '<br>';
-    echo formatTime('2024-05-31 12:24:38','MM/DD lúc hh:mm');
+    // $password = 'T123456';
+    // $hash = password_hash($password, PASSWORD_DEFAULT); 
+    // echo $hash;
+    // echo '<br>';
+    // echo 'kết quả đăng nhập (bool): '.checkPassHash('T1234563',$hash);
+    
 
 
 #NHẬP MẬT KHẨU

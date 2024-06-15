@@ -1,6 +1,6 @@
 <?php
 # DOMAIN
-const DOMAIN = "http://localhost/MVC-PHONE";
+const DOMAIN = "http://localhost/MVC_PHONE";
 
 # DATABASE
 const HOST_DB = 'localhost';
@@ -24,6 +24,18 @@ const PATH_UPLOAD_IMAGE_AVATAR = "../../uploads/user/avatar";
 const PATH_UPLOAD_IMAGE_PRODUCT = "../../uploads/product/";
 const PATH_UPLOAD_IMAGE_NEWS = "../../uploads/news/";
 
+# URL
+const ACT_ADMIN = DOMAIN.'/controller/admin/index.php?act=';
+const URL = DOMAIN.'/';
+const URL_ADMIN = DOMAIN.'/controller/admin/index.php';
+const URL_USER_AVATAR = DOMAIN.'/uploads/user/avatar/';
+const URL_IMGER_PRODUCT = DOMAIN.'/uploads/product/';
+const URL_IMAGE_NEWS = DOMAIN.'/uploads/news/';
+const URL_IMAGE_SYSTEM = DOMAIN.'/uploads/system/';
+
+# IMAGE
+const IMAGE_DEFAULT = 'uploads/system/image_default.jpg';
+
 # PAGE ACTIVE
 const PAGE_UPDATE = false;
 
@@ -32,7 +44,7 @@ const LOGIN_GOOGLE = false;
 const LOGIN_FACEBOOK = false;
 
 # EVENT ACTIVE
-const FLASH_SALE = false;
+const FLASH_SALE = true;
 
 #SETTING LIMIT
 const LIMIT_NEWS_IN_PAGE = 16;
@@ -40,7 +52,7 @@ const LIMIT_PRODUCT_IN_PAGE_FLASH_SALE = 6;
 
 # SETTING TIME
 const TIME_CLOSE_ALERT = 3000;
-const TIME_FLASH_SALE  = '2024/04/24 00:00:00';
+const TIME_FLASH_SALE  = '2024/07/01 00:00:00';
 
 # SETTING NUMBER
 const MAX_PRICE_PRODUCT = 200000000;

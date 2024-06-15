@@ -1,7 +1,6 @@
 <?php
 # [FILES]
 require_once "../../config/APP.php";
-require_once "../../config/URL.php";
 require_once "../../model/pdo.php";
 require_once "../../model/function.php";
 require_once "../../model/user/product.php";
@@ -10,11 +9,11 @@ require_once "../../model/user/cart.php";
 require_once "../../model/user/bill.php";
 require_once "../../model/user/notifycation.php";
 
-# [FUNCTION]
+# [FUNCTION START]
 ob_start(); 
 session_start();
 show_alert();
-# [SESSION]
+# [SESSION START]
 if(!isset($_SESSION['user'])) $_SESSION['user'] = [];
 if(!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
 if(!isset($_SESSION['alert'])) $_SESSION['alert'] = "";
@@ -23,7 +22,7 @@ if(!isset($_SESSION['alert_3'])) $_SESSION['alert_3'] = [];
 if(!isset($_SESSION['user_google'])) $_SESSION['user_google'] = [];
 if(!isset($_SESSION['user_facebook'])) $_SESSION['user_facebook'] = [];
 
-# [COOKIE]
+# [AUTO LOGIN]
 if(isset($_COOKIE['username']) && isset($_COOKIE['password'])) autoLogin($_COOKIE['username'],$_COOKIE['password']);
 
 # [VARIBLE START]
@@ -50,7 +49,6 @@ $total = showCart(3);
 if(isset($_GET['act'])){
     $arrayURL = explode('/',$_GET['act']);
     $act=$arrayURL[0];
-    ##UPDATE
     if(PAGE_UPDATE === true) require_once 'case/update.php';
         switch($act) {
             case "app":

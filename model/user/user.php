@@ -1,6 +1,6 @@
 <?php
 require_once '../../model/function.php';
-require_once '../../config/URL.php';
+require_once '../../config/APP.php';
 
 function login($user,$pass){
     $sql = "SELECT * FROM accounts WHERE user= '".$user."' AND pass ='".$pass."' AND status = 1";
