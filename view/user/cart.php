@@ -22,7 +22,7 @@
                         <?php if($listCart){ for ($i=0; $i < count($listCart); $i++) { extract($listCart[$i]) ?>
                         <tr class="align-middle">
                             <td class="text-start d-flex align-items-center"> 
-                                <div><img width="50" src="<?=URL_IMGER_PRODUCT.$image?>" alt="<?=$image?>"></div>
+                                <div><img width="50" src="<?=URL_IMAGE_PRODUCT.$image?>" alt="<?=$image?>"></div>
                                 <div>
                                     <span class="text-success fw-bold"><?= $name ?> </span>
                                     <div class="small text-muted">
@@ -145,7 +145,7 @@
                         <?php for ($i=0; $i < count($listCart); $i++) { extract($listCart[$i]) ?>
                             <tr>
                                 <td class="text-start">
-                                    <img width="50" src="<?=URL_IMGER_PRODUCT.$image?>" alt="<?=$image?>">
+                                    <img width="50" src="<?=URL_IMAGE_PRODUCT.$image?>" alt="<?=$image?>">
                                     <?=$name?>
                                 </td>
                                 <td><?=number_format($priceSale)?> đ</td>

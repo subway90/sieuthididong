@@ -87,7 +87,7 @@
         <div class="col-6 col-md-4 col-lg-2 pb-3 pb-md-4 pb-lg-5">
             <div style="min-height: 100%;" class="card shadow">
                 <div class="position-relative hover-trigger">
-                    <img src="<?=URL_IMGER_PRODUCT.$image?>" class="card-img img-product" alt="<?=$image?>">
+                    <img src="<?=URL_IMAGE_PRODUCT.$image?>" class="card-img img-product" alt="<?=$image?>">
                     <span style="left: 84%; top: -4%; width: 45px; height: 45px" class="btn bg-danger text-light rounded-circle position-absolute small p-0 pt-2 fw-bold "><?= saleProduct($price,$priceSale) ?>%</span>
                     <span class="show-hover position-absolute end-0 bottom-0 w-100">
                         <div class="d-flex justify-content-evenly">

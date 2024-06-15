@@ -29,7 +29,7 @@ const ACT_ADMIN = DOMAIN.'/controller/admin/index.php?act=';
 const URL = DOMAIN.'/';
 const URL_ADMIN = DOMAIN.'/controller/admin/index.php';
 const URL_USER_AVATAR = DOMAIN.'/uploads/user/avatar/';
-const URL_IMGER_PRODUCT = DOMAIN.'/uploads/product/';
+const URL_IMAGE_PRODUCT = DOMAIN.'/uploads/product/';
 const URL_IMAGE_NEWS = DOMAIN.'/uploads/news/';
 const URL_IMAGE_SYSTEM = DOMAIN.'/uploads/system/';
 

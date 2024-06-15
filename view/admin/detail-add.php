@@ -82,7 +82,7 @@
                                                 <div class="max-w-20x">
                                                     <?php
                                                     if(empty($hinhcu)){ ?>
-                                                    <img src="<?=URL_IMGER_PRODUCT?>image_default.jpg" id="image" class="w-100 h-auto" width="320" height="320" alt="image product" />
+                                                    <img src="<?=URL_IMAGE_PRODUCT?>image_default.jpg" id="image" class="w-100 h-auto" width="320" height="320" alt="image product" />
                                                     <?php }else{ ?>
                                                     <img src="<?=URL?>/uploads/product/<?=$hinhcu?>" id="image" class="w-100 h-auto" width="320" height="320" alt="image product" />
                                                     <div class="text-info text-center mt-2"><?=$hinhcu?></div>

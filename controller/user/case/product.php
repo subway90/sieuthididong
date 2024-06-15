@@ -171,7 +171,7 @@ for ($i=0; $i < count($listIdSeries); $i++) {
   }
   for ($j=0; $j < count($listImageSeries[$i]); $j++) { 
     $showListImageSeries .='
-    <img width="40" src="'.URL_IMGER_PRODUCT.$listImageSeries[$i][$j].'" alt="'.$listImageSeries[$i][$j].'">';
+    <img width="40" src="'.URL_IMAGE_PRODUCT.$listImageSeries[$i][$j].'" alt="'.$listImageSeries[$i][$j].'">';
   }
   #var_dump($showListImageSeries);exit;
   $showListSeries .='
@@ -180,7 +180,7 @@ for ($i=0; $i < count($listIdSeries); $i++) {
         <div class="row">
             <div class="col-6">
                 <div class="position-relative hover-trigger">
-                    <img src="'.URL_IMGER_PRODUCT.$listImageSeries[$i][0].'" class="card-img img-product" alt="'.$listImageSeries[$i][0].'">
+                    <img src="'.URL_IMAGE_PRODUCT.$listImageSeries[$i][0].'" class="card-img img-product" alt="'.$listImageSeries[$i][0].'">
                     <span class="show-hover position-absolute end-0 bottom-0 w-100">
                         <div class="d-flex justify-content-evenly">
                             <button name="" type="submit" class="btn btn-success">

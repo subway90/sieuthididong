@@ -46,7 +46,7 @@
                                 <div class="d-flex align-items-center"><a href="#"
                                         class="me-4">
                                         <div class="sa-symbol sa-symbol--shape--rounded sa-symbol--size--lg">
-                                            <img src="<?=URL_IMGER_PRODUCT.$image?>" class="" alt="<?=$image?>" />
+                                            <img src="<?=URL_IMAGE_PRODUCT.$image?>" class="" alt="<?=$image?>" />
                                         </div>
                                     </a>
                                     <div><a href="<?=URL?>chi-tiet/<?=$slug?>" class="text-reset"><?=$name?></a>

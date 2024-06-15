@@ -80,7 +80,7 @@
                                                     <tr>
                                                         <td class="min-w-20x">
                                                             <div class="d-flex align-items-center">
-                                                                <img src="<?=URL_IMGER_PRODUCT.$image?>" class="me-4" width="40" height="40" alt="product"/>
+                                                                <img src="<?=URL_IMAGE_PRODUCT.$image?>" class="me-4" width="40" height="40" alt="product"/>
                                                                 <a href="app-product.html" class="text-reset"></span><?=$name?></a>
                                                             </div>
                                                         </td>

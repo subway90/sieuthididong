@@ -109,7 +109,7 @@
                                 <tr>
                                     <th class="text-start"><?= $i + 1 ?></th>
                                     <td class="text-start">
-                                        <img width="40px" src="<?= URL_IMGER_PRODUCT . $image ?>" alt="PRODUCT IMAGE">
+                                        <img width="40px" src="<?= URL_IMAGE_PRODUCT . $image ?>" alt="PRODUCT IMAGE">
                                         <span><a class="text-decoration-none text-success fw-semi"
                                                 href="<?= URL ?>chi-tiet/<?= $slug ?>"><?= $name ?></a></span>
                                     </td>

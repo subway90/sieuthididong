@@ -25,7 +25,7 @@
                     <?php
                     for ($i = 0; $i < count($listImage); $i++) { ?>
                         <div class="carousel-item <?= matchValue('active',0, $i) ?>">
-                            <img class="w-100" src="<?= URL_IMGER_PRODUCT . $listImage[$i]['name'] ?>" alt="<?= $listImage[$i]['name'] ?>">
+                            <img class="w-100" src="<?= URL_IMAGE_PRODUCT . $listImage[$i]['name'] ?>" alt="<?= $listImage[$i]['name'] ?>">
                         </div>
                     <?php } ?>
                 </div>
@@ -46,7 +46,7 @@
                         ?>
                         <button class="<?= printClassImage($listImage[$i]['arrayID']) ?> col-2 border-0 hover-btn-galery-product" data-bs-target="#galery-product"
                             data-bs-slide-to="<?= $i ?>" aria-label="Slide <?= $i + 1 ?>">
-                            <img class="w-100" src="<?= URL_IMGER_PRODUCT . $listImage[$i]['name'] ?>" alt="<? $listImage[$i]['name'] ?>">
+                            <img class="w-100" src="<?= URL_IMAGE_PRODUCT . $listImage[$i]['name'] ?>" alt="<? $listImage[$i]['name'] ?>">
                         </button>
                     <?php } ?>
                 </div>
@@ -387,7 +387,7 @@
                     <div class="col-6 col-md-4 col-lg-2 pb-3 pb-md-4 pb-lg-5">
                         <div style="min-height: 100%;" class="card shadow">
                             <div class="position-relative hover-trigger">
-                                <img src="<?= URL_IMGER_PRODUCT . $image ?>" class="card-img img-product"
+                                <img src="<?= URL_IMAGE_PRODUCT . $image ?>" class="card-img img-product"
                                     alt="<?= $image ?>">
                                 <span style="left: 84%; top: -4%; width: 45px; height: 45px"
                                     class="btn bg-danger text-light rounded-circle position-absolute small p-0 pt-2 fw-bold ">51%</span>

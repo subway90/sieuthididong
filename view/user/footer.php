@@ -119,5 +119,4 @@
 <!-- SCRIPT CUSTOM -->
 <?php 
 require_once '../../publics/js/js.time_countdown_fs.php';
-require_once '../../publics/js/js.onerror_image.php';
 ?>
