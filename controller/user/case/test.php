@@ -14,3 +14,4 @@ if(isset($_POST['password'])){
 #RENDER VIEW
 require_once "../../view/user/header.php";
 require_once "../../view/test.php";
+
