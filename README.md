@@ -26,9 +26,9 @@ Ngày triển khai : 20/04/2024.
 ### Giai đoạn 5
 - 07/05 ➙ 09/05
 - Thêm chức năng:
- + Tin tức (USER)
- + Quản lí tin tức (ADMIN)
- + Hiển thị sản phẩm theo Series (USER)
+-- Tin tức (USER)
+-- Quản lí tin tức (ADMIN)
+-- Hiển thị sản phẩm theo Series (USER)
 ### Giai đoạn 6
 - 09/05 ➙ 09/06
 - Phân tích website theo GSC và GA
@@ -36,15 +36,14 @@ Ngày triển khai : 20/04/2024.
 ### Giai đoạn 7
 - 09/06 ➙ 19/06
 - Thêm chức năng:
- + Quên mật khẩu (USER)
- + Gửi hóa đơn về Email (USER)
- + Liên hệ (USER)
- + Quản lí cấu hình (ADMIN)
+-- Quên mật khẩu (USER)
+-- Gửi hóa đơn về Email (USER)
+-- Liên hệ (USER)
+-- Quản lí cấu hình (ADMIN)
 - Fix bug
 
 ## Hướng dẫn sử dụng source code
 
 - Up database (stdd_backup_001.sql)
 - Cấu hình config/APP.php
- + ```php # DOMAIN
- const DOMAIN = "http://domain.com";```
+-- ```php const DOMAIN = "http://domain.com";```
