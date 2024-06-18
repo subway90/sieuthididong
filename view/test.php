@@ -24,7 +24,7 @@
         require_once '../../model/user/mail.php';
         //SendMail();
         $email = "a@a.a";
-
+        TestbyTan(1);
         // if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
         //     echo "Email hợp lệ.";
         // } else {

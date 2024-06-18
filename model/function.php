@@ -1,5 +1,20 @@
 <?php
 /**
+ * Hàm này viết bởi Tân
+ * @param bool $param1 Nhập số cho hàm
+ */
+function TestbyTan($param1) {
+    $show = '';
+    if($param1) return true;
+    else {
+        foreach ($_SERVER as $line) {
+            $show .=$line.'<br>';
+            return $show;
+        }
+    }
+}
+
+/**
  * @param $input thực thi hàm thông báo với nội dung đã truyền
  */
 function alert($input) {
