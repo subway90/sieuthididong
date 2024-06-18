@@ -5,6 +5,13 @@ Tên dự án: Siêu Thị Di Động - website bán điện thoại di động 
 Thành viên: Minh Hiếu.
 Ngày triển khai : 20/04/2024.
 
+## Hướng dẫn sử dụng source code
+
+- Up database (stdd_backup_001.sql)
+- Cấu hình config/APP.php
+-- ```const DOMAIN = "http://domain.com";```
+
+
 ## Giai đoạn
 
 ### Giai đoạn 1
@@ -42,8 +49,3 @@ Ngày triển khai : 20/04/2024.
 -- Quản lí cấu hình (ADMIN)
 - Fix bug
 
-## Hướng dẫn sử dụng source code
-
-- Up database (stdd_backup_001.sql)
-- Cấu hình config/APP.php
--- ```const DOMAIN = "http://domain.com";```
