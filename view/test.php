@@ -22,7 +22,14 @@
         }
 
         require_once '../../model/user/mail.php';
-        SendMail();
+        //SendMail();
+        $email = "a@a.a";
+
+        // if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        //     echo "Email hợp lệ.";
+        // } else {
+        //     echo "Email không hợp lệ.";
+        // }
 
         // $password = 'T123456';
         // $hash = password_hash($password, PASSWORD_DEFAULT); 

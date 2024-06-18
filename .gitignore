@@ -3,8 +3,10 @@
 # B1: Tạo mới 1 repo trên github
 # B2: mở Terminal VSCode (Ctrl + Shift + ~)
 # B3: git init (tạo file .git ở local)
+## git config --global user.name "yourname" (tạo user)
+## git config --global user.email "yourmail" (tạo mail)
 # B4: git add . (thêm toàn bộ code vào local)
-# B5: git commit -m"Message" (commit code vào Stage Area)
+# B5: git commit -m"message" (commit code vào Stage Area)
 # B6: git remote add origin [link your repo] (thêm origin từ trên server git)
 # B7: git push -u master (hoặc main tùy tên của local - lệnh này để push code từ stage area lên server - lúc này lên repo check là thấy code)
 

@@ -31,6 +31,7 @@ else{
     require_once "../../model/admin/bill.php";
     require_once "../../model/admin/account.php";
     require_once "../../model/admin/news.php";
+    require_once "../../model/admin/adminitrator.php";
 
     //controller
     if(isset($_GET['act'])){
@@ -107,6 +108,10 @@ else{
                 // [news-category ADD - EDIT]
                 case "news-category-add":
                     require_once "case/news-category-add.php";
+                    break;
+                // [adminitrator VIEW - EDIT]
+                case "adminitrator":
+                    require_once "case/adminitrator.php";
                     break;
                 // [404]
                 default:
