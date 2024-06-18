@@ -46,4 +46,4 @@ Ngày triển khai : 20/04/2024.
 
 - Up database (stdd_backup_001.sql)
 - Cấu hình config/APP.php
--- ```php const DOMAIN = "http://domain.com";```
+-- ```const DOMAIN = "http://domain.com";```
