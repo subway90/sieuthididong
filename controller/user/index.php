@@ -13,6 +13,7 @@ require_once "../../model/user/notifycation.php";
 ob_start(); 
 session_start();
 show_alert();
+
 # [SESSION START]
 if(!isset($_SESSION['user'])) $_SESSION['user'] = [];
 if(!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
@@ -101,4 +102,5 @@ if(isset($_GET['act'])){
         }
 }else require_once 'case/home.php';
 # [LAYOUT]
+delay_start();
 require_once "../../view/user/footer.php";

@@ -4,7 +4,7 @@ const DOMAIN = "http://localhost/MVC_PHONE";
 
 # DATABASE
 const HOST_DB = 'localhost';
-const NAME_DB = 'vutrumobile';
+const NAME_DB = 'mvc_phone';
 const USER_DB = 'root';
 const PASS_DB = '';
 

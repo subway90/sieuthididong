@@ -388,7 +388,6 @@ function showAlert($style){
  * Trả về chuỗi có kí tự in hoa
  */
 function upcaseFirst($string) {
-    #Lười viết quá
     return '';
 }
 
@@ -458,6 +457,7 @@ function printClassImage($input) {
 
 /**
  * DelayTime tránh SPAM Request
+ * Muốn dùng phải khai báo trước hafmg delay_start() [Notice : khai báo trong view]
  */
 function delayTime($second) {
     setcookie('delay',$second,time()+$second);
@@ -466,7 +466,7 @@ function delayTime($second) {
 /**
  * Thực thi delayTime($second)
  */
-function show_delayTime() {
+function delay_start() {
     if(isset($_COOKIE['delay'])) {
         unset($_REQUEST);
         alert('Thao tác quá nhanh, vui lòng thử lại sau '.$_COOKIE['delay'].' giây.');

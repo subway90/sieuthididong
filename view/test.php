@@ -8,35 +8,17 @@
     #KHU VỰC CODE TEST
     if ($verify == true) {
         ?>
-        
-
-        <?php
-        function checkPassHash($input, $hash)
-        {
-            $pass_verify = $hash;
-            $enteredPassword = $input;
-            if (password_verify($enteredPassword, $pass_verify))
-                return 1;
-            else
-                return 0;
-        }
-
-        require_once '../../model/user/mail.php';
-        //SendMail();
-        $email = "a@a.a";
-
-        // if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        //     echo "Email hợp lệ.";
-        // } else {
-        //     echo "Email không hợp lệ.";
-        // }
-
-        // $password = 'T123456';
-        // $hash = password_hash($password, PASSWORD_DEFAULT); 
-        // echo $hash;
-        // echo '<br>';
-        // echo 'kết quả đăng nhập (bool): '.checkPassHash('T1234563',$hash);
-        ?>
+        <div class="row">
+            <div class="col-4">
+                <form action="" method="get" class="">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="message" placeholder="name@example.com">
+                        <label for="message">Nhập bình luận</label>
+                    </div>
+                    <button class="btn btn-primary" type="submit" name="message">Gửi</button>
+                </form>
+            </div>
+        </div>
 
 
         <?php
